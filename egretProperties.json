@@ -17,6 +17,13 @@
     },
     {
       "name": "res"
-    }
+    },
+    {
+      "name": "game"
+    },
+	{
+	    "name": "egretsa",
+	    "path": "../egretsa"
+	}
   ]
 }

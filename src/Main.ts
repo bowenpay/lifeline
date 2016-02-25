@@ -35,6 +35,11 @@ class Main extends eui.UILayer {
     private loadingView: LoadingUI;
     protected createChildren(): void {
         super.createChildren();
+        /**
+         * 游戏统计调用方法 初始化
+         */
+        esa.EgretSA.init({ "gameId": "536E77485757673D","chanId": egret.getOption("egret.runtime.spid") || egret.getOption("channelId"), "debug": false });
+        esa.EgretSA.loadingSet(1,"开始加载"); // 记录加载过程
         //inject the custom material parser
         //注入自定义的素材解析器
         var assetAdapter = new AssetAdapter();
@@ -128,6 +133,7 @@ class Main extends eui.UILayer {
      * Create scene interface
      */
     protected startCreateScene(): void {
+        esa.EgretSA.loadingSet(2, "加载完成，游戏开始"); // 记录加载过程
         this.createTimer();
          
     }
