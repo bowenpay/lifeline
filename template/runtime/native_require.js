@@ -7,6 +7,7 @@ var game_file_list = [
 	"libs/modules/eui/eui.js",
 	"libs/modules/res/res.js",
 	"bin-debug/AssetAdapter.js",
+	"bin-debug/Data.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
 	"bin-debug/ThemeAdapter.js",

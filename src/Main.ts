@@ -128,19 +128,258 @@ class Main extends eui.UILayer {
      * Create scene interface
      */
     protected startCreateScene(): void {
-        var button = new eui.Button();
-        button.label = "Click!";
-        button.horizontalCenter = 0;
-        button.verticalCenter = 0;
-        this.addChild(button);
-        button.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonClick, this);
+        this.createMsgBox();
+        this.createTimer();
+         
     }
 
-    private onButtonClick(e: egret.TouchEvent) {
-        var panel = new eui.Panel();
-        panel.title = "Title";
-        panel.horizontalCenter = 0;
-        panel.verticalCenter = 0;
-        this.addChild(panel);
+    // 自定义全局变量
+    private timer: egret.Timer = null; // 计时器
+    private msgBox: eui.Group = null;
+    private question_group = null;
+    private message_scroller = null;
+    private game_data = new Data();
+    private game_state = 1; // 1： 正常走时间 2： 问答 3: 没有问题了，只走时间 4  游戏结束
+    private myproperties = { 
+        health: 0, wealth: 0, ability: 0, happiness: 0,
+        time: 0
+    };
+    
+    /**
+     * 创建计时器
+     */ 
+    private createTimer(): void { 
+        //创建一个计时器对象
+        this.timer = new egret.Timer(500,0);
+        //注册事件侦听器
+        this.timer.addEventListener(egret.TimerEvent.TIMER,this.timerHandler,this);
+        //开始计时
+        this.timer.start();
     }
+    
+    /**
+     * 计时器控制器
+     */ 
+    private timerHandler(evt: eui.UIEvent): void {
+        if(this.myproperties.time >= 10 && this.game_state != 5) {
+            // 游戏时间结束
+            this.game_state = 4;
+        }
+        
+        switch(this.game_state) { 
+            case 1: 
+                // 正常走时间，可以提问题
+                this.processState();
+                this.question();
+                break;
+            case 2:
+                // 问答状态
+                break;
+            case 3:
+                // 没有问题了，走时间
+                this.processState();
+                break;
+            case 4:
+                // 游戏结束，显示主人公结局
+                this.showEnding();
+                this.game_state = 5;
+                break;
+            case 5:
+                // 游戏退出
+                this.quitGame();
+                break;
+        }
+    }
+    
+    /**
+     * 创建对话框
+     */ 
+    private createMsgBox(): void { //创建一个容器, 设置问垂直布局
+        this.msgBox = new eui.Group();
+        var group = this.msgBox;
+        group.percentWidth = 100;
+        group.percentHeight = 100;
+
+        var vLayout: eui.VerticalLayout = new eui.VerticalLayout();
+        vLayout.gap = 10;
+        vLayout.paddingTop = 30;
+        vLayout.paddingLeft = 5;
+        vLayout.paddingBottom = 200;
+        vLayout.horizontalAlign = egret.HorizontalAlign.CENTER;
+        group.layout = vLayout; 
+        
+        // 添加多行对话文字
+        this.ask("有人在吗？ 请回答我");
+        this.answer("你是谁？");
+        this.ask("我是nova，来自洛杉矶，我现在迷路了，你可以帮帮我吗？");
+        
+        //创建一个Scroller
+        this.message_scroller = new eui.Scroller();
+        var myScroller = this.message_scroller;
+        //注意位置和尺寸的设置是在Scroller上面，而不是容器上面
+        myScroller.percentWidth = 100;
+        myScroller.percentHeight = 100;
+        //设置viewport
+        myScroller.viewport = group;
+        this.addChild(myScroller);
+    }
+    
+    /**
+     * 将msgbox scroll 到底部
+     */
+    private scrollerToBottom() {
+        var sc = this.message_scroller;
+        while(true) {
+            if((sc.viewport.scrollV + sc.height) >= sc.viewport.contentHeight) {
+                console.log("滚动到底部了");
+                break;
+            } else {
+                sc.viewport.scrollV += 2;
+            }
+        }
+    }
+
+    /**
+     * 在对话框中展示问题
+     */ 
+    private ask(content: string) { 
+        var label = new eui.Label(content);
+        label.size = 14;
+        label.textColor = 0x090909;
+        label.percentWidth = 100;
+        label.lineSpacing = 5;
+        this.msgBox.addChild(label);
+    }
+    
+    /**
+     * 在对话框中展示答案
+     */ 
+    
+    private answer(content: string) {
+        var label = new eui.Label(content);
+        label.size = 14;
+        label.textColor = 0xFFFFFF;
+        label.percentWidth = 100;
+        label.lineSpacing = 5;
+        this.msgBox.addChild(label);
+    }
+    
+
+    /**
+     * 处理当前状态基本任务
+     */ 
+    private processState() {
+        this.myproperties.time += 1;
+        var funcs = this.game_data.getStatesPropertiesFunctions();
+        var mp_clone = JSON.parse(JSON.stringify(this.myproperties));
+        for(var key in funcs) {
+            this.myproperties[key] += funcs[key](mp_clone);
+        }
+        console.log(funcs);
+        console.log(mp_clone);
+        console.log(this.myproperties);
+
+    }
+    /**
+     * 发起一个提问
+     */ 
+    private question(): void {
+        this.game_state = 2;
+        var gdata = this.game_data;
+        var q = gdata.getQuestion(this.myproperties);
+        if(!q) {
+            this.ask(this.myproperties.time + ': 没有问题了');
+            this.scrollerToBottom();
+            this.game_state = 3
+            return;
+        }
+        this.ask(this.myproperties.time + ': ' + q.question);
+
+        this.question_group = new eui.Group();
+        this.display_question_answers(q);
+    }
+    
+    /**
+     * 显示问题的所有答案选项
+     */ 
+    private display_question_answers(q) {
+        q.left_times -= 1;
+        // 使用显示答案的容器
+        var group: eui.Group = this.question_group;
+        group.percentWidth = 80;
+        group.percentHeight = 80;
+        group.top = 200;
+        group.bottom = 100;
+        
+        // 设置问垂直布局
+        var vLayout:eui.VerticalLayout = new eui.VerticalLayout();
+        vLayout.gap = 10;
+        vLayout.paddingTop = 30;
+        vLayout.paddingLeft = 30;
+        vLayout.horizontalAlign = egret.HorizontalAlign.LEFT;
+        group.layout = vLayout; 
+        // 添加选项
+        var radioGroup: eui.RadioButtonGroup = new eui.RadioButtonGroup();
+        radioGroup.addEventListener(eui.UIEvent.CHANGE,this.questionHandler,this);
+        
+        var answers = q.answers;
+        for(var index in answers) {
+            var answer = answers[index]; 
+            var rdb: eui.RadioButton = new eui.RadioButton();
+            rdb.label = answer.answer;
+            rdb.value = answer.event;
+            rdb.group = radioGroup;
+            group.addChild(rdb);
+        }
+        this.addChild(group);
+    }
+    /**
+     * 回答问题的回调处理
+     */ 
+    private questionHandler(evt: eui.UIEvent): void {
+        var radioGroup: eui.RadioButtonGroup = evt.target;
+        console.log(radioGroup.selectedValue);
+        var event = this.game_data.EVENTS_MAP[radioGroup.selectedValue];
+        this.processEvent(event);
+    }
+    
+    /**
+     * 处理回答问题所触发的对应事件
+     */ 
+    private processEvent(event) {
+        this.answer(event.name);
+        if(event.from == this.game_data.current) {
+            this.game_data.current = event.to;
+            var mp = this.myproperties;
+            var ep = event.properties;
+            for(var key in ep) { 
+                mp[key] += ep[key];
+            }
+            console.log(this.myproperties);
+        } else { 
+            console.log("from 状态错误");
+        }
+
+        this.scrollerToBottom();
+        this.removeChild(this.question_group);
+        this.question_group = null;
+        this.game_state = 1;
+    }
+    /**
+     * 游戏结束，显示主人公结局
+     */ 
+    private showEnding() { 
+        // TODO: 显示主人公结局
+        var ending = this.game_data.getMyEnding(this.myproperties);
+        console.log("游戏结束：显示主人公结局");
+        console.log(this.myproperties);
+        console.log(ending);
+    }
+    /**
+     * 退出游戏
+     */ 
+    private quitGame() { 
+        this.timer.stop();
+    }
+    
 }
