@@ -128,18 +128,19 @@ class Main extends eui.UILayer {
      * Create scene interface
      */
     protected startCreateScene(): void {
-        this.createMsgBox();
         this.createTimer();
          
     }
 
     // 自定义全局变量
+    private splash: eui.Image = null;   // 闪屏
+    private endingBox: eui.Group = null;  // 结局
     private timer: egret.Timer = null; // 计时器
     private msgBox: eui.Group = null;
     private question_group = null;
     private message_scroller = null;
     private game_data = new Data();
-    private game_state = 1; // 1： 正常走时间 2： 问答 3: 没有问题了，只走时间 4  游戏结束
+    private game_state = 0; // 0: 显示splash 1： 正常走时间 2： 问答 3: 没有问题了，只走时间 4  游戏结束
     private myproperties = { 
         health: 0, wealth: 0, ability: 0, happiness: 0,
         time: 0
@@ -166,7 +167,11 @@ class Main extends eui.UILayer {
             this.game_state = 4;
         }
         
-        switch(this.game_state) { 
+        switch(this.game_state) {
+            case 0: 
+                // 显示splash
+                this.createSplash();
+                break; 
             case 1: 
                 // 正常走时间，可以提问题
                 this.processState();
@@ -190,7 +195,36 @@ class Main extends eui.UILayer {
                 break;
         }
     }
+    /**
+     * 显示splash
+     */ 
     
+    private createSplash(): void {
+        if(this.splash != null) { 
+            return;
+        }
+        // 显示splash背景图
+        var image = new eui.Image();
+        image.source = "resource/background.jpg";
+        image.percentWidth = 100;
+        image.percentHeight = 100;
+        this.addChild(image);
+        // 显示“进入”按钮
+        var button = new eui.Button();
+        button.left = 110;
+        button.top = 280;
+        button.width = 100;
+        button.height = 80;
+        button.label = "点击进入";
+        button.addEventListener(egret.TouchEvent.TOUCH_TAP,this.splashHandler, this);
+        this.addChild(button);
+    }
+    private splashHandler(evt: eui.UIEvent): void {
+        this.removeChild(evt.target);
+        this.createMsgBox();
+        this.game_state = 1;
+        this.splash = null;
+    }
     /**
      * 创建对话框
      */ 
@@ -368,12 +402,31 @@ class Main extends eui.UILayer {
     /**
      * 游戏结束，显示主人公结局
      */ 
-    private showEnding() { 
+    private showEnding() {
+        if(this.splash != null) {
+            return;
+        }
+        
         // TODO: 显示主人公结局
         var ending = this.game_data.getMyEnding(this.myproperties);
         console.log("游戏结束：显示主人公结局");
         console.log(this.myproperties);
         console.log(ending);
+        
+        // 显示splash背景图
+        var image = new eui.Image();
+        image.source = "resource/background.jpg";
+        image.percentWidth = 100;
+        image.percentHeight = 100;
+        this.addChild(image);
+        // 显示“进入”按钮
+        var button = new eui.Button();
+        button.left = 110;
+        button.top = 280;
+        button.width = 100;
+        button.height = 80;
+        button.label = "关注公众号";
+        this.addChild(button);        
     }
     /**
      * 退出游戏
