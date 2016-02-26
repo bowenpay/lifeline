@@ -374,12 +374,7 @@ class Main extends eui.UILayer {
         var q = this.current_question;
         q.left_times -= 1;
         // 使用显示答案的容器
-        this.question_group = new eui.Group();
-        var group: eui.Group = this.question_group;
-        group.percentWidth = 80;
-        group.percentHeight = 80;
-        group.top = 200;
-        group.bottom = 100;
+        var group: eui.Group = new eui.Group();
         
         // 设置问垂直布局
         var vLayout:eui.VerticalLayout = new eui.VerticalLayout();
@@ -401,7 +396,8 @@ class Main extends eui.UILayer {
             rdb.group = radioGroup;
             group.addChild(rdb);
         }
-        this.addChild(group);
+        this.msgBox.addChild(group);
+        this.scrollerToBottom();
     }
     /**
      * 回答问题的回调处理
@@ -446,8 +442,8 @@ class Main extends eui.UILayer {
         }
 
         this.scrollerToBottom();
-        this.removeChild(this.question_group);
-        this.question_group = null;
+        //this.removeChild(this.question_group);
+        //this.question_group = null;
     }
     /**
      * 游戏结束，显示主人公结局
