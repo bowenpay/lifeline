@@ -179,7 +179,7 @@ class Main extends eui.UILayer {
      * 计时器控制器
      */ 
     private timerHandler(evt: eui.UIEvent): void {
-        if(this.myproperties.time >= 10 && this.game_state != STATE_END) {
+        if(this.myproperties.time >= 10 && this.game_state < STATE_END) {
             // 游戏时间结束
             this.game_state = STATE_END;
         }
@@ -228,19 +228,20 @@ class Main extends eui.UILayer {
         }
         // 显示splash背景图
         var image = new eui.Image();
-        image.source = "resource/background.jpg";
+        image.source = "resource/bg_start.jpg";
         image.percentWidth = 100;
         image.percentHeight = 100;
         this.addChild(image);
         // 显示“进入”按钮
-        var button = new eui.Button();
-        button.left = 110;
-        button.top = 280;
-        button.width = 100;
-        button.height = 80;
-        button.label = "点击进入";
-        button.addEventListener(egret.TouchEvent.TOUCH_TAP,this.splashHandler, this);
-        this.addChild(button);
+        var image = new eui.Image();
+        image.source = "resource/clickEnter.png";
+        image.width = 102;
+        image.height = 36;
+        image.left = 130;
+        image.bottom = 80;
+        image.addEventListener(egret.TouchEvent.TOUCH_TAP,this.splashHandler,this);
+        this.addChild(image);
+        
     }
     private splashHandler(evt: eui.UIEvent): void {
         this.removeChild(evt.target);
@@ -253,6 +254,13 @@ class Main extends eui.UILayer {
      * 创建对话框
      */ 
     private createMsgBox(): void { //创建一个容器, 设置问垂直布局
+        // 显示asgBox背景图
+        var image = new eui.Image();
+        image.source = "resource/bg_anwser.jpg";
+        image.percentWidth = 100;
+        image.percentHeight = 100;
+        this.addChild(image);
+        
         this.msgBox = new eui.Group();
         var group = this.msgBox;
         group.percentWidth = 100;
@@ -459,20 +467,40 @@ class Main extends eui.UILayer {
         console.log(this.myproperties);
         console.log(ending);
         
-        // 显示splash背景图
+        // 显示ending背景图
         var image = new eui.Image();
-        image.source = "resource/background.jpg";
+        image.source = "resource/bg_end.jpg";
         image.percentWidth = 100;
         image.percentHeight = 100;
         this.addChild(image);
-        // 显示“进入”按钮
-        var button = new eui.Button();
-        button.left = 110;
-        button.top = 280;
-        button.width = 100;
-        button.height = 80;
-        button.label = "关注公众号";
-        this.addChild(button);        
+        
+        // 显示状态end_state背景图
+        var image = new eui.Image();
+        image.source = "resource/end_state.png";
+        image.percentWidth = 100;
+        image.percentHeight = 50;
+        image.top = 30;
+        this.addChild(image);
+
+        // 显示结局文字end_text背景图
+        var image = new eui.Image();
+        image.source = "resource/end_text.jpg";
+        image.percentWidth = 100;
+        image.percentHeight = 30;
+        image.top= 350;
+        this.addChild(image);
+        
+        //显示故事解局文字
+        var label = new eui.Label();
+        label.text = "结局很不幸，你得了癌症，将不久于人世。结局很不幸，你得了癌症，将不久于人世。结局很不幸，你得了癌症，将不久于人世。"
+        label.size = 14;
+        label.textColor = 0x000000;
+        label.percentWidth = 70;
+        label.size = 16;
+        label.lineSpacing = 6;//行间距
+        label.left = 50;
+        label.top= 380;
+        this.addChild(label);
     }
     /**
      * 退出游戏
