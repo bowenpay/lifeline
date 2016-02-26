@@ -18,6 +18,11 @@ class Data {
             questions: [
                 {
                     question: "本科干嘛呢？",
+                    detail: [
+                        '上大学了，不知道该干些什么？',
+                        '有人打游戏，有人泡妹子。。。',
+                        '我该干些什么好呢？',
+                    ],
                     answers: [
                         { answer: "本科工作",event: "本科工作" },
                         { answer: "本科上课",event: "本科上课" },
@@ -40,6 +45,11 @@ class Data {
             questions: [
                 {
                     question: "选择一种行为？",
+                    detail: [
+                        '工作了，应酬很多？',
+                        '但是为了未来，一定要坚持下去。。。',
+                        '我选择？',
+                    ],
                     answers: [
                         { answer: "职员加薪",event: "职员加薪" },
                         { answer: "职员升职",event: "职员升职" },
@@ -51,6 +61,10 @@ class Data {
                 },
                 {
                     question: "厌倦工作了吗？",
+                    detail: [
+                        '工作好无聊呀？',
+                        '给自己放个假吧。。。'
+                    ],
                     answers: [
                         { answer: "职员无聊",event: "职员加薪" },
                         { answer: "职员放假",event: "职员升职" },
@@ -140,14 +154,41 @@ class Data {
      */  
     public EVENTS = [
         //  本科可以做的事情
-        { name: '本科工作',from: '本科',to: '职员',properties: { health: 0,wealth: 1,ability: 1,happiness: 0 } },
-        { name: '本科上课',from: '本科',to: '本科',properties: { health: 0,wealth: -1,ability: 2,happiness: 0 } },
-        { name: '本科打酱油',from: '本科',to: '本科',properties: { health: -2,wealth: -10,ability: 10,happiness: 0 } },
+        {   name: '本科工作',from: '本科',to: '职员', 
+            detail: ['说点什么吧1', '说点什么吧2', '说点什么吧3'],
+            properties: { health: 0,wealth: 1,ability: 1,happiness: 0 } 
+        },
+        {
+            name: '本科上课',from: '本科',to: '本科',
+            detail: ['说点什么吧1','说点什么吧2','说点什么吧3'],
+            properties: { health: 0,wealth: -1,ability: 2,happiness: 0 } 
+        },
+        {
+            name: '本科打酱油',from: '本科',to: '本科',
+            detail: ['说点什么吧1','说点什么吧2','说点什么吧3'],
+            properties: { health: -2,wealth: -10,ability: 10,happiness: 0 } 
+        },
         //  职员可以做的事情
-        { name: '职员加薪',from: '职员',to: '职员',properties: { health: 1,wealth: 10,ability: 1,happiness: 0 } },
-        { name: '职员升职',from: '职员',to: '职员',properties: { health: 1,wealth: 0,ability: 10,happiness: 0 } },
-        { name: '职员喝酒',from: '职员',to: '职员',properties: { health: -10,wealth: 2,ability: 0,happiness: 0 } },
-        { name: '职员辞职',from: '职员',to: '本科',properties: { health: -10,wealth: -10,ability: 10,happiness: 0 } }
+        {
+            name: '职员加薪',from: '职员',to: '职员',
+            detail: ['说点什么吧1','说点什么吧2','说点什么吧3'],
+            properties: { health: 1,wealth: 10,ability: 1,happiness: 0 } 
+        },
+        {
+            name: '职员升职',from: '职员',to: '职员',
+            detail: ['说点什么吧1','说点什么吧2','说点什么吧3'],
+            properties: { health: 1,wealth: 0,ability: 10,happiness: 0 } 
+        },
+        {
+            name: '职员喝酒',from: '职员',to: '职员',
+            detail: ['说点什么吧1','说点什么吧2','说点什么吧3'],
+            properties: { health: -10,wealth: 2,ability: 0,happiness: 0 } 
+        },
+        {
+            name: '职员辞职',from: '职员',to: '本科',
+            detail: ['说点什么吧1','说点什么吧2','说点什么吧3'],
+            properties: { health: -10,wealth: -10,ability: 10,happiness: 0 } 
+        }
     ];
     /**
      * 将Events转换成字典形式

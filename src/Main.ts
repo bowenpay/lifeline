@@ -26,6 +26,13 @@
 //  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //////////////////////////////////////////////////////////////////////////////////////
+var STATE_SPLASH = 0; // 显示splash 
+var STATE_STATE = 1; // 处于状态下 
+var STATE_QUESTION = 2; // 显示问题detail状态
+var STATE_ANSWER = 3; // 等待回答状态 
+var STATE_NOOP = 4; // 没有问题了，什么也不做 
+var STATE_END = 5; // 显示结局
+var STATE_QUIT = 6; // 退出游戏状态
 
 class Main extends eui.UILayer {
     /**
@@ -144,9 +151,13 @@ class Main extends eui.UILayer {
     private timer: egret.Timer = null; // 计时器
     private msgBox: eui.Group = null;
     private question_group = null;
+    private current_question = null;    // 当前显示的问题
+    private question_detail = [];
+    private event_detail = [];
     private message_scroller = null;
     private game_data = new Data();
-    private game_state = 0; // 0: 显示splash 1： 正常走时间 2： 问答 3: 没有问题了，只走时间 4  游戏结束
+    // 游戏状态
+    private game_state = STATE_SPLASH; 
     private myproperties = { 
         health: 0, wealth: 0, ability: 0, happiness: 0,
         time: 0
@@ -168,34 +179,40 @@ class Main extends eui.UILayer {
      * 计时器控制器
      */ 
     private timerHandler(evt: eui.UIEvent): void {
-        if(this.myproperties.time >= 10 && this.game_state != 5) {
+        if(this.myproperties.time >= 10 && this.game_state != STATE_END) {
             // 游戏时间结束
-            this.game_state = 4;
+            this.game_state = STATE_END;
         }
         
         switch(this.game_state) {
-            case 0: 
+            case STATE_SPLASH: 
                 // 显示splash
+                this.timer.stop();
                 this.createSplash();
                 break; 
-            case 1: 
-                // 正常走时间，可以提问题
+            case STATE_STATE: 
+                // 在STATE状态下，可以提问题
                 this.processState();
                 this.question();
                 break;
-            case 2:
-                // 问答状态
+            case STATE_QUESTION:
+                // 在显示问题详情状态下
+                this.display_question_detail();
                 break;
-            case 3:
+            case STATE_ANSWER:
+                // 等待回答状态， 什么也不做
+                this.display_event_detail();
+                break;
+            case STATE_NOOP:
                 // 没有问题了，走时间
                 this.processState();
                 break;
-            case 4:
+            case STATE_END:
                 // 游戏结束，显示主人公结局
                 this.showEnding();
-                this.game_state = 5;
+                this.game_state = STATE_QUIT;
                 break;
-            case 5:
+            case STATE_QUIT:
                 // 游戏退出
                 this.quitGame();
                 break;
@@ -228,8 +245,9 @@ class Main extends eui.UILayer {
     private splashHandler(evt: eui.UIEvent): void {
         this.removeChild(evt.target);
         this.createMsgBox();
-        this.game_state = 1;
+        this.game_state = STATE_STATE;
         this.splash = null;
+        this.timer.start();
     }
     /**
      * 创建对话框
@@ -247,11 +265,6 @@ class Main extends eui.UILayer {
         vLayout.paddingBottom = 200;
         vLayout.horizontalAlign = egret.HorizontalAlign.CENTER;
         group.layout = vLayout; 
-        
-        // 添加多行对话文字
-        this.ask("有人在吗？ 请回答我");
-        this.answer("你是谁？");
-        this.ask("我是nova，来自洛杉矶，我现在迷路了，你可以帮帮我吗？");
         
         //创建一个Scroller
         this.message_scroller = new eui.Scroller();
@@ -324,27 +337,44 @@ class Main extends eui.UILayer {
      * 发起一个提问
      */ 
     private question(): void {
-        this.game_state = 2;
         var gdata = this.game_data;
         var q = gdata.getQuestion(this.myproperties);
+        this.current_question = q;
         if(!q) {
+            // 如果问题已经问完了，返回
             this.ask(this.myproperties.time + ': 没有问题了');
             this.scrollerToBottom();
-            this.game_state = 3
             return;
         }
-        this.ask(this.myproperties.time + ': ' + q.question);
-
-        this.question_group = new eui.Group();
-        this.display_question_answers(q);
+        this.game_state = STATE_QUESTION;
+        // 显示问题
+        this.question_detail = q.detail.slice(); // 将要显示的问题详情浅复制
+        this.display_question_detail();
+    }
+    
+    
+    /**
+     * 显示问题的所有内容
+     */
+    private display_question_detail() {
+        var msg = this.question_detail.shift();
+        if(msg == null) {
+            // 问题详情已经显示结束,显示答案选项
+            this.display_question_answers();
+            this.timer.stop();
+        } else { 
+            this.ask(this.myproperties.time + ': ' + msg);
+        }
     }
     
     /**
      * 显示问题的所有答案选项
      */ 
-    private display_question_answers(q) {
+    private display_question_answers() {
+        var q = this.current_question;
         q.left_times -= 1;
         // 使用显示答案的容器
+        this.question_group = new eui.Group();
         var group: eui.Group = this.question_group;
         group.percentWidth = 80;
         group.percentHeight = 80;
@@ -381,6 +411,21 @@ class Main extends eui.UILayer {
         console.log(radioGroup.selectedValue);
         var event = this.game_data.EVENTS_MAP[radioGroup.selectedValue];
         this.processEvent(event);
+        this.event_detail = event.detail.slice();
+        this.game_state = STATE_ANSWER;
+        this.timer.start()
+    }
+    /**
+     * 显示问题的所有内容
+     */
+    private display_event_detail() {
+        var msg = this.event_detail.shift();
+        if(msg == null) {
+            // 问题详情已经显示结束,显示答案选项
+            this.game_state = STATE_STATE;
+        } else {
+            this.answer(this.myproperties.time + ': ' + msg);
+        }
     }
     
     /**
@@ -403,7 +448,6 @@ class Main extends eui.UILayer {
         this.scrollerToBottom();
         this.removeChild(this.question_group);
         this.question_group = null;
-        this.game_state = 1;
     }
     /**
      * 游戏结束，显示主人公结局
