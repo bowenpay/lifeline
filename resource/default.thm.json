@@ -28,6 +28,8 @@
     "resource/eui_skins/TextInputSkin.exml",
     "resource/eui_skins/ToggleSwitchSkin.exml",
     "resource/eui_skins/VScrollBarSkin.exml",
-    "resource/eui_skins/VSliderSkin.exml"
+    "resource/eui_skins/VSliderSkin.exml",
+    "resource/eui_skins/askBoxSkin.exml",
+    "resource/eui_skins/radioBtnSkin.exml"
   ]
 }
