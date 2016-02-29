@@ -156,6 +156,8 @@ class Main extends eui.UILayer {
     private event_detail = [];
     private message_scroller = null;
     private game_data = new Data();
+    private previous_choose_box = [];
+    private state_label: eui.Label = null;
     // 游戏状态
     private game_state = STATE_SPLASH; 
     private myproperties = { 
@@ -260,7 +262,7 @@ class Main extends eui.UILayer {
 
         var vLayout: eui.VerticalLayout = new eui.VerticalLayout();
         vLayout.gap = 10;
-        vLayout.paddingTop = 30;
+        vLayout.paddingTop = 80;
         vLayout.paddingLeft = 5;
         vLayout.paddingBottom = 200;
         vLayout.horizontalAlign = egret.HorizontalAlign.CENTER;
@@ -275,6 +277,14 @@ class Main extends eui.UILayer {
         //设置viewport
         myScroller.viewport = group;
         this.addChild(myScroller);
+        
+        this.state_label = new eui.Label("状态：刚毕业");
+        this.state_label.size = 30;
+        this.state_label.fontFamily = "黑体-简 中等"
+        this.state_label.textColor = 0x3AD3FF;
+        this.state_label.top = 8;
+        this.state_label.right = 4;
+        this.addChild(this.state_label);
     }
     
     /**
@@ -296,12 +306,11 @@ class Main extends eui.UILayer {
      * 在对话框中展示问题
      */ 
     private ask(content: string) { 
-        var label = new eui.Label(content);
-        label.size = 14;
-        label.textColor = 0x090909;
-        label.percentWidth = 100;
-        label.lineSpacing = 5;
-        this.msgBox.addChild(label);
+        var btn = new eui.Button();
+        btn.skinName = "resource/eui_skins/askBoxSkin.exml";
+        btn.label = content;
+        btn.percentWidth = 80;
+        this.msgBox.addChild(btn);
     }
     
     /**
@@ -309,12 +318,12 @@ class Main extends eui.UILayer {
      */ 
     
     private answer(content: string) {
-        var label = new eui.Label(content);
-        label.size = 14;
-        label.textColor = 0xFFFFFF;
-        label.percentWidth = 100;
-        label.lineSpacing = 5;
-        this.msgBox.addChild(label);
+        console.log(content);
+        var btn = new eui.Button();
+        btn.skinName = "resource/eui_skins/askBoxSkin.exml";
+        btn.label = content;
+        btn.percentWidth = 80;
+        this.msgBox.addChild(btn);
     }
     
 
@@ -375,25 +384,29 @@ class Main extends eui.UILayer {
         q.left_times -= 1;
         // 使用显示答案的容器
         var group: eui.Group = new eui.Group();
+        group.percentWidth = 100;
         
-        // 设置问垂直布局
-        var vLayout:eui.VerticalLayout = new eui.VerticalLayout();
-        vLayout.gap = 10;
-        vLayout.paddingTop = 30;
-        vLayout.paddingLeft = 30;
-        vLayout.horizontalAlign = egret.HorizontalAlign.LEFT;
-        group.layout = vLayout; 
+        // 设置水平布局
+        var hLayout:eui.HorizontalLayout = new eui.HorizontalLayout();
+        hLayout.gap = 20;
+        hLayout.paddingTop = 30;
+        hLayout.horizontalAlign = egret.HorizontalAlign.CENTER;
+        group.layout = hLayout;
         // 添加选项
         var radioGroup: eui.RadioButtonGroup = new eui.RadioButtonGroup();
         radioGroup.addEventListener(eui.UIEvent.CHANGE,this.questionHandler,this);
-        
+        this.previous_choose_box = [];
         var answers = q.answers;
         for(var index in answers) {
             var answer = answers[index]; 
             var rdb: eui.RadioButton = new eui.RadioButton();
+            this.previous_choose_box.push(rdb);
+            rdb.skinName = "resource/eui_skins/radioBtnSkin.exml"
             rdb.label = answer.answer;
             rdb.value = answer.event;
             rdb.group = radioGroup;
+            rdb.height = 60;
+            rdb.width = 80;
             group.addChild(rdb);
         }
         this.msgBox.addChild(group);
@@ -403,6 +416,12 @@ class Main extends eui.UILayer {
      * 回答问题的回调处理
      */ 
     private questionHandler(evt: eui.UIEvent): void {
+        
+        for(var index in this.previous_choose_box){
+            var pre_rdb:eui.RadioButton = this.previous_choose_box[index];
+            pre_rdb.enabled = false;
+        }
+        
         var radioGroup: eui.RadioButtonGroup = evt.target;
         console.log(radioGroup.selectedValue);
         var event = this.game_data.EVENTS_MAP[radioGroup.selectedValue];
@@ -428,7 +447,8 @@ class Main extends eui.UILayer {
      * 处理回答问题所触发的对应事件
      */ 
     private processEvent(event) {
-        this.answer(event.name);
+        //this.answer(event.name);
+        this.state_label.$setText("状态："+event.name);
         if(event.from == this.game_data.current) {
             this.game_data.current = event.to;
             var mp = this.myproperties;
