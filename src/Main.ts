@@ -181,7 +181,7 @@ class Main extends eui.UILayer {
      * 计时器控制器
      */ 
     private timerHandler(evt: eui.UIEvent): void {
-        if(this.myproperties.time >= 10 && this.game_state != STATE_END) {
+        if(this.myproperties.time >= 10 && this.game_state < STATE_END) {
             // 游戏时间结束
             this.game_state = STATE_END;
         }
@@ -457,19 +457,26 @@ class Main extends eui.UILayer {
      */ 
     private processEvent(event) {
         //this.answer(event.name);
-        this.state_label.$setText("状态："+event.name);
-        if(event.from == this.game_data.current) {
-            this.game_data.current = event.to;
-            var mp = this.myproperties;
-            var ep = event.properties;
-            for(var key in ep) { 
-                mp[key] += ep[key];
-            }
-            console.log(this.myproperties);
-        } else { 
-            console.log("from 状态错误");
+        this.state_label.$setText("状态：" + event.name);
+        //// 改变状态
+        
+        // 如果from不是*，或者current，弹出错误，并返回
+        if(event.from != '*' && event.from != this.game_data.current) { 
+            alert("from 状态错误。current:" + this.game_data.current + "; from:" + event.from );
+            return;
         }
-
+        // event.to是空，表示不改变状态。否则改变
+        if(event.to != '') {
+            this.game_data.current = event.to;
+        }
+        // 改变对应的参数
+        var mp = this.myproperties;
+        var ep = event.properties;
+        for(var key in ep) {
+            mp[key] += ep[key];
+        }
+        console.log(this.myproperties);
+        
         this.scrollerToBottom();
         //this.removeChild(this.question_group);
         //this.question_group = null;
