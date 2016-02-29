@@ -331,16 +331,19 @@ class Main extends eui.UILayer {
      * 处理当前状态基本任务
      */ 
     private processState() {
-        this.myproperties.time += 1;
-        var funcs = this.game_data.getStatesPropertiesFunctions();
+        var properties = this.game_data.getStatesProperties();
         var mp_clone = JSON.parse(JSON.stringify(this.myproperties));
-        for(var key in funcs) {
-            this.myproperties[key] += funcs[key](mp_clone);
+        for(var key in properties) {
+            var value = properties[key];
+            if(typeof value === "function") {
+                this.myproperties[key] += value(mp_clone);
+            } else { 
+                this.myproperties[key] += value;
+            }
+            
         }
-        console.log(funcs);
         console.log(mp_clone);
         console.log(this.myproperties);
-
     }
     /**
      * 发起一个提问
@@ -464,25 +467,49 @@ class Main extends eui.UILayer {
     private processEvent(event) {
         //this.answer(event.name);
         this.state_label.$setText("状态：" + event.name);
-        //// 改变状态
-        
+        //// 判断状态是否可以改变
         // 如果from不是*，或者current，弹出错误，并返回
         if(event.from != '*' && event.from != this.game_data.current) { 
             alert("from 状态错误。current:" + this.game_data.current + "; from:" + event.from );
             return;
         }
-        // event.to是空，表示不改变状态。否则改变
-        if(event.to != '') {
-            this.game_data.current = event.to;
+        
+        /// 改变对应的参数
+        var properties = event.properties;
+        var mp_clone = JSON.parse(JSON.stringify(this.myproperties));
+        for(var key in properties) {
+            var value = properties[key];
+            if(typeof value === "function") {
+                this.myproperties[key] += value(mp_clone);
+            } else {
+                this.myproperties[key] += value;
+            }
+
         }
-        // 改变对应的参数
-        var mp = this.myproperties;
-        var ep = event.properties;
-        for(var key in ep) {
-            mp[key] += ep[key];
-        }
+        console.log(mp_clone);
         console.log(this.myproperties);
         
+        /// 改变状态
+        // event.to是空，表示不改变状态。否则改变
+        if(event.to != '' && this.game_data.current !== event.to) {
+            this.game_data.current = event.to;
+            var properties = this.game_data.getStatesInitialState();
+            var mp_clone = JSON.parse(JSON.stringify(this.myproperties));
+            for(var key in properties) {
+                var value = properties[key];
+                if(typeof value === "function") {
+                    this.myproperties[key] += value(mp_clone);
+                } else {
+                    this.myproperties[key] += value;
+                }
+
+            }
+            console.log(mp_clone);
+            console.log(this.myproperties);
+
+        }
+        
+        // 滑动滚动条
         this.scrollerToBottom();
         //this.removeChild(this.question_group);
         //this.question_group = null;

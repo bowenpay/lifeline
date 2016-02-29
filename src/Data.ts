@@ -31,7 +31,11 @@ var COMMON_QUESTIONS = [
 var STATES = [
     {
         name: "本科",
-        properties: { health: function(properties) { return 1 },wealth: function(properties) { return -1 },ability: function(properties) { return 1 } },
+        initialState: { 
+            state_time: function(properties) { return -properties.state_time }, // state_time 被初始化为0
+            state_change_times: 1       // 状态改变次数+1
+        },
+        properties: { time: 1, state_time:1, health: function(properties) { return 1 },wealth: function(properties) { return -1 },ability: function(properties) { return 1 } },
         questions: [
             {
                 question: "本科干嘛呢？",
@@ -58,7 +62,11 @@ var STATES = [
     },
     {
         name: "职员",
-        properties: { health: function(properties) { return 1 },wealth: function(properties) { return -1 },ability: function(properties) { return 1 } },
+        initialState: {
+            state_time: function(properties) { return -properties.state_time },  
+            state_change_times: 1
+        },
+        properties: { time: 1, state_time: 1, health: function(properties) { return 1 },wealth: function(properties) { return -1 },ability: function(properties) { return 1 } },
         questions: [
             {
                 question: "选择一种行为？",
@@ -188,8 +196,14 @@ class Data {
     /**
      * 获取当前状态下对属性的改变函数
      */
-    public getStatesPropertiesFunctions() {
+    public getStatesProperties() {
         return this.STATES_MAP[this.current].properties;
+    }
+    /**
+     * 获取当前状态下的初始化函数
+     */
+    public getStatesInitialState() {
+        return this.STATES_MAP[this.current].initialState;
     }
     
     /**
