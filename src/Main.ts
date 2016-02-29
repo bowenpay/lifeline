@@ -159,7 +159,7 @@ class Main extends eui.UILayer {
     private previous_choose_box = [];
     private state_label: eui.Label = null;
     // 游戏状态
-    private game_state = STATE_SPLASH; 
+    private game_state = STATE_END; 
     private myproperties = { 
         health: 0, wealth: 0, ability: 0, happiness: 0,
         time: 0
@@ -235,14 +235,15 @@ class Main extends eui.UILayer {
         image.percentHeight = 100;
         this.addChild(image);
         // 显示“进入”按钮
-        var button = new eui.Button();
-        button.left = 110;
-        button.top = 280;
-        button.width = 100;
-        button.height = 80;
-        button.label = "点击进入";
-        button.addEventListener(egret.TouchEvent.TOUCH_TAP,this.splashHandler, this);
-        this.addChild(button);
+        var wid = document.documentElement.clientWidth;
+        var image = new eui.Image();
+        image.source = "resource/clickEnter.png";
+        image.width = 102;
+        image.height = 36;
+        image.left = wid / 2 - 51;
+        image.bottom = 100;
+        image.addEventListener(egret.TouchEvent.TOUCH_TAP,this.splashHandler,this);
+        this.addChild(image);
     }
     private splashHandler(evt: eui.UIEvent): void {
         this.removeChild(evt.target);
@@ -479,20 +480,60 @@ class Main extends eui.UILayer {
         console.log(this.myproperties);
         console.log(ending);
         
-        // 显示splash背景图
+        // 显示background_end背景图
         var image = new eui.Image();
-        image.source = "resource/background.jpg";
+        image.source = "resource/background_end.jpg";
         image.percentWidth = 100;
         image.percentHeight = 100;
+        this.addChild(image);    
+        
+        // 显示结局文字end_state背景图
+        var wid = document.documentElement.clientWidth; //获取屏幕宽度
+        var hei = document.documentElement.clientHeight; //获取屏幕高度
+        console.log(hei);
+        var image = new eui.Image();
+        image.source = "resource/end_state.png";
+        image.width = wid;
+        image.height = (41 * wid) / 64;
         this.addChild(image);
-        // 显示“进入”按钮
-        var button = new eui.Button();
-        button.left = 110;
-        button.top = 280;
-        button.width = 100;
-        button.height = 80;
-        button.label = "关注公众号";
-        this.addChild(button);        
+        
+        //显示通过所有游戏
+        var label = new eui.Label();
+        label.fontFamily = "Tahoma";//设置字体
+        label.text = "恭喜您！通过了所有的游戏！";
+        label.size = 14;
+        label.bold = true;
+        label.textColor = 0xf0a90d;
+        label.size = 20;
+        label.horizontalCenter = 0;//设置水平对齐方式
+        label.top = 30;
+        this.addChild(label);
+        
+        //显示故事结局状态
+        var label = new eui.Label();
+        label.fontFamily = "Tahoma";//设置字体
+        label.text = "你是苦逼的打工者身份";
+        label.size = 14;
+        label.bold = true;
+        label.textColor = 0xf0a90d;
+        label.size = 20;
+        label.horizontalCenter = 0;//设置水平对齐方式
+        label.top = image.height + image.height * 0.15;
+        this.addChild(label);
+        
+        //显示故事结局文字
+        var label = new eui.Label();
+        label.fontFamily = "Tahoma";//设置字体
+        label.text = "结局很不幸，你得了癌症，将不久于人世。结局很不幸，你得了癌症，将不久于人世。结局很不幸，你得了癌症，将不久于人世。"
+        label.size = 12;
+        label.textColor = 0x000000;
+        label.size = 16;
+        label.lineSpacing = 6;//行间距
+        label.left = wid / 100 * 10;
+        label.width = wid - label.left * 2;
+        label.top = image.height + image.height * 0.4;
+        this.addChild(label);
+        
     }
     /**
      * 退出游戏
