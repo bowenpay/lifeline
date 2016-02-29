@@ -357,7 +357,11 @@ class Main extends eui.UILayer {
         }
         this.game_state = STATE_QUESTION;
         // 显示问题
-        this.question_detail = q.detail.slice(); // 将要显示的问题详情浅复制
+        if(q.detail) {
+            this.question_detail = q.detail.slice(); // 将要显示的问题详情浅复制
+        } else { 
+            this.question_detail = [q.question]; // 如果没有detail，直接显示question
+        }
         this.display_question_detail();
     }
     
@@ -426,9 +430,14 @@ class Main extends eui.UILayer {
         console.log(radioGroup.selectedValue);
         var event = this.game_data.EVENTS_MAP[radioGroup.selectedValue];
         this.processEvent(event);
-        this.event_detail = event.detail.slice();
+
+        if(event.detail) {
+            this.event_detail = event.detail.slice(); // 将要显示的事件详情浅复制
+        } else {
+            this.event_detail = [event.name]; // 如果没有detail，直接显示name
+        }
         this.game_state = STATE_ANSWER;
-        this.timer.start()
+        this.timer.start();
     }
     /**
      * 显示问题的所有内容
