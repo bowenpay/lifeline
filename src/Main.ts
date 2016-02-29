@@ -385,13 +385,19 @@ class Main extends eui.UILayer {
         // 使用显示答案的容器
         var group: eui.Group = new eui.Group();
         group.percentWidth = 100;
-        
-        // 设置水平布局
-        var hLayout:eui.HorizontalLayout = new eui.HorizontalLayout();
-        hLayout.gap = 20;
-        hLayout.paddingTop = 30;
-        hLayout.horizontalAlign = egret.HorizontalAlign.CENTER;
-        group.layout = hLayout;
+        // 采用网格布局，两列显示
+        var tLayout: eui.TileLayout = new eui.TileLayout();
+        tLayout.horizontalGap = 20;
+        tLayout.verticalGap = 20;
+        tLayout.columnAlign = eui.ColumnAlign.JUSTIFY_USING_WIDTH;
+        tLayout.rowAlign = eui.RowAlign.JUSTIFY_USING_HEIGHT;
+        tLayout.paddingTop = 30;
+        tLayout.paddingRight = 30;
+        tLayout.paddingLeft = 30;
+        tLayout.paddingBottom = 10;
+        tLayout.requestedColumnCount = 2;  /// 设置两列显示
+        group.layout = tLayout;    /// 网格布局
+
         // 添加选项
         var radioGroup: eui.RadioButtonGroup = new eui.RadioButtonGroup();
         radioGroup.addEventListener(eui.UIEvent.CHANGE,this.questionHandler,this);
