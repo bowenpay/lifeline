@@ -242,7 +242,7 @@ class Main extends eui.UILayer {
         image.width = 102;
         image.height = 36;
         image.left = wid / 2 - 51;
-        image.top = hei - hei * 0.3;
+        image.top = hei - hei * 0.26;
         image.addEventListener(egret.TouchEvent.TOUCH_TAP,this.splashHandler,this);
         this.addChild(image);
     }
@@ -531,11 +531,12 @@ class Main extends eui.UILayer {
         console.log(ending);
         
         // 显示background_end背景图
-        var image = new eui.Image();
-        image.source = "resource/background_end.jpg";
-        image.percentWidth = 100;
-        image.percentHeight = 100;
-        this.addChild(image);
+        var label = new eui.Label();
+        label.percentWidth = 100;
+        label.percentHeight = 100;
+        label.background = true;
+        label.backgroundColor = 0xffffff;
+        this.addChild(label);
         
         // 显示结局文字end_state背景图
         var wid = document.documentElement.clientWidth; //获取屏幕宽度
