@@ -295,7 +295,7 @@ class Main extends eui.UILayer {
     private scrollerToBottom() {
         var sc = this.message_scroller;
         while(true) {
-            if((sc.viewport.scrollV + sc.height) >= sc.viewport.contentHeight) {
+            if((sc.viewport.scrollV + sc.height*3/4) >= sc.viewport.contentHeight) {
                 console.log("滚动到底部了");
                 break;
             } else {
@@ -313,6 +313,7 @@ class Main extends eui.UILayer {
         btn.label = content;
         btn.percentWidth = 80;
         this.msgBox.addChild(btn);
+        this.scrollerToBottom();
     }
     
     /**
@@ -326,6 +327,7 @@ class Main extends eui.UILayer {
         btn.label = content;
         btn.percentWidth = 80;
         this.msgBox.addChild(btn);
+        this.scrollerToBottom();
     }
     
 
