@@ -242,7 +242,7 @@ class Main extends eui.UILayer {
         image.width = 102;
         image.height = 36;
         image.left = wid / 2 - 51;
-        image.top = hei - hei * 0.26;
+        image.top = hei - hei * 0.27;
         image.addEventListener(egret.TouchEvent.TOUCH_TAP,this.splashHandler,this);
         this.addChild(image);
     }
