@@ -562,7 +562,7 @@ class Main extends eui.UILayer {
         //显示故事结局标题
         var label = new eui.Label();
         label.fontFamily = "Tahoma";//设置字体
-        label.text = "你是苦逼的打工者身份";
+        label.text = ending.result.title;
         label.size = 14;
         label.bold = true;
         label.textColor = 0xf0a90d;
@@ -574,7 +574,7 @@ class Main extends eui.UILayer {
         //显示故事结局文字
         var label = new eui.Label();
         label.fontFamily = "Tahoma";//设置字体
-        label.text = "结局很不幸，你得了癌症，将不久于人世。结局很不幸，你得了癌症，将不久于人世。结局很不幸，你得了癌症，将不久于人世。"
+        label.text = ending.result.desc;
         label.size = 12;
         label.textColor = 0x000000;
         label.size = 16;
