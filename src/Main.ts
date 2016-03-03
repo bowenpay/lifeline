@@ -358,13 +358,13 @@ class Main extends eui.UILayer {
         this.current_question = q;
         if(!q) {
             // 如果问题已经问完了，返回
-            this.ask(this.myproperties.time + ': 没有问题了');
+            this.ask('最近什么也没有发生，生活好安逸啊');
             this.scrollerToBottom();
             return;
         }
         this.game_state = STATE_QUESTION;
         // 显示问题
-        if(q.detail) {
+        if(q.detail != undefined) {
             this.question_detail = q.detail.slice(); // 将要显示的问题详情浅复制
         } else { 
             this.question_detail = [q.question]; // 如果没有detail，直接显示question
@@ -383,7 +383,7 @@ class Main extends eui.UILayer {
             this.display_question_answers();
             this.timer.stop();
         } else { 
-            this.ask(this.myproperties.time + ': ' + msg);
+            this.ask(msg);
         }
     }
     
@@ -444,7 +444,7 @@ class Main extends eui.UILayer {
         var event = this.game_data.EVENTS_MAP[radioGroup.selectedValue];
         this.processEvent(event);
 
-        if(event.detail) {
+        if(event.detail != undefined) {
             this.event_detail = event.detail.slice(); // 将要显示的事件详情浅复制
         } else {
             this.event_detail = [event.name]; // 如果没有detail，直接显示name
@@ -461,7 +461,7 @@ class Main extends eui.UILayer {
             // 问题详情已经显示结束,显示答案选项
             this.game_state = STATE_STATE;
         } else {
-            this.answer(this.myproperties.time + ': ' + msg);
+            this.answer(msg);
         }
     }
     

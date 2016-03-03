@@ -16,7 +16,6 @@
   },
   "autoGenerateExmlsList": true,
   "exmls": [
-    "resource/eui_skins/askBoxSkin.exml",
     "resource/eui_skins/ButtonSkin.exml",
     "resource/eui_skins/CheckBoxSkin.exml",
     "resource/eui_skins/HScrollBarSkin.exml",
@@ -24,12 +23,13 @@
     "resource/eui_skins/ItemRendererSkin.exml",
     "resource/eui_skins/PanelSkin.exml",
     "resource/eui_skins/ProgressBarSkin.exml",
-    "resource/eui_skins/radioBtnSkin.exml",
     "resource/eui_skins/RadioButtonSkin.exml",
     "resource/eui_skins/ScrollerSkin.exml",
     "resource/eui_skins/TextInputSkin.exml",
     "resource/eui_skins/ToggleSwitchSkin.exml",
     "resource/eui_skins/VScrollBarSkin.exml",
-    "resource/eui_skins/VSliderSkin.exml"
+    "resource/eui_skins/VSliderSkin.exml",
+    "resource/eui_skins/askBoxSkin.exml",
+    "resource/eui_skins/radioBtnSkin.exml"
   ]
 }
