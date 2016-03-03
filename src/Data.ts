@@ -45,7 +45,7 @@ var STATES = [
                     '我该干些什么好呢？',
                 ],
                 answers: [
-                    { answer: "本科工作",event: "本科工作" },
+                    { answer: "本科工作",event: function() { return "本科工作" } },
                     { answer: "本科上课",event: "本科上课" },
                     { answer: "本科打酱油",event: "本科打酱油" }
                 ],
@@ -106,7 +106,8 @@ var EVENTS = [
     // 通用事件
     {
         name: '结婚',from: '*',to: '',   // from可以是*，表示任意状态，to可以使空，表示不改变状态
-        detail: ['结婚，积蓄光光，幸福爆棚'],
+        detail: ['结婚，积蓄光光，幸福爆棚','','','', '','',''],
+        image: "resource/events/jiehun.jpg",
         properties: { health: 10, wealth: -10, ability: 1, happiness: 10 }
     },
     {
@@ -117,7 +118,7 @@ var EVENTS = [
     
     //  本科可以做的事情
     {
-        name: '本科工作',from: '本科',to: '职员',   // from可以是*，表示任意状态，to可以使空，表示不改变状态
+        name: '本科工作',from: '本科', to: '职员',   // from可以是*，表示任意状态，to可以使空，表示不改变状态
         detail: ['说点什么吧1','说点什么吧2','说点什么吧3'],
         properties: { health: 0,wealth: 1,ability: 1,happiness: 0 }
     },

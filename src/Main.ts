@@ -154,6 +154,7 @@ class Main extends eui.UILayer {
     private current_question = null;    // 当前显示的问题
     private question_detail = [];
     private event_detail = [];
+    private event_image: eui.Image = null; // 爆点事件显示图片
     private message_scroller = null;
     private game_data = new Data();
     private previous_choose_box = [];
@@ -280,7 +281,7 @@ class Main extends eui.UILayer {
         myScroller.viewport = group;
         this.addChild(myScroller);
         
-        this.state_label = new eui.Label("状态：刚毕业");
+        this.state_label = new eui.Label("状态：本科");
         this.state_label.size = 30;
         this.state_label.fontFamily = "黑体-简 中等"
         this.state_label.textColor = 0x3AD3FF;
@@ -440,14 +441,27 @@ class Main extends eui.UILayer {
         }
         
         var radioGroup: eui.RadioButtonGroup = evt.target;
-        console.log(radioGroup.selectedValue);
-        var event = this.game_data.EVENTS_MAP[radioGroup.selectedValue];
+        var answer = radioGroup.selectedValue;
+        console.log(answer);
+        if(typeof answer === "function") {
+            var mp_clone = JSON.parse(JSON.stringify(this.myproperties));
+            var event_name = answer(mp_clone);
+        } else {
+            var event_name = answer;
+        }
+        var event = this.game_data.EVENTS_MAP[event_name];
+        console.log(event);
         this.processEvent(event);
-
+        
+        // 处理消息
         if(event.detail != undefined) {
             this.event_detail = event.detail.slice(); // 将要显示的事件详情浅复制
         } else {
             this.event_detail = [event.name]; // 如果没有detail，直接显示name
+        }
+        // 处理图片
+        if(event.image) { 
+            this.display_event_image(event.image);
         }
         this.game_state = STATE_ANSWER;
         this.timer.start();
@@ -456,13 +470,36 @@ class Main extends eui.UILayer {
      * 显示问题的所有内容
      */
     private display_event_detail() {
+        // 显示消息
         var msg = this.event_detail.shift();
         if(msg == null) {
-            // 问题详情已经显示结束,显示答案选项
+            // 事件已经显示完了，如果有图片，去掉图片
+            if(this.event_image) { 
+                this.removeChild(this.event_image);
+                this.event_image = null;
+            }
             this.game_state = STATE_STATE;
         } else {
-            this.answer(msg);
+            if(msg) {
+                this.answer(msg);
+            }
         }
+        
+    }
+    /**
+     * 显示问题的所有内容
+     */
+    private display_event_image(image_path) {
+        var wid = document.documentElement.clientWidth;
+        var hei = document.documentElement.clientHeight;
+        var image = new eui.Image();
+        image.source = image_path;
+        image.width = wid / 2;
+        image.height = image.width;
+        image.left = wid / 4;
+        image.top = hei / 2 - (image.height / 2);
+        this.addChild(image);
+        this.event_image = image;
     }
     
     /**
@@ -470,7 +507,6 @@ class Main extends eui.UILayer {
      */ 
     private processEvent(event) {
         //this.answer(event.name);
-        this.state_label.$setText("状态：" + event.name);
         //// 判断状态是否可以改变
         // 如果from不是*，或者current，弹出错误，并返回
         if(event.from != '*' && event.from != this.game_data.current) { 
@@ -497,6 +533,7 @@ class Main extends eui.UILayer {
         // event.to是空，表示不改变状态。否则改变
         if(event.to != '' && this.game_data.current !== event.to) {
             this.game_data.current = event.to;
+            this.state_label.$setText("状态：" + this.game_data.current);
             var properties = this.game_data.getStatesInitialState();
             var mp_clone = JSON.parse(JSON.stringify(this.myproperties));
             for(var key in properties) {
