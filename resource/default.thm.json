@@ -30,6 +30,23 @@
     "resource/eui_skins/VScrollBarSkin.exml",
     "resource/eui_skins/VSliderSkin.exml",
     "resource/eui_skins/askBoxSkin.exml",
-    "resource/eui_skins/radioBtnSkin.exml"
+    "resource/eui_skins/radioBtnSkin.exml",
+    "resource/eui_skins/statusBtnSkin.exml",
+    "resource_Publish/eui_skins/ButtonSkin.exml",
+    "resource_Publish/eui_skins/CheckBoxSkin.exml",
+    "resource_Publish/eui_skins/HScrollBarSkin.exml",
+    "resource_Publish/eui_skins/HSliderSkin.exml",
+    "resource_Publish/eui_skins/ItemRendererSkin.exml",
+    "resource_Publish/eui_skins/PanelSkin.exml",
+    "resource_Publish/eui_skins/ProgressBarSkin.exml",
+    "resource_Publish/eui_skins/RadioButtonSkin.exml",
+    "resource_Publish/eui_skins/ScrollerSkin.exml",
+    "resource_Publish/eui_skins/TextInputSkin.exml",
+    "resource_Publish/eui_skins/ToggleSwitchSkin.exml",
+    "resource_Publish/eui_skins/VScrollBarSkin.exml",
+    "resource_Publish/eui_skins/VSliderSkin.exml",
+    "resource_Publish/eui_skins/askBoxSkin.exml",
+    "resource_Publish/eui_skins/radioBtnSkin.exml",
+    "resource_Publish/eui_skins/statusBtnSkin.exml"
   ]
 }

@@ -5,7 +5,7 @@
 			"name":"preload"
 		},
 		{
-			"keys":"ask_png,radiobtn_selected_png,radiobtn_unselected_png,radiobtn_disable_unselect_png,radiobtn_select_png,radiobtn_unselect_png",
+			"keys":"ask_png,radiobtn_selected_png,radiobtn_unselected_png,radiobtn_disable_unselect_png,radiobtn_select_png,radiobtn_unselect_png,statusBtn_png",
 			"name":"bowen"
 		}
 	],
@@ -154,6 +154,11 @@
 			"name":"radiobtn_unselect_png",
 			"type":"image",
 			"url":"assets/RadioButton/radiobtn_unselect.png"
+		},
+		{
+			"name":"statusBtn_png",
+			"type":"image",
+			"url":"assets/Button/statusBtn.png"
 		}
 	]
 }

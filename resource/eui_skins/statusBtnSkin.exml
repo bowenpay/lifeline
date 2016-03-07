@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="statusBtnSkin" states="up,down,disabled" xmlns:e="http://ns.egret.com/eui">
+	<e:Image source="statusBtn_png" left="0" right="0" bottom="0" top="0"/>
+	<e:Label id="labelDisplay" size="14" verticalAlign="middle" textAlign="right" percentWidth="90"  top="10" bottom="10" fontFamily="黑体-简 中等" textColor="0x36d4ff"/>
+</e:Skin>

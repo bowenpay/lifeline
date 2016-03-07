@@ -158,7 +158,7 @@ class Main extends eui.UILayer {
     private message_scroller = null;
     private game_data = new Data();
     private previous_choose_box = [];
-    private state_label: eui.Label = null;
+    private state_btn: eui.Button = null;
     // 游戏状态
     private game_state = STATE_SPLASH; 
     private myproperties = { 
@@ -264,8 +264,8 @@ class Main extends eui.UILayer {
         group.percentHeight = 100;
 
         var vLayout: eui.VerticalLayout = new eui.VerticalLayout();
-        vLayout.gap = 10;
-        vLayout.paddingTop = 80;
+        vLayout.gap = 20;
+        vLayout.paddingTop = 60;
         vLayout.paddingLeft = 5;
         vLayout.paddingBottom = 200;
         vLayout.horizontalAlign = egret.HorizontalAlign.CENTER;
@@ -281,13 +281,15 @@ class Main extends eui.UILayer {
         myScroller.viewport = group;
         this.addChild(myScroller);
         
-        this.state_label = new eui.Label("状态：本科");
-        this.state_label.size = 30;
-        this.state_label.fontFamily = "黑体-简 中等"
-        this.state_label.textColor = 0x3AD3FF;
-        this.state_label.top = 8;
-        this.state_label.right = 4;
-        this.addChild(this.state_label);
+        this.state_btn = new eui.Button;
+        this.state_btn.skinName = "resource/eui_skins/statusBtnSkin.exml"
+        this.state_btn.label = "状态：本科\n第一年第一季度";
+
+        this.state_btn.height = 60;
+        this.state_btn.left = 0;
+        this.state_btn.top = 0;
+        this.state_btn.percentWidth = 100;
+        this.addChild(this.state_btn);
     }
     
     /**
@@ -313,6 +315,7 @@ class Main extends eui.UILayer {
         btn.skinName = "resource/eui_skins/askBoxSkin.exml";
         btn.label = content;
         btn.percentWidth = 80;
+        btn.height = 60;
         this.msgBox.addChild(btn);
         this.scrollerToBottom();
     }
@@ -327,6 +330,7 @@ class Main extends eui.UILayer {
         btn.skinName = "resource/eui_skins/askBoxSkin.exml";
         btn.label = content;
         btn.percentWidth = 80;
+        btn.height = 60;
         this.msgBox.addChild(btn);
         this.scrollerToBottom();
     }
@@ -396,16 +400,16 @@ class Main extends eui.UILayer {
         q.left_times -= 1;
         // 使用显示答案的容器
         var group: eui.Group = new eui.Group();
-        group.percentWidth = 100;
+        group.percentWidth = 80;
         // 采用网格布局，两列显示
         var tLayout: eui.TileLayout = new eui.TileLayout();
         tLayout.horizontalGap = 20;
         tLayout.verticalGap = 20;
         tLayout.columnAlign = eui.ColumnAlign.JUSTIFY_USING_WIDTH;
         tLayout.rowAlign = eui.RowAlign.JUSTIFY_USING_HEIGHT;
-        tLayout.paddingTop = 30;
-        tLayout.paddingRight = 30;
-        tLayout.paddingLeft = 30;
+        tLayout.paddingTop = 10;
+        tLayout.paddingRight = 0;
+        tLayout.paddingLeft = 0;
         tLayout.paddingBottom = 10;
         tLayout.requestedColumnCount = 2;  /// 设置两列显示
         group.layout = tLayout;    /// 网格布局
@@ -533,7 +537,7 @@ class Main extends eui.UILayer {
         // event.to是空，表示不改变状态。否则改变
         if(event.to != '' && this.game_data.current !== event.to) {
             this.game_data.current = event.to;
-            this.state_label.$setText("状态：" + this.game_data.current);
+            this.state_btn.label="状态：" + this.game_data.current + "  \n" + this.myproperties.time+ "  ";
             var properties = this.game_data.getStatesInitialState();
             var mp_clone = JSON.parse(JSON.stringify(this.myproperties));
             for(var key in properties) {
