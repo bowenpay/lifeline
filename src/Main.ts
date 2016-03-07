@@ -39,6 +39,7 @@ class Main extends eui.UILayer {
      * 加载进度界面
      * loading process interface
      */
+ 
     private loadingView: LoadingUI;
     protected createChildren(): void {
         super.createChildren();
@@ -237,12 +238,13 @@ class Main extends eui.UILayer {
         // 显示“进入”按钮
         var wid = document.documentElement.clientWidth;
         var hei = document.documentElement.clientHeight;
+        console.log(wid,hei);
         var image = new eui.Image();
         image.source = "resource/clickEnter.png";
-        image.width = 102;
-        image.height = 36;
-        image.left = wid / 2 - 51;
-        image.top = hei - hei * 0.27;
+        image.width = 163.2;
+        image.height = 57.6;
+        image.horizontalCenter = 0;
+        image.bottom = hei * 0.3;
         image.addEventListener(egret.TouchEvent.TOUCH_TAP,this.splashHandler,this);
         this.addChild(image);
     }
@@ -282,7 +284,7 @@ class Main extends eui.UILayer {
         
         this.state_label = new eui.Label("状态：刚毕业");
         this.state_label.size = 30;
-        this.state_label.fontFamily = "黑体-简 中等"
+        this.state_label.fontFamily = "黑体-简 中等";
         this.state_label.textColor = 0x3AD3FF;
         this.state_label.top = 8;
         this.state_label.right = 4;
@@ -539,50 +541,70 @@ class Main extends eui.UILayer {
         this.addChild(label);
         
         // 显示结局文字end_state背景图
-        var wid = document.documentElement.clientWidth; //获取屏幕宽度
         var hei = document.documentElement.clientHeight; //获取屏幕高度
         var image = new eui.Image();
         image.source = "resource/end_state.png";
-        image.width = wid;
-        image.height = (41 * wid) / 64;
+        image.percentWidth = 100;
+        image.percentHeight = 40;
+        this.addChild(image);
+        
+        //显示通回到十年
+        var label = new eui.Label();
+        label.text = "回到十年前";
+        label.textColor = 0xffffff;
+        label.size = 30;
+        label.horizontalCenter = 0;//设置水平对齐方式
+        label.top = 40;
+        this.addChild(label);
+        
+        // 显示“向前”按钮
+        var image = new eui.Image();
+        image.source = "resource/back.png";
+        image.width = 40;
+        image.height = 40;
+        image.horizontalCenter = 0;
+        image.top = 70;
         this.addChild(image);
         
         //显示通过所有游戏
         var label = new eui.Label();
-        label.fontFamily = "Tahoma";//设置字体
         label.text = "恭喜您！通过了所有的游戏！";
-        label.size = 14;
         label.bold = true;
-        label.textColor = 0xf0a90d;
-        label.size = 20;
+        label.textColor = 0xffd800;
+        label.size = 36;
         label.horizontalCenter = 0;//设置水平对齐方式
-        label.top = 30;
+        label.top = hei * 0.3;
         this.addChild(label);
         
         //显示故事结局标题
         var label = new eui.Label();
-        label.fontFamily = "Tahoma";//设置字体
         label.text = ending.result.title;
-        label.size = 14;
         label.bold = true;
-        label.textColor = 0xf0a90d;
-        label.size = 20;
+        label.textColor = 0xf1cc00;
+        label.size = 35;
         label.horizontalCenter = 0;//设置水平对齐方式
-        label.top = image.height + image.height * 0.15;
+        label.top = 430;
         this.addChild(label);
-        
+    
         //显示故事结局文字
         var label = new eui.Label();
-        label.fontFamily = "Tahoma";//设置字体
         label.text = ending.result.desc;
-        label.size = 12;
+        label.size = 24;
         label.textColor = 0x000000;
-        label.size = 16;
         label.lineSpacing = 6;//行间距
-        label.left = wid / 100 * 10;
-        label.width = wid - label.left * 2;
-        label.top = image.height + image.height * 0.4;
+        label.percentWidth= 88;
+        label.horizontalCenter = 0;
+        label.top = 510;
         this.addChild(label);
+        
+        // 显示“分享”图片
+        var image = new eui.Image();
+        image.source = "resource/share.png";
+        image.width = 521;
+        image.height = 37;
+        image.horizontalCenter = 0;
+        image.bottom = 50;
+        this.addChild(image);
     }
     /**
      * 退出游戏
@@ -592,3 +614,4 @@ class Main extends eui.UILayer {
     }
     
 }
+

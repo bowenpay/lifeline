@@ -7,8 +7,8 @@
 		         source.downAndSelected="radiobtn_select_png"
 		         source.disabled="radiobtn_disable_unselect_png"
 		         source.disabledAndSelected="radiobtn_select_png"/>
-		<e:Label id="labelDisplay" top="8" bottom="8" left="8" right="8"
-		         size="14" fontFamily="黑体-简 中等"
+		<e:Label id="labelDisplay" height= "80" top="14" bottom="14" left="14" right="14"
+		         size="28" fontFamily="黑体-简 中等"
 		         textColor="0xFFFFFF" verticalAlign="middle" textAlign="center"/>
 	</e:Group>
 </e:Skin>

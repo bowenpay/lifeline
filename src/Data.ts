@@ -157,7 +157,7 @@ var EVENTS = [
 var ENDINGS = [
     { condition: { health: 80,wealth: 100,ability: 90,happiness: 90 },result: { title: "人生赢家",desc: "" } },
     { condition: { health: 50,wealth: 50,ability: 50,happiness: 50 },result: { title: "平凡人生",desc: "" } },
-    { condition: { health: -100,wealth: -100,ability: -100,happiness: -100 },result: { title: "你是苦逼的打工者",desc: "结局很不幸，你得了癌症，将不久于人世。结局很不幸，你得了癌症，将不久于人世。结局很不幸，你得了癌症，将不久于人世。" } }
+    { condition: { health: -100,wealth: -100,ability: -100,happiness: -100 },result: { title: "你是苦逼的打工者",desc: "结局很不幸，你得了癌症，将不久于人世。结局很不幸，你得了癌症，将不久于人世。结局很不幸，你得了癌症，将不久于人世。结局很不幸，你得了癌症，将不久于人世。结局很不幸，你得了癌症，将不久于人世。结局很不幸，你得了癌症，将不久于人世。结局很不幸，你得了癌症，将不久于人世。结局很不幸，你得了癌症，将不久于人世。结局很不幸，你得了癌症，将不久于人世。结局很不幸，你得了癌症，将不久于人世。结局很不幸，你得了癌症，将不久于人世。结局很不幸，你得了癌症，将不久于人世。" } }
 ];
 // 数据结束
 
