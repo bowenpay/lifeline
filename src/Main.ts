@@ -242,11 +242,23 @@ class Main extends eui.UILayer {
             return;
         }
         // 显示splash背景图
+        var wid = document.documentElement.clientWidth; //获取屏幕宽度
         var image = new eui.Image();
         image.source = "resource/background.jpg";
         image.percentWidth = 100;
         image.percentHeight = 100;
         this.addChild(image);
+        // 显示十年动态图
+        var image = new eui.Image();
+        image.source = "resource/graduation_ten.png";
+        image.width = 257;
+        image.height = 578;
+        image.left = wid / 2 + 100;
+        image.y = 10;
+        this.addChild(image);
+        image.alpha = 0;
+        var tw = egret.Tween.get(image);
+        tw.to({ alpha: 1,y: 80 },1000);
         // 显示“进入”按钮
         var wid = document.documentElement.clientWidth;
         var hei = document.documentElement.clientHeight;
