@@ -150,15 +150,18 @@ class Main extends eui.UILayer {
     private endingBox: eui.Group = null;  // 结局
     private timer: egret.Timer = null; // 计时器
     private msgBox: eui.Group = null;
+    private endGrp: eui.Group = null;
+    private endScroller: eui.Scroller = null;
     private question_group = null;
     private current_question = null;    // 当前显示的问题
     private question_detail = [];
     private event_detail = [];
     private event_image: eui.Image = null; // 爆点事件显示图片
-    private message_scroller = null;
+    private message_scroller: eui.Scroller = null;
     private game_data = new Data();
     private previous_choose_box = [];
     private state_btn: StatusBtn = null;
+    private endScrollV: number = 0;
     private timeStr =[
         "第1年1季度","第1年2季度","第1年3季度","第1年4季度",
         "第2年1季度","第2年2季度","第2年3季度","第2年4季度",
@@ -554,7 +557,7 @@ class Main extends eui.UILayer {
         if(event.to != '' && this.game_data.current !== event.to) {
             this.game_data.current = event.to;
             this.state_btn.label=this.game_data.current;
-            this.state_btn.timeLabelStr = this.timeStr[this.myproperties.time];
+
             var properties = this.game_data.getStatesInitialState();
             var mp_clone = JSON.parse(JSON.stringify(this.myproperties));
             for(var key in properties) {
@@ -566,9 +569,9 @@ class Main extends eui.UILayer {
                 }
 
             }
+            this.state_btn.timeLabelStr = this.timeStr[this.myproperties.time];
             console.log(mp_clone);
             console.log(this.myproperties);
-
         }
         
         // 滑动滚动条
@@ -584,11 +587,16 @@ class Main extends eui.UILayer {
             return;
         }
         
+        this.endGrp = new eui.Group();
+        this.endGrp.percentWidth =100;
+        this.endGrp.percentHeight = 100;
+        
         // TODO: 显示主人公结局
         var ending = this.game_data.getMyEnding(this.myproperties);
         console.log("游戏结束：显示主人公结局");
         console.log(this.myproperties);
         console.log(ending);
+
         
         // 显示background_end背景图
         var label = new eui.Label();
@@ -596,7 +604,7 @@ class Main extends eui.UILayer {
         label.percentHeight = 100;
         label.background = true;
         label.backgroundColor = 0xffffff;
-        this.addChild(label);
+        this.endGrp.addChild(label);
         
         // 显示结局文字end_state背景图
         var wid = document.documentElement.clientWidth; //获取屏幕宽度
@@ -605,7 +613,7 @@ class Main extends eui.UILayer {
         image.source = "resource/end_state.png";
         image.percentWidth = 100;
         image.percentHeight = 40;
-        this.addChild(image);
+        this.endGrp.addChild(image);
 
         //显示通回到十年
         var label = new eui.Label();
@@ -614,7 +622,7 @@ class Main extends eui.UILayer {
         label.size = 30;
         label.horizontalCenter = 0;//设置水平对齐方式
         label.top = 40;
-        this.addChild(label);
+        this.endGrp.addChild(label);
         // 显示“向前”按钮
         var image = new eui.Image();
         image.source = "resource/back.png";
@@ -622,7 +630,10 @@ class Main extends eui.UILayer {
         image.height = 40;
         image.horizontalCenter = 0;
         image.top = 70;
-        this.addChild(image);
+        this.endGrp.addChild(image);
+        
+        label.addEventListener(egret.TouchEvent.TOUCH_TAP,this.backToBegin,this);
+        image.addEventListener(egret.TouchEvent.TOUCH_TAP,this.backToBegin,this);
         
         //显示通过所有游戏
         var label = new eui.Label();
@@ -633,7 +644,7 @@ class Main extends eui.UILayer {
         label.size = 36;
         label.horizontalCenter = 0;//设置水平对齐方式
         label.top = hei*0.3;
-        this.addChild(label);
+        this.endGrp.addChild(label);
         
         //显示故事结局标题
         var label = new eui.Label();
@@ -643,7 +654,7 @@ class Main extends eui.UILayer {
         label.textColor = 0xf1cc00;
         label.horizontalCenter = 0;//设置水平对齐方式
         label.top = 430;
-        this.addChild(label);
+        this.endGrp.addChild(label);
         
         //显示故事结局文字
         var label = new eui.Label();
@@ -655,7 +666,7 @@ class Main extends eui.UILayer {
         label.percentWidth = 88;
         label.horizontalCenter = 0;
         label.top = 510;
-        this.addChild(label);
+        this.endGrp.addChild(label);
         
         // 显示“分享”图片
         var image = new eui.Image();
@@ -664,7 +675,39 @@ class Main extends eui.UILayer {
         image.height = 37;
         image.horizontalCenter = 0;
         image.bottom = 50;
-        this.addChild(image);
+        this.endGrp.addChild(image);
+
+        this.endScroller = new eui.Scroller();
+        this.endScroller.percentWidth = 100;
+        this.endScroller.percentHeight = 100;
+        this.endScroller.viewport = this.endGrp;
+        this.endScroller.bounces = true;
+        
+        this.addChild(this.endScroller);
+        
+        this.message_scroller.addEventListener(eui.UIEvent.CHANGE_END,this.scrollChangeEnd,this);
+    }
+    
+    //message_scroller滑动到底部
+    private scrollChangeEnd(evt: eui.UIEvent): void {
+        console.log("scrollChangeEnd");
+        console.log(this.message_scroller.viewport.contentHeight);
+        
+        //if((this.message_scroller.viewport.scrollV >= this.endScrollV) && (this.game_state == STATE_END))
+        if((this.message_scroller.viewport.scrollV >= this.endScrollV))
+        {
+            console.log(this.message_scroller.viewport.scrollV);
+            this.endGrp.visible = true;
+        }
+    }
+    
+    //回到十年前开始页面
+    private backToBegin(evt: eui.UIEvent): void {
+        this.endGrp.visible = false;
+        this.endScrollV = this.message_scroller.viewport.scrollV;
+        this.endScrollV -= this.message_scroller.viewport.height*1/6;
+        console.log(this.endScrollV);
+        this.message_scroller.viewport.scrollV = 0;
     }
     /**
      * 退出游戏
