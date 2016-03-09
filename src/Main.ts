@@ -205,6 +205,7 @@ class Main extends eui.UILayer {
         switch(this.game_state) {
             case STATE_SPLASH: 
                 // 显示splash
+                document.getElementById("preloading").style.display = "none";
                 this.timer.stop();
                 this.createSplash();
                 break; 
