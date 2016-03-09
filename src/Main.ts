@@ -150,15 +150,30 @@ class Main extends eui.UILayer {
     private endingBox: eui.Group = null;  // 结局
     private timer: egret.Timer = null; // 计时器
     private msgBox: eui.Group = null;
+    private endGrp: eui.Group = null;
+    private endScroller: eui.Scroller = null;
     private question_group = null;
     private current_question = null;    // 当前显示的问题
     private question_detail = [];
     private event_detail = [];
     private event_image: eui.Image = null; // 爆点事件显示图片
-    private message_scroller = null;
+    private message_scroller: eui.Scroller = null;
     private game_data = new Data();
     private previous_choose_box = [];
-    private state_btn: eui.Button = null;
+    private state_btn: StatusBtn = null;
+    private endScrollV: number = 0;
+    private timeStr =[
+        "第1年1季度","第1年2季度","第1年3季度","第1年4季度",
+        "第2年1季度","第2年2季度","第2年3季度","第2年4季度",
+        "第3年1季度","第3年2季度","第3年3季度","第3年4季度",
+        "第4年1季度","第4年2季度","第4年3季度","第4年4季度", 
+        "第5年1季度","第5年2季度","第5年3季度","第5年4季度",
+        "第6年1季度","第6年2季度","第6年3季度","第6年4季度",
+        "第7年1季度","第7年2季度","第7年3季度","第7年4季度",
+        "第8年1季度","第8年2季度","第8年3季度","第8年4季度", 
+        "第9年1季度","第9年2季度","第9年3季度","第9年4季度",
+        "第10年1季度","第10年2季度","第10年3季度","第10年4季度"       
+    ];
     // 游戏状态
     private game_state = STATE_SPLASH; 
     private myproperties = { 
@@ -240,10 +255,11 @@ class Main extends eui.UILayer {
         var hei = document.documentElement.clientHeight;
         var image = new eui.Image();
         image.source = "resource/clickEnter.png";
-        image.width = 102;
-        image.height = 36;
-        image.left = wid / 2 - 51;
-        image.top = hei - hei * 0.27;
+        image.width = 163.2;
+        image.height = 57.6;
+        image.horizontalCenter = 0;
+        image.bottom = hei * 0.3;
+
         image.addEventListener(egret.TouchEvent.TOUCH_TAP,this.splashHandler,this);
         this.addChild(image);
     }
@@ -265,9 +281,9 @@ class Main extends eui.UILayer {
 
         var vLayout: eui.VerticalLayout = new eui.VerticalLayout();
         vLayout.gap = 20;
-        vLayout.paddingTop = 60;
+        vLayout.paddingTop = 80;
         vLayout.paddingLeft = 5;
-        vLayout.paddingBottom = 200;
+        vLayout.paddingBottom = 150;
         vLayout.horizontalAlign = egret.HorizontalAlign.CENTER;
         group.layout = vLayout; 
         
@@ -281,11 +297,12 @@ class Main extends eui.UILayer {
         myScroller.viewport = group;
         this.addChild(myScroller);
         
-        this.state_btn = new eui.Button;
+        this.state_btn = new StatusBtn;
         this.state_btn.skinName = "resource/eui_skins/statusBtnSkin.exml"
-        this.state_btn.label = "状态：本科\n第一年第一季度";
+        this.state_btn.label = "本科";
+        this.state_btn.timeLabelStr = "第1年1季度"
 
-        this.state_btn.height = 60;
+        this.state_btn.height = 80;
         this.state_btn.left = 0;
         this.state_btn.top = 0;
         this.state_btn.percentWidth = 100;
@@ -297,8 +314,9 @@ class Main extends eui.UILayer {
      */
     private scrollerToBottom() {
         var sc = this.message_scroller;
+        console.log(sc.height);
         while(true) {
-            if((sc.viewport.scrollV + sc.height*3/4) >= sc.viewport.contentHeight) {
+            if((sc.viewport.scrollV + sc.height*5/6) >= sc.viewport.contentHeight) {
                 console.log("滚动到底部了");
                 break;
             } else {
@@ -315,7 +333,7 @@ class Main extends eui.UILayer {
         btn.skinName = "resource/eui_skins/askBoxSkin.exml";
         btn.label = content;
         btn.percentWidth = 80;
-        btn.height = 60;
+        btn.height = 100;
         this.msgBox.addChild(btn);
         this.scrollerToBottom();
     }
@@ -330,7 +348,7 @@ class Main extends eui.UILayer {
         btn.skinName = "resource/eui_skins/askBoxSkin.exml";
         btn.label = content;
         btn.percentWidth = 80;
-        btn.height = 60;
+        btn.height = 100;
         this.msgBox.addChild(btn);
         this.scrollerToBottom();
     }
@@ -427,7 +445,7 @@ class Main extends eui.UILayer {
             rdb.label = answer.answer;
             rdb.value = answer.event;
             rdb.group = radioGroup;
-            rdb.height = 60;
+            rdb.height = 100;
             rdb.width = 80;
             group.addChild(rdb);
         }
@@ -468,6 +486,7 @@ class Main extends eui.UILayer {
             this.display_event_image(event.image);
         }
         this.game_state = STATE_ANSWER;
+
         this.timer.start();
     }
     /**
@@ -537,7 +556,8 @@ class Main extends eui.UILayer {
         // event.to是空，表示不改变状态。否则改变
         if(event.to != '' && this.game_data.current !== event.to) {
             this.game_data.current = event.to;
-            this.state_btn.label="状态：" + this.game_data.current + "  \n" + this.myproperties.time+ "  ";
+            this.state_btn.label=this.game_data.current;
+
             var properties = this.game_data.getStatesInitialState();
             var mp_clone = JSON.parse(JSON.stringify(this.myproperties));
             for(var key in properties) {
@@ -549,9 +569,9 @@ class Main extends eui.UILayer {
                 }
 
             }
+            this.state_btn.timeLabelStr = this.timeStr[this.myproperties.time];
             console.log(mp_clone);
             console.log(this.myproperties);
-
         }
         
         // 滑动滚动条
@@ -567,11 +587,16 @@ class Main extends eui.UILayer {
             return;
         }
         
+        this.endGrp = new eui.Group();
+        this.endGrp.percentWidth =100;
+        this.endGrp.percentHeight = 100;
+        
         // TODO: 显示主人公结局
         var ending = this.game_data.getMyEnding(this.myproperties);
         console.log("游戏结束：显示主人公结局");
         console.log(this.myproperties);
         console.log(ending);
+
         
         // 显示background_end背景图
         var label = new eui.Label();
@@ -579,53 +604,110 @@ class Main extends eui.UILayer {
         label.percentHeight = 100;
         label.background = true;
         label.backgroundColor = 0xffffff;
-        this.addChild(label);
+        this.endGrp.addChild(label);
         
         // 显示结局文字end_state背景图
         var wid = document.documentElement.clientWidth; //获取屏幕宽度
         var hei = document.documentElement.clientHeight; //获取屏幕高度
         var image = new eui.Image();
         image.source = "resource/end_state.png";
-        image.width = wid;
-        image.height = (41 * wid) / 64;
-        this.addChild(image);
+        image.percentWidth = 100;
+        image.percentHeight = 40;
+        this.endGrp.addChild(image);
+
+        //显示通回到十年
+        var label = new eui.Label();
+        label.text = "回到十年前";
+        label.textColor = 0xffffff;
+        label.size = 30;
+        label.horizontalCenter = 0;//设置水平对齐方式
+        label.top = 40;
+        this.endGrp.addChild(label);
+        // 显示“向前”按钮
+        var image = new eui.Image();
+        image.source = "resource/back.png";
+        image.width = 40;
+        image.height = 40;
+        image.horizontalCenter = 0;
+        image.top = 70;
+        this.endGrp.addChild(image);
+        
+        label.addEventListener(egret.TouchEvent.TOUCH_TAP,this.backToBegin,this);
+        image.addEventListener(egret.TouchEvent.TOUCH_TAP,this.backToBegin,this);
         
         //显示通过所有游戏
         var label = new eui.Label();
-        label.fontFamily = "Tahoma";//设置字体
         label.text = "恭喜您！通过了所有的游戏！";
         label.size = 14;
         label.bold = true;
-        label.textColor = 0xf0a90d;
-        label.size = 20;
+        label.textColor = 0xffd800;
+        label.size = 36;
         label.horizontalCenter = 0;//设置水平对齐方式
-        label.top = 30;
-        this.addChild(label);
+        label.top = hei*0.3;
+        this.endGrp.addChild(label);
         
         //显示故事结局标题
         var label = new eui.Label();
-        label.fontFamily = "Tahoma";//设置字体
         label.text = ending.result.title;
-        label.size = 14;
+        label.size = 35;
         label.bold = true;
-        label.textColor = 0xf0a90d;
-        label.size = 20;
+        label.textColor = 0xf1cc00;
         label.horizontalCenter = 0;//设置水平对齐方式
-        label.top = image.height + image.height * 0.15;
-        this.addChild(label);
+        label.top = 430;
+        this.endGrp.addChild(label);
         
         //显示故事结局文字
         var label = new eui.Label();
         label.fontFamily = "Tahoma";//设置字体
         label.text = ending.result.desc;
-        label.size = 12;
+        label.size = 24;
         label.textColor = 0x000000;
-        label.size = 16;
         label.lineSpacing = 6;//行间距
-        label.left = wid / 100 * 10;
-        label.width = wid - label.left * 2;
-        label.top = image.height + image.height * 0.4;
-        this.addChild(label);
+        label.percentWidth = 88;
+        label.horizontalCenter = 0;
+        label.top = 510;
+        this.endGrp.addChild(label);
+        
+        // 显示“分享”图片
+        var image = new eui.Image();
+        image.source = "resource/share.png";
+        image.width = 521;
+        image.height = 37;
+        image.horizontalCenter = 0;
+        image.bottom = 50;
+        this.endGrp.addChild(image);
+
+        this.endScroller = new eui.Scroller();
+        this.endScroller.percentWidth = 100;
+        this.endScroller.percentHeight = 100;
+        this.endScroller.viewport = this.endGrp;
+        this.endScroller.bounces = true;
+        
+        this.addChild(this.endScroller);
+        
+        this.message_scroller.addEventListener(eui.UIEvent.CHANGE_END,this.scrollChangeEnd,this);
+    }
+    
+    //message_scroller滑动到底部
+    private scrollChangeEnd(evt: eui.UIEvent): void {
+        console.log("scrollChangeEnd");
+        console.log(this.message_scroller.viewport.contentHeight);
+        
+        //if((this.message_scroller.viewport.scrollV >= this.endScrollV) && (this.game_state == STATE_END))
+        if((this.message_scroller.viewport.scrollV >= this.endScrollV))
+        {
+            console.log(this.message_scroller.viewport.scrollV);
+            this.endGrp.visible = true;
+        }
+    }
+    
+    //回到十年前开始页面
+    private backToBegin(evt: eui.UIEvent): void {
+        this.endGrp.visible = false;
+        this.endScrollV = this.message_scroller.viewport.scrollV;
+        this.endScrollV -= this.message_scroller.viewport.height*1/6;
+        console.log(this.endScrollV);
+        this.message_scroller.viewport.scrollV = 0;
     }
     /**
      * 退出游戏

@@ -13,6 +13,7 @@ var game_file_list = [
 	"bin-debug/Data.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
+	"bin-debug/StatusBtn.js",
 	"bin-debug/ThemeAdapter.js",
 	//----auto game_file_list end----
 ];
@@ -43,7 +44,7 @@ egret_native.egretStart = function () {
         //----auto option start----
 		entryClassName: "Main",
 		frameRate: 30,
-		scaleMode: "noScale",
+		scaleMode: "exactFit",
 		contentWidth: 640,
 		contentHeight: 960,
 		showPaintRect: false,
