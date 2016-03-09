@@ -246,7 +246,7 @@ class Main extends eui.UILayer {
         }
         // 显示splash背景图
         var image = new eui.Image();
-        image.source = "resource/background.jpg";
+        image.source = "resource/game/background.jpg";
         image.percentWidth = 100;
         image.percentHeight = 100;
         this.addChild(image);
@@ -254,7 +254,7 @@ class Main extends eui.UILayer {
         var wid = document.documentElement.clientWidth;
         var hei = document.documentElement.clientHeight;
         var image = new eui.Image();
-        image.source = "resource/clickEnter.png";
+        image.source = "resource/game/clickEnter.png";
         image.width = 163.2;
         image.height = 57.6;
         image.horizontalCenter = 0;
@@ -298,7 +298,7 @@ class Main extends eui.UILayer {
         this.addChild(myScroller);
         
         this.state_btn = new StatusBtn;
-        this.state_btn.skinName = "resource/eui_skins/statusBtnSkin.exml"
+        this.state_btn.skinName = "resource/custom_eui_skins/statusBtnSkin.exml"
         this.state_btn.label = "本科";
         this.state_btn.timeLabelStr = "第1年1季度"
 
@@ -330,7 +330,7 @@ class Main extends eui.UILayer {
      */ 
     private ask(content: string) { 
         var btn = new eui.Button();
-        btn.skinName = "resource/eui_skins/askBoxSkin.exml";
+        btn.skinName = "resource/custom_eui_skins/askBoxSkin.exml";
         btn.label = content;
         btn.percentWidth = 80;
         btn.height = 100;
@@ -345,7 +345,7 @@ class Main extends eui.UILayer {
     private answer(content: string) {
         console.log(content);
         var btn = new eui.Button();
-        btn.skinName = "resource/eui_skins/askBoxSkin.exml";
+        btn.skinName = "resource/custom_eui_skins/askBoxSkin.exml";
         btn.label = content;
         btn.percentWidth = 80;
         btn.height = 100;
@@ -441,7 +441,7 @@ class Main extends eui.UILayer {
             var answer = answers[index]; 
             var rdb: eui.RadioButton = new eui.RadioButton();
             this.previous_choose_box.push(rdb);
-            rdb.skinName = "resource/eui_skins/radioBtnSkin.exml"
+            rdb.skinName = "resource/custom_eui_skins/radioBtnSkin.exml"
             rdb.label = answer.answer;
             rdb.value = answer.event;
             rdb.group = radioGroup;
@@ -610,7 +610,7 @@ class Main extends eui.UILayer {
         var wid = document.documentElement.clientWidth; //获取屏幕宽度
         var hei = document.documentElement.clientHeight; //获取屏幕高度
         var image = new eui.Image();
-        image.source = "resource/end_state.png";
+        image.source = "resource/game/end_state.png";
         image.percentWidth = 100;
         image.percentHeight = 40;
         this.endGrp.addChild(image);
@@ -625,7 +625,7 @@ class Main extends eui.UILayer {
         this.endGrp.addChild(label);
         // 显示“向前”按钮
         var image = new eui.Image();
-        image.source = "resource/back.png";
+        image.source = "resource/game/back.png";
         image.width = 40;
         image.height = 40;
         image.horizontalCenter = 0;
@@ -670,7 +670,7 @@ class Main extends eui.UILayer {
         
         // 显示“分享”图片
         var image = new eui.Image();
-        image.source = "resource/share.png";
+        image.source = "resource/game/share.png";
         image.width = 521;
         image.height = 37;
         image.horizontalCenter = 0;

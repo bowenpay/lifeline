@@ -16,6 +16,9 @@
   },
   "autoGenerateExmlsList": true,
   "exmls": [
+    "resource/custom_eui_skins/askBoxSkin.exml",
+    "resource/custom_eui_skins/radioBtnSkin.exml",
+    "resource/custom_eui_skins/statusBtnSkin.exml",
     "resource/eui_skins/ButtonSkin.exml",
     "resource/eui_skins/CheckBoxSkin.exml",
     "resource/eui_skins/HScrollBarSkin.exml",
@@ -28,9 +31,6 @@
     "resource/eui_skins/TextInputSkin.exml",
     "resource/eui_skins/ToggleSwitchSkin.exml",
     "resource/eui_skins/VScrollBarSkin.exml",
-    "resource/eui_skins/VSliderSkin.exml",
-    "resource/eui_skins/askBoxSkin.exml",
-    "resource/eui_skins/radioBtnSkin.exml",
-    "resource/eui_skins/statusBtnSkin.exml"
+    "resource/eui_skins/VSliderSkin.exml"
   ]
 }
