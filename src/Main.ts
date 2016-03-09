@@ -345,9 +345,9 @@ class Main extends eui.UILayer {
         for(var key in properties) {
             var value = properties[key];
             if(typeof value === "function") {
-                this.myproperties[key] += value(mp_clone);
+                this.myproperties[key] = (mp_clone[key] || 0) + value(mp_clone);
             } else { 
-                this.myproperties[key] += value;
+                this.myproperties[key] = (mp_clone[key] || 0) + value;
             }
             
         }
@@ -524,9 +524,9 @@ class Main extends eui.UILayer {
         for(var key in properties) {
             var value = properties[key];
             if(typeof value === "function") {
-                this.myproperties[key] += value(mp_clone);
+                this.myproperties[key] = (mp_clone[key] || 0) + value(mp_clone);
             } else {
-                this.myproperties[key] += value;
+                this.myproperties[key] = (mp_clone[key] || 0) + value;
             }
 
         }
@@ -543,9 +543,9 @@ class Main extends eui.UILayer {
             for(var key in properties) {
                 var value = properties[key];
                 if(typeof value === "function") {
-                    this.myproperties[key] += value(mp_clone);
+                    this.myproperties[key] = (mp_clone[key] || 0) + value(mp_clone);
                 } else {
-                    this.myproperties[key] += value;
+                    this.myproperties[key] = (mp_clone[key] || 0) + value;
                 }
 
             }
