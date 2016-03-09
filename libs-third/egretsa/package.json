@@ -1,0 +1,14 @@
+{
+	"name": "egret",
+	"version": "3.0.0",
+	"modules": [
+		{
+			"name": "egretsa",
+			"description": "egretsa",
+			"files": [
+			  "EgretSA.ts"
+			],
+			"root": "src"
+		}
+	]
+}

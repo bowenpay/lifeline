@@ -23,7 +23,7 @@
     },
 	{
 	    "name": "egretsa",
-	    "path": "../egretsa"
+	    "path": "./libs-third/egretsa"
 	}
   ]
 }
