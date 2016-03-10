@@ -9,6 +9,8 @@ var game_file_list = [
 	"libs/modules/game/game.js",
 	"libs/modules/game/game.native.js",
 	"libs/modules/egretsa/egretsa.js",
+	"bin-debug/AllStates/Common.js",
+	"bin-debug/AllStates/StartUp.js",
 	"bin-debug/AssetAdapter.js",
 	"bin-debug/Data.js",
 	"bin-debug/LoadingUI.js",
