@@ -197,7 +197,7 @@ class Main extends eui.UILayer {
      * 计时器控制器
      */ 
     private timerHandler(evt: eui.UIEvent): void {
-        if(this.myproperties.time >= 10 && this.game_state < STATE_END) {
+        if(this.myproperties.time >= 40 && this.game_state < STATE_END) {
             // 游戏时间结束
             this.game_state = STATE_END;
         }
@@ -336,6 +336,7 @@ class Main extends eui.UILayer {
         btn.height = 100;
         this.msgBox.addChild(btn);
         this.scrollerToBottom();
+        this.timer.delay = 1300;
     }
     
     /**
@@ -351,6 +352,7 @@ class Main extends eui.UILayer {
         btn.height = 100;
         this.msgBox.addChild(btn);
         this.scrollerToBottom();
+        this.timer.delay = 1300;
     }
     
 
@@ -609,6 +611,8 @@ class Main extends eui.UILayer {
         // 显示结局文字end_state背景图
         var wid = document.documentElement.clientWidth; //获取屏幕宽度
         var hei = document.documentElement.clientHeight; //获取屏幕高度
+
+        
         var image = new eui.Image();
         image.source = "resource/game/end_state.png";
         image.percentWidth = 100;
@@ -686,6 +690,9 @@ class Main extends eui.UILayer {
         this.addChild(this.endScroller);
         
         this.message_scroller.addEventListener(eui.UIEvent.CHANGE_END,this.scrollChangeEnd,this);
+        //修改title，分享结果
+        document.title = "傻逼的十年";
+        console.log(document.title);
     }
     
     //message_scroller滑动到底部
