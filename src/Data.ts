@@ -8,8 +8,13 @@ var COMMON_QUESTIONS = Common.QUESTIONS;
 var STATES = [];
 ALL_STATE.map(function(item) { STATES.push(item.STATES) });
 // 所有事件
-var EVENTS = Common.EVENTS;
-ALL_STATE.map(function(item) { EVENTS.push.apply(item.EVENTS) });
+var EVENTS = [];
+ALL_STATE.map(function(item) { 
+    
+    for(var index in item.EVENTS) {
+        EVENTS.push(item.EVENTS[index]); 
+    }
+});
 
 console.log(STATES);
 console.log(EVENTS);
@@ -31,7 +36,7 @@ class Data {
     }
 	
     // 当前的状态
-    public current = "职业规划1阶";
+    public current = "填写背景状态";
 
     
     // 通用问题
