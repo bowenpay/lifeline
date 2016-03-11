@@ -158,7 +158,7 @@ class Main extends eui.UILayer {
      */ 
     private createTimer(): void { 
         //创建一个计时器对象
-        this.timer = new egret.Timer(100, 0);
+        this.timer = new egret.Timer(300, 0);
         //注册事件侦听器
         this.timer.addEventListener(egret.TimerEvent.TIMER,this.timerHandler,this);
         //开始计时
@@ -286,10 +286,10 @@ class Main extends eui.UILayer {
      */
     private scrollerToBottom() {
         var sc = this.message_scroller;
-        console.log(sc.height);
+        //console.log(sc.height);
         while(true) {
             if((sc.viewport.scrollV + sc.height*5/6) >= sc.viewport.contentHeight) {
-                console.log("滚动到底部了");
+                // console.log("滚动到底部了");
                 break;
             } else {
                 sc.viewport.scrollV += 2;
@@ -308,7 +308,7 @@ class Main extends eui.UILayer {
         btn.height = 100;
         this.msgBox.addChild(btn);
         this.scrollerToBottom();
-        this.timer.delay = 1300;
+        // this.timer.delay = 1300;
     }
     
     /**
@@ -324,7 +324,7 @@ class Main extends eui.UILayer {
         btn.height = 100;
         this.msgBox.addChild(btn);
         this.scrollerToBottom();
-        this.timer.delay = 1300;
+        // this.timer.delay = 1300;
     }
     
 

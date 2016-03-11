@@ -1,4 +1,4 @@
-var ALL_STATE = [StartUp];
+var ALL_STATE = [Choices, StartUp, StartUp1, StartUp2];
 
 
 // 数据开始
@@ -9,12 +9,12 @@ var STATES = [];
 ALL_STATE.map(function(item) { STATES.push(item.STATES) });
 // 所有事件
 var EVENTS = [];
-ALL_STATE.map(function(item) { 
-    
-    for(var index in item.EVENTS) {
-        EVENTS.push(item.EVENTS[index]); 
-    }
-});
+// 加上通用事件
+EVENTS.push.apply(EVENTS, Common.EVENTS);
+// 加上各个状态下的事件
+ALL_STATE.map(function(item) {
+    EVENTS.push(EVENTS, item.EVENTS);
+}); 
 
 console.log(STATES);
 console.log(EVENTS);

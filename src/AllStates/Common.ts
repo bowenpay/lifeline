@@ -20,7 +20,7 @@ class Common {
             left_times: 1,      // 这个问题可以问几次？
             require: function(properties) {
                 if(properties.time > 12) { // 3年后弹出结婚事件
-                    return 1;
+                    return 3;
                 } else {
                     return 3;
                 }
@@ -41,7 +41,7 @@ class Common {
             left_times: 1,
             require: function(properties) {
                 if(properties.time > 12 && properties.health < 30) {
-                    return 1;
+                    return 3;
                 } else {
                     return 3;
                 }
