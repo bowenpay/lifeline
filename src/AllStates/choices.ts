@@ -51,23 +51,23 @@ class Choices {
     ];
 
     public static EVENTS = [ //选择背景状态
-        { detail: ['好的教育背景意味着更好的敲门砖，在创业融资，招聘等方面都有优势，祝你好运'],name: '教育背景1',from: '填写背景状态',to: '填写背景状态',properties: { health: 0,wealth: 0,ability: 50,foud: 0 , success: 0 } },
-        { detail: ['好的教育背景意味着更好的敲门砖，在创业融资，招聘等方面都有优势，祝你好运'],name: '教育背景2',from: '填写背景状态',to: '填写背景状态',properties: { health: 0,wealth: 0,ability: 45} },
+        { detail: ['好的教育背景意味着更好的敲门砖，在创业融资，招聘等方面都有优势，祝你好运'],name: '教育背景1',from: '填写背景状态',to: '填写背景状态',properties: { health: 0,wealth: 0,ability: 50,foud: 0,success: 0 } },
+        { detail: ['好的教育背景意味着更好的敲门砖，在创业融资，招聘等方面都有优势，祝你好运'],name: '教育背景2',from: '填写背景状态',to: '填写背景状态',properties: { health: 0,wealth: 0,ability: 45 } },
         { detail: ['好的教育背景意味着更好的敲门砖，在创业融资，招聘等方面都有优势，祝你好运'],name: '教育背景3',from: '填写背景状态',to: '填写背景状态',properties: { health: 0,wealth: 0,ability: 40 } },
-        { detail: ['好的教育背景意味着更好的敲门砖，在创业融资，招聘等方面都有优势，祝你好运'],name: '教育背景4',from: '填写背景状态',to: '填写背景状态',properties: { health: 0,wealth: 0,ability: 35} },
-        { detail: ['丰富的工作背景让你'],name: '工作经验1',from: '填写背景状态',to: '填写背景状态',properties: { health: 0,wealth: 0,ability: 50} },
-        { detail: [],name: '工作经验2',from: '填写背景状态',to: '填写背景状态',properties: { health: 0,wealth: 0,ability: 45} },
+        { detail: ['好的教育背景意味着更好的敲门砖，在创业融资，招聘等方面都有优势，祝你好运'],name: '教育背景4',from: '填写背景状态',to: '填写背景状态',properties: { health: 0,wealth: 0,ability: 35 } },
+        { detail: ['丰富的工作背景让你'],name: '工作经验1',from: '填写背景状态',to: '填写背景状态',properties: { health: 0,wealth: 0,ability: 50 } },
+        { detail: [],name: '工作经验2',from: '填写背景状态',to: '填写背景状态',properties: { health: 0,wealth: 0,ability: 45 } },
         { detail: [],name: '工作经验3',from: '填写背景状态',to: '填写背景状态',properties: { health: 0,wealth: 0,ability: 40 } },
-        { detail: [],name: '工作经验4',from: '填写背景状态',to: '填写背景状态',properties: { health: 0,wealth: 0,ability: 35} },   
-        { detail: ['富二代你好，家庭富裕在创业路上能够承受更大的风险和失败，祝你好运'],name: '家庭经济富裕',from: '填写背景状态',to: '互联网行业初期状态',properties: { health: 100,wealth: 200000,ability: 0} },
-        { detail: [],name: '家庭经济较富裕',from: '填写背景状态',to: '互联网行业初期状态',properties: { health: 100,wealth: 150000,ability: 0 } },
-        { detail: [],name: '家庭经济一般',from: '填写背景状态',to: '互联网行业初期状态',properties: { health: 100,wealth: 100000,ability: 0} },
-        { detail: [],name: '家庭经济贫困',from: '填写背景状态',to: '互联网行业初期状态',properties: { health: 100,wealth: 50000,ability: 0} },
-  ];
+        { detail: [],name: '工作经验4',from: '填写背景状态',to: '填写背景状态',properties: { health: 0,wealth: 0,ability: 35 } },
+        { detail: ['良好的家庭经济情况让你在创业路上能够承受更大的风险和失败，祝你好运'],name: '家庭经济富裕',from: '填写背景状态',to: '互联网行业初期状态',properties: { health: 100,wealth: 200000,ability: 0,fuyu: 1 } },
+        { detail: ['良好的家庭经济情况让你在创业路上能够承受更大的风险和失败，祝你好运'],name: '家庭经济较富裕',from: '填写背景状态',to: '互联网行业初期状态',properties: { health: 100,wealth: 150000,ability: 0 } },
+        { detail: ['良好的家庭经济情况让你在创业路上能够承受更大的风险和失败，祝你好运'],name: '家庭经济一般',from: '填写背景状态',to: '互联网行业初期状态',properties: { health: 100,wealth: 100000,ability: 0 } },
+        { detail: ['良好的家庭经济情况让你在创业路上能够承受更大的风险和失败，祝你好运'],name: '家庭经济贫困',from: '填写背景状态',to: '互联网行业初期状态',properties: { health: 100,wealth: 50000,ability: 0 } },
+    ];
 
     public static STATES = {
         name: "填写背景状态",
-        properties: { foud: function(properties) { return 0 },health: function(properties) { return 0 },success: function(properties) { return 0 },wealth: function(properties) { return 0 },ability: function(properties) { return 0 } },
+        properties: { fund: function(properties) { return 0 },health: function(properties) { return 0 },success: function(properties) { return 0 },wealth: function(properties) { return 0 },ability: function(properties) { return 0 } },
         questions: Choices.QUESTIONS
     }
 

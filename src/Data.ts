@@ -13,7 +13,7 @@ var EVENTS = [];
 EVENTS.push.apply(EVENTS, Common.EVENTS);
 // 加上各个状态下的事件
 ALL_STATE.map(function(item) {
-    EVENTS.push(EVENTS, item.EVENTS);
+    EVENTS.push.apply(EVENTS, item.EVENTS);
 }); 
 
 console.log(STATES);
