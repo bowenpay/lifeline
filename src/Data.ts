@@ -1,4 +1,4 @@
-var ALL_STATE = [Choices, StartUp, StartUp1, StartUp2];
+var ALL_STATE = [Choices, StartUp, StartUp1, StartUp2, StartUpFail];
 var ALL_ENDINGS = [StartUpEndings]
 
 

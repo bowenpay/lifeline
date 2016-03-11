@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="endUISkin" xmlns:e="http://ns.egret.com/eui">
+	<e:Image height="100%" width="100%" x="0" y="0" source="end_bg_jpg"/>
+	<e:Scroller left="0" right="0" height="90%" scrollPolicyH="ScrollPolicy.off" >
+		<e:viewport>
+			<e:Group >
+				<e:layout>
+					<e:VerticalLayout horizontalAlign="center" gap="30">
+						
+					</e:VerticalLayout>
+				</e:layout>
+				<e:Group >
+					<e:Image id="imageBg" top="10" bottom="80" source="start_up_success_png">
+					</e:Image>
+					<e:Label id="backLabel" multiline="false" text="回顾创业历程"  horizontalCenter="true" percentWidth="40" size="30" fontFamily="微软雅黑"
+					         textAlign="center" top="30">
+					</e:Label>
+					<e:Image id="backImage" horizontalCenter="true" source="end_back_png" top="60" height="40" width="40">
+					</e:Image>
+					<e:Image id="imageTag" source="start_up_sucess_midlle_png" horizontalCenter="0" height="160" width="160" bottom="0" >
+					</e:Image>
+				</e:Group>
+				<e:Label id="title" text="人生赢家" textAlign="center" textColor="0x000000" >
+					
+				</e:Label>
+				<e:Label id="desc" text="      你好，这就dfgdegdfgdfgdfdsxgfrddfgdfgdffs     dfsgfrddfgdfgdf			         考虑是否看见的开始放假看电视剧发快递是激发科技贷款是否健家谁开房记 都发给他突然的感慨的反馈过来；的反馈过来的反馈过来；看录看到啥房间看电视" 
+				         size="28" textColor="0x000000"  multiline="true" percentWidth="90" textAlign="left"  horizontalCenter="true">
+				</e:Label>
+				<e:Image source="end_qrcode_jpg" percentWidth="80">
+				</e:Image>
+			</e:Group>
+		</e:viewport>
+	</e:Scroller>	
+	<e:Group bottom="10" >
+		<e:layout>
+			<e:HorizontalLayout paddingLeft="20" paddingRight="20">
+				
+			</e:HorizontalLayout>
+		</e:layout>
+		<e:Button id="playAgainBtn">
+			<e:skinName>
+				<e:Skin states="up,down,disabled" xmlns:w="http://ns.egret.com/wing">
+					<e:Image width="90%" height="90%" width.down="100%" height.down="100%" horizontalCenter="0" verticalCenter="0" source="end_play_again_png" source.down="end_play_again_png"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+		<e:Button id="shareBtn">
+			<e:skinName>
+				<e:Skin states="up,down,disabled" xmlns:w="http://ns.egret.com/wing">
+					<e:Image width="90%" height="90%" width.down="100%" height.down="100%" horizontalCenter="0" verticalCenter="0" source="end_share_png" source.down="end_share_png"/>
+				</e:Skin>
+			</e:skinName>
+		</e:Button>
+	</e:Group> 
+	<e:Image id="shareMask" height="100%" width="100%" x="0" y="0"/>
+</e:Skin>

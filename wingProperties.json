@@ -165,6 +165,41 @@
 				"isFolder":false,
 				"key":"background_title_png",
 				"name":"background_title_png"
+			},
+			{
+				"isFolder":false,
+				"key":"end_back_png",
+				"name":"end_back_png"
+			},
+			{
+				"isFolder":false,
+				"key":"end_bg_jpg",
+				"name":"end_bg_jpg"
+			},
+			{
+				"isFolder":false,
+				"key":"end_play_again_png",
+				"name":"end_play_again_png"
+			},
+			{
+				"isFolder":false,
+				"key":"end_qrcode_jpg",
+				"name":"end_qrcode_jpg"
+			},
+			{
+				"isFolder":false,
+				"key":"end_share_png",
+				"name":"end_share_png"
+			},
+			{
+				"isFolder":false,
+				"key":"start_up_success_png",
+				"name":"start_up_success_png"
+			},
+			{
+				"isFolder":false,
+				"key":"start_up_sucess_midlle_png",
+				"name":"start_up_sucess_midlle_png"
 			}]
 		}
 	},
