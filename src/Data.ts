@@ -17,8 +17,6 @@ ALL_STATE.map(function(item) {
     EVENTS.push.apply(EVENTS, item.EVENTS);
 }); 
 
-console.log(STATES);
-console.log(EVENTS); 
 ALL_STATE.map(function(item) {
     EVENTS.push.apply(EVENTS,item.EVENTS);
 }); 
@@ -66,6 +64,12 @@ class Data {
      */
     public getStatesProperties() {
         return this.STATES_MAP[this.current].properties;
+    }
+    /**
+     * 获取当前状态下的显示名称
+     */
+    public getStatesDisplyName(){
+        return this.STATES_MAP[this.current].displayName; 
     }
     /**
      * 获取当前状态下的初始化函数

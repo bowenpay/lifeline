@@ -18,6 +18,7 @@ class Main extends eui.UILayer {
          * 游戏统计调用方法 初始化
          */
         // 统计代码
+        tongji(['_trackEvent','game','enter','loading_start',1]);
         tongji(['_trackEvent', '游戏',  '进入游戏', '开始加载', 1]);
         esa.EgretSA.init({ "gameId": "536E77485757673D","chanId": egret.getOption("egret.runtime.spid") || egret.getOption("channelId"), "debug": false });
         esa.EgretSA.loadingSet(1,"开始加载"); // 记录加载过程
@@ -278,6 +279,17 @@ class Main extends eui.UILayer {
             }
 
         }
+        // 
+        this.state_btn = new StatusBtn();
+        this.state_btn.skinName = "resource/custom_eui_skins/statusBtnSkin.exml"
+        this.state_btn.label = this.game_data.getStatesDisplyName();
+        this.state_btn.timeLabelStr = this.timeStr[this.myproperties.time];
+
+        this.state_btn.height = 80;
+        this.state_btn.left = 0;
+        this.state_btn.top = 0;
+        this.state_btn.percentWidth = 100;
+        this.addChild(this.state_btn);
         
     }
     /**
@@ -307,16 +319,7 @@ class Main extends eui.UILayer {
         myScroller.viewport = group;
         this.addChild(myScroller);
         
-        this.state_btn = new StatusBtn;
-        this.state_btn.skinName = "resource/custom_eui_skins/statusBtnSkin.exml"
-        this.state_btn.label = "本科";
-        this.state_btn.timeLabelStr = "第1年1季度"
 
-        this.state_btn.height = 80;
-        this.state_btn.left = 0;
-        this.state_btn.top = 0;
-        this.state_btn.percentWidth = 100;
-        this.addChild(this.state_btn);
     }
     
     /**
@@ -577,7 +580,7 @@ class Main extends eui.UILayer {
 
             tongji(['_trackEvent','状态','改变到',event.to,1]);
             this.game_data.current = event.to;
-            this.state_btn.label=this.game_data.current;
+            this.state_btn.label = this.game_data.getStatesDisplyName();
 
             var properties = this.game_data.getStatesInitialState();
             var mp_clone = JSON.parse(JSON.stringify(this.myproperties));

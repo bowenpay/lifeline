@@ -120,7 +120,7 @@ class StartUp {
                 { answer: "跟父母要一笔钱救急",event: "互联网行业初期没钱了事件3" },
                 { answer: "创业太苦B了，我不干了",event: "互联网行业初期没钱了事件4" },
             ],
-            left_times: 2,
+            left_times: 1,
             require: function(properties) {
                 if(properties.state_time > 2 && properties.wealth < 10000) { return 1; }
                 else { return 3; }
@@ -396,7 +396,7 @@ class StartUp {
         { detail: ["你鸿运当头，有一位天使投资人愿意给你投钱，你算是有了点创业的基础子弹"],name: '互联网行业初期找钱事件1',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 500000,wealth: 20000,ability: 4,health: 0,success: 6 } },
         { detail: ['你成功的找到了一个搞房地产的土老板叔叔，忽悠他给你投了点钱，虽然不多，启动项目应该是够了'],name: '互联网行业初期找钱事件2',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 300000,wealth: 20000,ability: 1,health: 0,success: 2 } },
         { detail: ['你在网上众筹成功，不仅融到了一笔可观的钱，还帮助产品提高了些知名度'],name: '互联网行业初期找钱事件3',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 200000,wealth: 20000,ability: 2,health: 0,success: 4 } },
-        { detail: ['这就放弃啦？好吧，看来你确实不适合创业'],name: '互联网行业初期找钱事件4',from: '互联网行业初期状态',to: '失败状态1',properties: { fund: 0,wealth: 0,ability: 0,health: 0,success: 0 } },
+        { detail: ['这就放弃啦？好吧，看来你确实不适合创业'],name: '互联网行业初期找钱事件4',from: '互联网行业初期状态',to: '互联网创业失败',properties: { ending: 100,__SHOW_ENDING: 1 } },
         { detail: ["跟大多数人一样，你找了三个月的投资，然而并没有人鸟你"],name: '互联网行业初期找钱事件5',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 0,wealth: 0,ability: 1,health: 0,success: 1 } },
         { detail: ["你联系了几个有钱的叔叔阿姨，然而并没有人鸟你"],name: '互联网行业初期找钱事件6',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 0,wealth: 0,ability: 1,health: 0,success: 1 } },
         { detail: ["你在许多网站上申请众筹，但是没有一个网站上众筹成功"],name: '互联网行业初期找钱事件7',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 0,wealth: 0,ability: 1,health: 0,success: 1 } },
@@ -406,7 +406,7 @@ class StartUp {
         { detail: [],name: '互联网行业初期没钱了事件1',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: -20000,wealth: 30000,ability: 1,health: -3,success: -2,time: -1,state_time: -1 } },
         { detail: [],name: '互联网行业初期没钱了事件2',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: -40000,wealth: 30000,ability: 0,health: 0,success: -2,time: -1,state_time: -1 } },
         { detail: [],name: '互联网行业初期没钱了事件3',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: -20000,wealth: 30000,ability: 0,health: 0,success: 0,time: -1,state_time: -1 } },
-        { detail: [],name: '互联网行业初期没钱了事件4',from: '互联网行业初期状态',to: '失败状态1',properties: { fund: 0,wealth: 0,ability: 0,health: 0,success: 0 } },
+        { detail: [],name: '互联网行业初期没钱了事件4',from: '互联网行业初期状态',to: '互联网创业失败',properties: { ending: 100,__SHOW_ENDING: 1} },
         { detail: [],name: '互联网行业初期招人方式事件1',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: -80000,wealth: 0,ability: 0,health: 0,success: 4 } },
         { detail: [],name: '互联网行业初期招人方式事件2',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: -40000,wealth: 0,ability: 1,health: 0,success: 3 } },
         { detail: [],name: '互联网行业初期招人方式事件3',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: -20000,wealth: 0,ability: 2,health: 0,success: 2 } },
@@ -420,17 +420,17 @@ class StartUp {
         { detail: [],name: '互联网行业初期产品上线运营事件2',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: -40000,wealth: 0,ability: 0,health: 0,success: 2 } },
         { detail: [],name: '互联网行业初期产品上线运营事件3',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: -20000,wealth: 50000,ability: 0,health: 1,success: 1 } },
         { detail: [],name: '互联网行业初期家人劝放弃事件1',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 20000,wealth: 0,ability: 5,health: -2,success: 2,time: -1,state_time: -1 } },
-        { detail: [],name: '互联网行业初期家人劝放弃事件2',from: '互联网行业初期状态',to: '创业失败1',properties: { fund: 0,wealth: 0,ability: 0,health: 0,success: 0 } },
+        { detail: [],name: '互联网行业初期家人劝放弃事件2',from: '互联网行业初期状态',to: '互联网行业创业失败',properties: { ending: 100,__SHOW_ENDING: 1 } },
         { detail: [],name: '互联网行业初期身体出问题事件1',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 20000,wealth: 10000,ability: -2,health: 0,success: 0,time: -1,state_time: -1 } },
         { detail: [],name: '互联网行业初期身体出问题事件2',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 0,wealth: 10000,ability: -4,health: 6,success: -3,time: -1,state_time: -1 } },
-        { detail: [],name: '互联网行业初期身体出问题事件3',from: '互联网行业初期状态',to: '选择工作1阶状态',properties: { fund: -20000,wealth: 0,ability: -5,health: 8,success: 0,time: -1,state_time: -1 } },
+        { detail: [],name: '互联网行业初期身体出问题事件3',from: '互联网行业初期状态',to: '互联网创业失败',properties: { ending: 90,__SHOW_ENDING: 1} },
         { detail: [],name: '互联网行业初期身体出问题事件4',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: -20000,wealth: 0,ability: -5,health: 8,success: -2,time: -1,state_time: -1 } },
         { detail: [],name: '互联网行业初期陪客户赌博事件1',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 40000,wealth: 0,ability: 2,health: -2,success: 2 } },
         { detail: [],name: '互联网行业初期陪客户赌博事件2',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: -20000,wealth: 0,ability: 1,health: 1,success: 0 } },
         { detail: [],name: '互联网行业初期做公司PR事件1',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: -80000,wealth: 0,ability: 4,health: -2,success: 4 } },
         { detail: [],name: '互联网行业初期做公司PR事件2',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: -40000,wealth: 0,ability: 2,health: -1,success: 2 } },
         { detail: [],name: '互联网行业初期做公司PR事件3',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 0,wealth: 0,ability: -1,health: 1,success: 0 } },
-        { detail: [],name: '互联网行业初期两年后放弃事件',from: '互联网行业初期状态',to: '职业规划1阶',properties: { fund: 0,wealth: 50000,ability: -5,health: 3,success: 0 } },
+        { detail: [],name: '互联网行业初期两年后放弃事件',from: '互联网行业初期状态',to: '互联网创业失败',properties: { ending: 95,__SHOW_ENDING: 1} },
         { detail: [],name: '互联网行业初期富二代朋友加入事件1',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 300000,wealth: 0,ability: 0,health: 0,success: 2 } },
         { detail: [],name: '互联网行业初期富二代朋友加入事件2',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 0,wealth: 0,ability: 4,health: 0,success: 4 } },
         { detail: [],name: '互联网行业初期富二代朋友加入事件3',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 150000,wealth: 0,ability: 2,health: 0,success: 2 } },
@@ -440,7 +440,7 @@ class StartUp {
         { detail: [],name: '互联网行业初期对象吵架事件1',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 0,wealth: 0,ability: 4,health: -2,success: 4 } },
         { detail: [],name: '互联网行业初期对象吵架事件2',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 0,wealth: 0,ability: 2,health: -4,success: 2 } },
         { detail: [],name: '互联网行业初期对象吵架事件3',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 0,wealth: 0,ability: -2,health: 0,success: 0 } },
-        { detail: [],name: '互联网行业初期创业失败事件1',from: '互联网行业初期状态',to: '创业失败1',properties: { fund: 0,wealth: 0,ability: -5,health: 0,success: 0 } },
+        { detail: [],name: '互联网行业初期创业失败事件1',from: '互联网行业初期状态',to: '互联网行业创业失败',properties: { ending: 100,__SHOW_ENDING: 1 } },
         { detail: [],name: '互联网行业初期财务问题事件1',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: -20000,wealth: 0,ability: 0,health: 0,success: 2 } },
         { detail: [],name: '互联网行业初期财务问题事件2',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: -60000,wealth: 0,ability: 0,health: 0,success: 4 } },
         { detail: [],name: '互联网行业初期财务问题事件3',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 0,wealth: 0,ability: 4,health: -2,success: 0 } },
@@ -457,8 +457,8 @@ class StartUp {
         { detail: [],name: '互联网行业初期员工能力不够事件2',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: -20000,wealth: 0,ability: 0,health: 0,success: 2 } },
         { detail: [],name: '互联网行业初期员工能力不够事件3',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: -20000,wealth: 0,ability: 0,health: 0,success: 0 } },
         { detail: [],name: '互联网行业初期进入下一阶段事件',from: '互联网行业初期状态',to: '互联网行业中期状态',properties: { fund: 0,wealth: 500000,ability: 4,health: 2,success: 4 } },
-        { detail: [],name: '互联网行业初期进入下一阶段事件2',from: '互联网行业初期状态',to: '创业失败1',properties: { fund: 0,wealth: 500000,ability: 4,health: 2,success: 4 } },
-        { detail: [],name: '互联网行业初期生病放弃事件',from: '互联网行业初期状态',to: '创业失败1',properties: { fund: 0,wealth: 0,ability: 0,health: 0,success: 0 } },
+        { detail: [],name: '互联网行业初期进入下一阶段事件2',from: '互联网行业初期状态',to: '互联网行业创业失败',properties: { ending: 100,__SHOW_ENDING: 1} },
+        { detail: [],name: '互联网行业初期生病放弃事件',from: '互联网行业初期状态',to: '互联网行业创业失败',properties: { ending: 90,__SHOW_ENDING: 1 } },
         { detail: [],name: '互联网行业初期富裕事件1',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 200000,wealth: 0,ability: 0,health: 0,success: 2 } },
         { detail: [],name: '互联网行业初期富裕事件2',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 0,wealth: 0,ability: 2,health: 0,success: 0 } },
 
@@ -466,8 +466,12 @@ class StartUp {
 
     public static STATES = {
         name: "互联网行业初期状态",
+        displayName: "创业初级阶段",
         properties: { time: 1,state_time: function(properties) { return 1 },fund: function(properties) { return 20000 },success: function(properties) { return 1 },health: function(properties) { return -2 },wealth: function(properties) { return -10000 },ability: function(properties) { return 4 }, },
-        questions: StartUp.QUESTIONS
+        questions: StartUp.QUESTIONS,
+        initialState: {
+            state_time: function(properties) { return -properties.state_time; }
+        }
     }
 
 

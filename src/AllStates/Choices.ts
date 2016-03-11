@@ -51,7 +51,7 @@ class Choices {
     ];
 
     public static EVENTS = [ //选择背景状态
-        { detail: ['好的教育背景意味着更好的敲门砖，在创业融资，招聘等方面都有优势，祝你好运'],name: '教育背景1',from: '填写背景状态',to: '填写背景状态',properties: { health: 0,wealth: 0,ability: 50,foud: 0,success: 0 } },
+        { detail: ['好的教育背景意味着更好的敲门砖，在创业融资，招聘等方面都有优势，祝你好运'],name: '教育背景1',from: '填写背景状态',to: '填写背景状态',properties: { health: 0,wealth: 0,ability: 50,success: 0 } },
         { detail: ['好的教育背景意味着更好的敲门砖，在创业融资，招聘等方面都有优势，祝你好运'],name: '教育背景2',from: '填写背景状态',to: '填写背景状态',properties: { health: 0,wealth: 0,ability: 45 } },
         { detail: ['好的教育背景意味着更好的敲门砖，在创业融资，招聘等方面都有优势，祝你好运'],name: '教育背景3',from: '填写背景状态',to: '填写背景状态',properties: { health: 0,wealth: 0,ability: 40 } },
         { detail: ['好的教育背景意味着更好的敲门砖，在创业融资，招聘等方面都有优势，祝你好运'],name: '教育背景4',from: '填写背景状态',to: '填写背景状态',properties: { health: 0,wealth: 0,ability: 35 } },
@@ -67,6 +67,7 @@ class Choices {
 
     public static STATES = {
         name: "填写背景状态",
+        displayName: "选择背景",
         properties: { fund: function(properties) { return 0 },health: function(properties) { return 0 },success: function(properties) { return 0 },wealth: function(properties) { return 0 },ability: function(properties) { return 0 } },
         questions: Choices.QUESTIONS
     }
