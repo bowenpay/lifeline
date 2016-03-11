@@ -154,7 +154,6 @@ class Main extends eui.UILayer {
     // 游戏状态
     private game_state = STATE_SPLASH; 
     private myproperties = { 
-        health: 0, wealth: 0, ability: 0, happiness: 0,
         time: 0, 
         __SHOW_ENDING: 0
     };
@@ -175,7 +174,7 @@ class Main extends eui.UILayer {
      * 计时器控制器
      */ 
     private timerHandler(evt: eui.UIEvent): void {
-        if(this.myproperties.__SHOW_ENDING > 0) {
+        if(this.myproperties['__SHOW_ENDING'] > 0) {
             // 游戏时间结束
             this.game_state = STATE_END;
         }
@@ -266,6 +265,20 @@ class Main extends eui.UILayer {
         this.game_state = STATE_STATE;
         this.splash = null;
         this.timer.start();
+        
+        // 初始化进入时的状态
+        var properties = this.game_data.getStatesInitialState();
+        var mp_clone = JSON.parse(JSON.stringify(this.myproperties));
+        for(var key in properties) {
+            var value = properties[key];
+            if(typeof value === "function") {
+                this.myproperties[key] = (mp_clone[key] || 0) + value(mp_clone);
+            } else {
+                this.myproperties[key] = (mp_clone[key] || 0) + value;
+            }
+
+        }
+        
     }
     /**
      * 创建对话框
@@ -576,7 +589,6 @@ class Main extends eui.UILayer {
                 }
 
             }
-            this.state_btn.timeLabelStr = this.timeStr[this.myproperties.time];
             egret.log(JSON.stringify(mp_clone));
             egret.log(JSON.stringify(this.myproperties));
         }
