@@ -17,8 +17,11 @@ class Main extends eui.UILayer {
         /**
          * 游戏统计调用方法 初始化
          */
+        // 统计代码
+        tongji(['_trackEvent', '游戏',  '进入游戏', '开始加载', 1]);
         esa.EgretSA.init({ "gameId": "536E77485757673D","chanId": egret.getOption("egret.runtime.spid") || egret.getOption("channelId"), "debug": false });
         esa.EgretSA.loadingSet(1,"开始加载"); // 记录加载过程
+        
         //inject the custom material parser
         //注入自定义的素材解析器
         var assetAdapter = new AssetAdapter();
@@ -112,6 +115,8 @@ class Main extends eui.UILayer {
      * Create scene interface
      */
     protected startCreateScene(): void {
+        // 统计代码
+        tongji(['_trackEvent','游戏','进入游戏','加载完成',1]);
         esa.EgretSA.loadingSet(2, "加载完成，游戏开始"); // 记录加载过程
         this.createTimer();
          
@@ -217,6 +222,8 @@ class Main extends eui.UILayer {
         if(this.splash != null) { 
             return;
         }
+
+        tongji(['_trackEvent','游戏','闪屏','进入闪屏',1]);
         // 显示splash背景图
         var image = new eui.Image();
         image.source = "resource/game/background.jpg";
@@ -237,6 +244,7 @@ class Main extends eui.UILayer {
         this.addChild(image);
     }
     private splashHandler(evt: eui.UIEvent): void {
+        tongji(['_trackEvent','游戏','闪屏','点击进入',1]);
         this.removeChild(evt.target);
         this.createMsgBox();
         this.game_state = STATE_STATE;
@@ -343,6 +351,7 @@ class Main extends eui.UILayer {
             }
             
         }
+        egret.log('-------------------------------'); 
         egret.log(this.game_data.current+'状态下，属性改变：');        
         egret.log(JSON.stringify(this.myproperties));
     }
@@ -354,11 +363,14 @@ class Main extends eui.UILayer {
         var q = gdata.getQuestion(this.myproperties);
         this.current_question = q;
         if(!q) {
+            tongji(['_trackEvent','显示问题','没有问题','',1]);
             // 如果问题已经问完了，返回
             this.ask('最近什么也没有发生，生活好安逸啊');
             this.scrollerToBottom();
             return;
-        }
+        } 
+        
+        tongji(['_trackEvent','显示问题', '提问', q.question, 1]);
         egret.log('提问：' + q.question);
         this.game_state = STATE_QUESTION;
         // 显示问题
@@ -446,6 +458,8 @@ class Main extends eui.UILayer {
             var event_name = answer;
         }
         var event = this.game_data.EVENTS_MAP[event_name];
+        tongji(['_trackEvent','回答问题','回答', radioGroup.selection.label,1]);
+        tongji(['_trackEvent','回答问题','事件', event.name,1]);
         egret.log('回答:' + radioGroup.selection.label);
         egret.log('事件:' + event.name);
         this.processEvent(event);
@@ -530,6 +544,8 @@ class Main extends eui.UILayer {
         /// 改变状态
         // event.to是空，表示不改变状态。否则改变
         if(event.to != '' && this.game_data.current !== event.to) {
+
+            tongji(['_trackEvent','状态','改变到',event.to,1]);
             this.game_data.current = event.to;
             this.state_btn.label=this.game_data.current;
 
@@ -561,7 +577,7 @@ class Main extends eui.UILayer {
         if(this.splash != null) {
             return;
         }
-        
+
         this.endGrp = new eui.Group();
         this.endGrp.percentWidth =100;
         this.endGrp.percentHeight = 100;
@@ -571,7 +587,9 @@ class Main extends eui.UILayer {
         console.log("游戏结束：显示主人公结局");
         console.log(this.myproperties);
         console.log(ending);
-
+        
+        
+        tongji(['_trackEvent','结局','显示结局',ending.result.title,1]);
         
         // 显示background_end背景图
         var label = new eui.Label();

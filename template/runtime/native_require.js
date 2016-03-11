@@ -21,6 +21,7 @@ var game_file_list = [
 	"bin-debug/Main.js",
 	"bin-debug/StatusBtn.js",
 	"bin-debug/ThemeAdapter.js",
+	"bin-debug/tongji.js",
 	//----auto game_file_list end----
 ];
 
