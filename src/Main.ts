@@ -146,6 +146,8 @@ class Main extends eui.UILayer {
         "第9年1季度","第9年2季度","第9年3季度","第9年4季度",
         "第10年1季度","第10年2季度","第10年3季度","第10年4季度"       
     ];
+    
+    private endPage:EndUI = null;
     // 游戏状态
     private game_state = STATE_SPLASH; 
     private myproperties = { 
@@ -201,7 +203,7 @@ class Main extends eui.UILayer {
             case STATE_END:
                 // 游戏结束，显示主人公结局
                 this.showEnding();
-                this.game_state = STATE_QUIT;
+                //this.game_state = STATE_QUIT;
                 break;
             case STATE_QUIT:
                 // 游戏退出
@@ -561,111 +563,19 @@ class Main extends eui.UILayer {
         if(this.splash != null) {
             return;
         }
-        
-        this.endGrp = new eui.Group();
-        this.endGrp.percentWidth =100;
-        this.endGrp.percentHeight = 100;
-        
-        // TODO: 显示主人公结局
-        var ending = this.game_data.getMyEnding(this.myproperties);
-        console.log("游戏结束：显示主人公结局");
-        console.log(this.myproperties);
-        console.log(ending);
-
-        
-        // 显示background_end背景图
-        var label = new eui.Label();
-        label.percentWidth = 100;
-        label.percentHeight = 100;
-        label.background = true;
-        label.backgroundColor = 0xffffff;
-        this.endGrp.addChild(label);
-        
-        // 显示结局文字end_state背景图
-        var wid = document.documentElement.clientWidth; //获取屏幕宽度
-        var hei = document.documentElement.clientHeight; //获取屏幕高度
-
-        
-        var image = new eui.Image();
-        image.source = "resource/game/end_state.png";
-        image.percentWidth = 100;
-        image.percentHeight = 40;
-        this.endGrp.addChild(image);
-
-        //显示通回到十年
-        var label = new eui.Label();
-        label.text = "回到十年前";
-        label.textColor = 0xffffff;
-        label.size = 30;
-        label.horizontalCenter = 0;//设置水平对齐方式
-        label.top = 40;
-        this.endGrp.addChild(label);
-        // 显示“向前”按钮
-        var image = new eui.Image();
-        image.source = "resource/game/back.png";
-        image.width = 40;
-        image.height = 40;
-        image.horizontalCenter = 0;
-        image.top = 70;
-        this.endGrp.addChild(image);
-        
-        label.addEventListener(egret.TouchEvent.TOUCH_TAP,this.backToBegin,this);
-        image.addEventListener(egret.TouchEvent.TOUCH_TAP,this.backToBegin,this);
-        
-        //显示通过所有游戏
-        var label = new eui.Label();
-        label.text = "恭喜您！通过了所有的游戏！";
-        label.size = 14;
-        label.bold = true;
-        label.textColor = 0xffd800;
-        label.size = 36;
-        label.horizontalCenter = 0;//设置水平对齐方式
-        label.top = hei*0.3;
-        this.endGrp.addChild(label);
-        
-        //显示故事结局标题
-        var label = new eui.Label();
-        label.text = ending.result.title;
-        label.size = 35;
-        label.bold = true;
-        label.textColor = 0xf1cc00;
-        label.horizontalCenter = 0;//设置水平对齐方式
-        label.top = 430;
-        this.endGrp.addChild(label);
-        
-        //显示故事结局文字
-        var label = new eui.Label();
-        label.fontFamily = "Tahoma";//设置字体
-        label.text = ending.result.desc;
-        label.size = 24;
-        label.textColor = 0x000000;
-        label.lineSpacing = 6;//行间距
-        label.percentWidth = 88;
-        label.horizontalCenter = 0;
-        label.top = 510;
-        this.endGrp.addChild(label);
-        
-        // 显示“分享”图片
-        var image = new eui.Image();
-        image.source = "resource/game/share.png";
-        image.width = 521;
-        image.height = 37;
-        image.horizontalCenter = 0;
-        image.bottom = 50;
-        this.endGrp.addChild(image);
-
-        this.endScroller = new eui.Scroller();
-        this.endScroller.percentWidth = 100;
-        this.endScroller.percentHeight = 100;
-        this.endScroller.viewport = this.endGrp;
-        this.endScroller.bounces = true;
-        
-        this.addChild(this.endScroller);
-        
-        this.message_scroller.addEventListener(eui.UIEvent.CHANGE_END,this.scrollChangeEnd,this);
-        //修改title，分享结果
-        document.title = "傻逼的十年";
-        console.log(document.title);
+        if(this.endPage == null)
+        {
+            this.endPage = new EndUI();
+            this.endPage.percentWidth = 100;
+            this.endPage.percentHeight = 100;
+            var ending = this.game_data.getMyEnding(this.myproperties);
+            this.endPage.imageBg.source = ending.result.imageBg;
+            this.endPage.imageTag.source = ending.result.imageTag;
+            this.endPage.imageBg.source = ending.result.imageBg;
+            this.endPage.title.text = ending.result.title;
+            this.endPage.desc.text = ending.result.desc;       
+            this.addChild(this.endPage);  
+        }
     }
     
     //message_scroller滑动到底部

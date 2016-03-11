@@ -17,6 +17,7 @@
   "autoGenerateExmlsList": true,
   "exmls": [
     "resource/custom_eui_skins/askBoxSkin.exml",
+    "resource/custom_eui_skins/endUISkin.exml",
     "resource/custom_eui_skins/radioBtnSkin.exml",
     "resource/custom_eui_skins/statusBtnSkin.exml",
     "resource/eui_skins/ButtonSkin.exml",
