@@ -333,7 +333,6 @@ class Main extends eui.UILayer {
      */ 
     
     private answer(content: string) {
-        console.log(content);
         var btn = new eui.Button();
         btn.skinName = "resource/custom_eui_skins/askBoxSkin.exml";
         btn.label = content;
@@ -360,8 +359,8 @@ class Main extends eui.UILayer {
             }
             
         }
-        console.log(mp_clone);
-        console.log(this.myproperties);
+        egret.log(this.game_data.current+'状态下，属性改变：');        
+        egret.log(JSON.stringify(this.myproperties));
     }
     /**
      * 发起一个提问
@@ -376,6 +375,7 @@ class Main extends eui.UILayer {
             this.scrollerToBottom();
             return;
         }
+        egret.log('提问：' + q.question);
         this.game_state = STATE_QUESTION;
         // 显示问题
         if(q.detail != undefined) {
@@ -455,7 +455,6 @@ class Main extends eui.UILayer {
         
         var radioGroup: eui.RadioButtonGroup = evt.target;
         var answer = radioGroup.selectedValue;
-        console.log(answer);
         if(typeof answer === "function") {
             var mp_clone = JSON.parse(JSON.stringify(this.myproperties));
             var event_name = answer(mp_clone);
@@ -463,7 +462,8 @@ class Main extends eui.UILayer {
             var event_name = answer;
         }
         var event = this.game_data.EVENTS_MAP[event_name];
-        console.log(event);
+        egret.log('回答:' + radioGroup.selection.label);
+        egret.log('事件:' + event.name);
         this.processEvent(event);
         
         // 处理消息
@@ -540,8 +540,8 @@ class Main extends eui.UILayer {
             }
 
         }
-        console.log(mp_clone);
-        console.log(this.myproperties);
+        egret.log('属性改变：');
+        egret.log(JSON.stringify(this.myproperties));
         
         /// 改变状态
         // event.to是空，表示不改变状态。否则改变
@@ -561,8 +561,8 @@ class Main extends eui.UILayer {
 
             }
             this.state_btn.timeLabelStr = this.timeStr[this.myproperties.time];
-            console.log(mp_clone);
-            console.log(this.myproperties);
+            egret.log(JSON.stringify(mp_clone));
+            egret.log(JSON.stringify(this.myproperties));
         }
         
         // 滑动滚动条
@@ -686,13 +686,9 @@ class Main extends eui.UILayer {
     
     //message_scroller滑动到底部
     private scrollChangeEnd(evt: eui.UIEvent): void {
-        console.log("scrollChangeEnd");
-        console.log(this.message_scroller.viewport.contentHeight);
-        
         //if((this.message_scroller.viewport.scrollV >= this.endScrollV) && (this.game_state == STATE_END))
         if((this.message_scroller.viewport.scrollV >= this.endScrollV))
         {
-            console.log(this.message_scroller.viewport.scrollV);
             this.endGrp.visible = true;
         }
     }
@@ -702,7 +698,6 @@ class Main extends eui.UILayer {
         this.endGrp.visible = false;
         this.endScrollV = this.message_scroller.viewport.scrollV;
         this.endScrollV -= this.message_scroller.viewport.height*1/6;
-        console.log(this.endScrollV);
         this.message_scroller.viewport.scrollV = 0;
     }
     /**
@@ -711,5 +706,9 @@ class Main extends eui.UILayer {
     private quitGame() { 
         this.timer.stop();
     }
+    
+    /**
+     * 只展示有用的log
+     */ 
     
 }
