@@ -183,6 +183,7 @@ class Main extends eui.UILayer {
         switch(this.game_state) {
             case STATE_SPLASH: 
                 // 显示splash
+                document.getElementById("preloading").style.display = "none";
                 this.timer.stop();
                 this.createSplash();
                 break; 
@@ -230,18 +231,33 @@ class Main extends eui.UILayer {
         image.percentWidth = 100;
         image.percentHeight = 100;
         this.addChild(image);
+        
+        // 显示十年动态图
+        var image = new eui.Image();
+        image.source = "resource/game/background_title.png";
+        image.width = 330;
+        image.height = 576;
+        image.left = 160;
+        image.y = 10;
+        this.addChild(image);
+        image.alpha = 0;
+        var tw = egret.Tween.get(image);
+        tw.to({ alpha: 1,y: 80 },1000);
+        
         // 显示“进入”按钮
         var wid = document.documentElement.clientWidth;
         var hei = document.documentElement.clientHeight;
         var image = new eui.Image();
-        image.source = "resource/game/clickEnter.png";
-        image.width = 163.2;
-        image.height = 57.6;
+        image.source = "resource/game/click_enter.png";
+        image.width = 190;
+        image.height = 73;
         image.horizontalCenter = 0;
-        image.bottom = hei * 0.3;
+        image.bottom = hei * 0.25;
 
         image.addEventListener(egret.TouchEvent.TOUCH_TAP,this.splashHandler,this);
         this.addChild(image);
+        
+        
     }
     private splashHandler(evt: eui.UIEvent): void {
         tongji(['_trackEvent','游戏','闪屏','点击进入',1]);
