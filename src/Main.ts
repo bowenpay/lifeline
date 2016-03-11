@@ -369,6 +369,7 @@ class Main extends eui.UILayer {
      * 处理当前状态基本任务
      */ 
     private processState() {
+        this.state_btn.timeLabelStr = this.timeStr[this.myproperties.time];
         var properties = this.game_data.getStatesProperties();
         var mp_clone = JSON.parse(JSON.stringify(this.myproperties));
         for(var key in properties) {
