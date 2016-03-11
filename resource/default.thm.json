@@ -17,7 +17,9 @@
   "autoGenerateExmlsList": true,
   "exmls": [
     "resource/custom_eui_skins/askBoxSkin.exml",
+    "resource/custom_eui_skins/playAgainSkin.exml",
     "resource/custom_eui_skins/radioBtnSkin.exml",
+    "resource/custom_eui_skins/shareSkin.exml",
     "resource/custom_eui_skins/statusBtnSkin.exml",
     "resource/eui_skins/ButtonSkin.exml",
     "resource/eui_skins/CheckBoxSkin.exml",

@@ -2208,9 +2208,9 @@ var EVENTS = [
 ];
 
 var ENDINGS = [
-    { condition: { health: 80,wealth: 100,ability: 90,happiness: 90 },result: { title: "人生赢家",desc: "" } },
-    { condition: { health: 50,wealth: 50,ability: 50,happiness: 50 },result: { title: "平凡人生",desc: "" } },
-    { condition: { health: -100,wealth: -100,ability: -100,happiness: -100 },result: { title: "悲惨人生",desc: "" } }
+    { condition: { health: 80,wealth: 100,ability: 90,happiness: 90 },result: { title: "人生赢家",desc: "生活中，你能有强大的能力。给你一本《如来神掌》你绝对能走上人生的巅峰。生活中，你能有强大的能力。给你一本《如来神掌》你绝对能走上人生的巅峰。" } },
+    { condition: { health: 50,wealth: 50,ability: 50,happiness: 50 },result: { title: "平凡人生",desc: "生活中，你能有强大的能力。给你一本《如来神掌》你绝对能走上人生的巅峰。生活中，你能有强大的能力。给你一本《如来神掌》你绝对能走上人生的巅峰。对能走上人生的巅峰。给你一本《如来神掌》你绝对能走上人生的巅峰。生活中，你能有强大的能力。给你一本《如来神掌》你绝对能走上人生的巅峰。给你一本《如来神掌》你绝对能走上人生的巅峰。生活中，你能有强大的能力。给你一本《如来神掌》你绝对能走上人生的巅峰。给你一本《如来神掌》你绝对能走上人生的巅峰。生活中，你能有强大的能力。给你一本《如来神掌》你绝对能走上人生的巅峰。给你一本《如来神掌》你绝对能走上人生的巅峰。生活中，你能有强大的能力。给你一本《如来神掌》你绝对能走上人生的巅峰。" } },
+    { condition: { health: -100,wealth: -100,ability: -100,happiness: -100 },result: { title: "悲惨人生",desc: "生活中，你能有强大的能力。给你一本《如来神掌》你绝对能走上人生的巅峰。生活中，你能有强大的能力。给你一本《如来神掌》你绝" } }
 ];
 // 数据结束
 

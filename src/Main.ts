@@ -597,7 +597,6 @@ class Main extends eui.UILayer {
         console.log(this.myproperties);
         console.log(ending);
 
-        
         // 显示background_end背景图
         var label = new eui.Label();
         label.percentWidth = 100;
@@ -668,14 +667,23 @@ class Main extends eui.UILayer {
         label.top = 510;
         this.endGrp.addChild(label);
         
-        // 显示“分享”图片
-        var image = new eui.Image();
-        image.source = "resource/game/share.png";
-        image.width = 521;
-        image.height = 37;
-        image.horizontalCenter = 0;
-        image.bottom = 50;
-        this.endGrp.addChild(image);
+        //显示再玩一次按钮
+        var playAgainbtn = new eui.Button();
+        playAgainbtn.skinName = "resource/custom_eui_skins/playAgainSkin.exml";
+        playAgainbtn.percentWidth = 40;
+        playAgainbtn.height = 100;
+        playAgainbtn.bottom = 20;
+        playAgainbtn.left= 20;
+        this.endGrp.addChild(playAgainbtn);
+        
+        //显示分享的按钮
+        var sharebtn = new eui.Button();
+        sharebtn.skinName = "resource/custom_eui_skins/shareSkin.exml";
+        sharebtn.percentWidth = 40;
+        sharebtn.height = 100;
+        sharebtn.bottom = 20;
+        sharebtn.left = 240;
+        this.endGrp.addChild(sharebtn);
 
         this.endScroller = new eui.Scroller();
         this.endScroller.percentWidth = 100;
