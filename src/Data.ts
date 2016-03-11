@@ -68,7 +68,7 @@ class Data {
     /**
      * 获取当前状态下的显示名称
      */
-    public getStatesDisplyName(){
+    public getStatesDisplyName() {
         return this.STATES_MAP[this.current].displayName; 
     }
     /**

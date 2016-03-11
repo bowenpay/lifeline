@@ -156,8 +156,8 @@ class StartUp1 {
         {
             question: "你的某个分支产品前景不错，某大头企业想以高价收购你们的该产品，是否答应？",
             answers: [
-                { answer: "答应，我们还有其他布局较深的产品，需要资金才能做更大",event: "互联网中期大头企业收产品1" },
-                { answer: "不答应，我们自己也指望着这个产品完成全部的战略布局",event: "互联网中期大头企业收产品2" },
+                { answer: "答应，我们还有其他布局较深的产品，需要资金才能做大",event: "互联网中期大头企业收产品1" },
+                { answer: "不答应，我们完成公司全面战略布局也需要这条产品线",event: "互联网中期大头企业收产品2" },
             ],
             left_times: 1,
             require: function(properties) {
@@ -193,7 +193,7 @@ class StartUp1 {
             },
         },
         {
-            question: "时间过去了两年，你的公司还处于半死不活的状态，你该如何选择？",
+            question: "时间过去了五年，你的公司还处于半死不活的状态，你该如何选择？",
             answers: [
                 { answer: "坚持就是胜利",event: "互联网中期两年半死不活事件1" },
                 { answer: "把公司卖掉，套现走人",event: "互联网中期两年半死不活事件2" },
@@ -225,9 +225,9 @@ class StartUp1 {
             },
         },
         {
-            question: "时间过去了三年，你的公司做的很成功，你该如何选择？",
+            question: "时间过去了六年，你的公司做的很成功，你该如何选择？",
             answers: [
-                { answer: "进入下一阶段",event: "互联网中期三年后进阶事件1" },
+                { answer: "进入下一阶段",event: "互联网中期六年后进阶事件1" },
             ],
             left_times: 1,
             require: function(properties) {
@@ -236,9 +236,9 @@ class StartUp1 {
             },
         },
         {
-            question: "时间过去了三年，你的公司仍没有什么起色，是时候卖掉走人了",
+            question: "时间过去了六年，你的公司仍没有什么起色，是时候卖掉走人了",
             answers: [
-                { answer: "变卖公司，放弃创业",event: "互联网中期四年后放弃创业1" },
+                { answer: "变卖公司，放弃创业",event: "互联网中期六年后放弃创业1" },
             ],
             left_times: 1,
             require: function(properties) {
@@ -302,8 +302,8 @@ class StartUp1 {
         { detail: [],name: '互联网中期濒临破产事件1',from: '互联网行业中期状态',to: '互联网行业创业失败',properties: { ending: 5,__SHOW_ENDING: 1  } },
         { detail: ["你不懈努力，终于找到了一笔投资，似乎还能撑一段时间"],name: '互联网中期濒临破产事件2',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 1000000,wealth: -100000,ability: 0,health: -4,success: 10 } },
         { detail: ["尽管你很努力，然而投资并没那么好找，你还是失败了"],name: '互联网中期濒临破产事件3',from: '互联网行业中期状态',to: '互联网行业创业失败',properties: { ending: 10,__SHOW_ENDING: 1 } },
-        { detail: [],name: '互联网中期三年后进阶事件1',from: '互联网行业中期状态',to: '互联网后期状态',properties: { fund: 0,wealth: 0,ability: 0,health: 0,success: 0 } },
-        { detail: [],name: '互联网中期四年后放弃创业1',from: '互联网行业中期状态',to: '互联网行业创业失败',properties: { ending: 20,__SHOW_ENDING: 1 } },
+        { detail: [],name: '互联网中期六年后进阶事件1',from: '互联网行业中期状态',to: '互联网后期状态',properties: { fund: 0,wealth: 0,ability: 0,health: 0,success: 0 } },
+        { detail: [],name: '互联网中期六年后放弃创业1',from: '互联网行业中期状态',to: '互联网行业创业失败',properties: { ending: 20,__SHOW_ENDING: 1 } },
 
     ];
 

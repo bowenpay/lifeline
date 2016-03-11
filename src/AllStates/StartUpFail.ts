@@ -9,6 +9,7 @@ class StartUpFail {
 
     public static STATES = {
         name: "互联网行业创业失败",
+        displayName: "创业失败",
         properties: { },
         questions: StartUp.QUESTIONS,
         initialState: {
