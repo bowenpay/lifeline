@@ -18,6 +18,9 @@
     {
       "name": "res"
     },
+	{
+      "name": "tween"
+    },
     {
       "name": "game"
     },
