@@ -170,7 +170,7 @@ class Main extends eui.UILayer {
      * 计时器控制器
      */ 
     private timerHandler(evt: eui.UIEvent): void {
-        if(this.myproperties.__SHOW_ENDING >= 0) {
+        if(this.myproperties.__SHOW_ENDING > 0) {
             // 游戏时间结束
             this.game_state = STATE_END;
         }
