@@ -152,7 +152,7 @@ class Main extends eui.UILayer {
         "第9年1季度","第9年2季度","第9年3季度","第9年4季度",
         "第10年1季度","第10年2季度","第10年3季度","第10年4季度"       
     ];
-    
+    private endDownImage:eui.Image = null;
     private endPage:EndUI = null;
     // 游戏状态
     private game_state = STATE_SPLASH; 
@@ -255,9 +255,12 @@ class Main extends eui.UILayer {
         image.height = 73;
         image.horizontalCenter = 0;
         image.bottom = hei * 0.25;
+        image.alpha = 0;
 
         image.addEventListener(egret.TouchEvent.TOUCH_TAP,this.splashHandler,this);
         this.addChild(image);
+        var enterTw = egret.Tween.get(image);
+        enterTw.to({alpha:1, x:0,y:0,scaleX:1.1,scaleY:1.1},2000)
         
         
     }
@@ -268,6 +271,8 @@ class Main extends eui.UILayer {
         this.game_state = STATE_STATE;
         this.splash = null;
         this.timer.start();
+        
+
         
         // 初始化进入时的状态
         var properties = this.game_data.getStatesInitialState();
@@ -299,6 +304,13 @@ class Main extends eui.UILayer {
      */ 
     private createMsgBox(): void { //创建一个容器, 设置问垂直布局
         this.msgBox = new eui.Group();
+        
+        var image = new eui.Image();
+        image.source = "resource/game/chuanye.jpg";
+        image.percentWidth = 100;
+        image.percentHeight = 100;
+        this.addChild(image);
+        
         var group = this.msgBox;
         group.percentWidth = 100;
         group.percentHeight = 100;
@@ -329,7 +341,6 @@ class Main extends eui.UILayer {
      */
     private scrollerToBottom() {
         var sc = this.message_scroller;
-        //console.log(sc.height);
         while(true) {
             if((sc.viewport.scrollV + sc.height*5/6) >= sc.viewport.contentHeight) {
                 // console.log("滚动到底部了");
@@ -351,7 +362,6 @@ class Main extends eui.UILayer {
         btn.height = 100;
         this.msgBox.addChild(btn);
         this.scrollerToBottom();
-        // this.timer.delay = 1300;
     }
     
     /**
@@ -366,7 +376,6 @@ class Main extends eui.UILayer {
         btn.height = 100;
         this.msgBox.addChild(btn);
         this.scrollerToBottom();
-        // this.timer.delay = 1300;
     }
     
 
@@ -623,29 +632,50 @@ class Main extends eui.UILayer {
             this.endPage.imageBg.source = ending.result.imageBg;
             this.endPage.title.text = ending.result.title;
             this.endPage.desc.text = ending.result.desc;       
-            this.addChild(this.endPage);  
+            this.addChild(this.endPage); 
+            this.endScrollV = this.message_scroller.viewport.scrollV;
+            this.message_scroller.viewport.scrollV = 0;
+            this.endDownImage = new eui.Image();
+            this.endDownImage.source = "resource/game/end_down.png";
+            this.endDownImage.bottom = 20;
+            this.endDownImage.height = 40;
+            this.endDownImage.width = 40;
+            this.endDownImage.horizontalCenter = 0;
+            this.endDownImage.visible = false;
+            this.addChild(this.endDownImage);
+            this.message_scroller.addEventListener(eui.UIEvent.CHANGE_END, this.scrollChangeEnd, this);
+            this.endDownImage.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touchEndDownHandler,this);
+            document.title = ending.result.title;
             // 统计            
             tongji(['_trackEvent','结局','显示结局',ending.result.title,1]);
-
         }
+
     }
     
     //message_scroller滑动到底部
     private scrollChangeEnd(evt: eui.UIEvent): void {
-        //if((this.message_scroller.viewport.scrollV >= this.endScrollV) && (this.game_state == STATE_END))
-        if((this.message_scroller.viewport.scrollV >= this.endScrollV))
-        {
-            this.endGrp.visible = true;
+        console.log("scrollChangeEnd");
+        if((this.message_scroller.viewport.scrollV + this.message_scroller.viewport.height*1/6 >= this.endScrollV) && (this.endPage != null)) {
+            this.endDownImage.visible = true;
+            var tw = egret.Tween.get(this.endDownImage,{loop:true});
+            tw.to({bottom:10}, 1500);
         }
     }
     
-    //回到十年前开始页面
-    private backToBegin(evt: eui.UIEvent): void {
-        this.endGrp.visible = false;
-        this.endScrollV = this.message_scroller.viewport.scrollV;
-        this.endScrollV -= this.message_scroller.viewport.height*1/6;
-        this.message_scroller.viewport.scrollV = 0;
+    //message_scroller滑动到底部
+    private touchEndDownHandler(evt: eui.UIEvent): void {
+        console.log("scrollChangeEnd");
+        this.endDownImage.visible = false;
+        this.addChild(this.endPage);
     }
+    
+    //回到十年前开始页面
+//    private backToBegin(evt: eui.UIEvent): void {
+//        this.endGrp.visible = false;
+//        this.endScrollV = this.message_scroller.viewport.scrollV;
+//        this.endScrollV -= this.message_scroller.viewport.height*1/6;
+//        this.message_scroller.viewport.scrollV = 0;
+//    }
     /**
      * 退出游戏
      */ 

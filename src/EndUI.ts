@@ -18,6 +18,8 @@ class EndUI extends eui.Component {
     	super();
     	this.addEventListener(eui.UIEvent.COMPLETE,this.uiCompHandler,this);
       this.skinName = "resource/custom_eui_skins/endUISkin.exml";
+      var tw = egret.Tween.get(this.backImage,{loop:true});
+      tw.to({top:15},1500);
 	}
     private uiCompHandler(): void {
         this.shareBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.shareBtnHandler,this);

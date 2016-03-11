@@ -7,6 +7,12 @@ class StartUp2 {
     public static QUESTIONS = [
         {
             question: "你的公司已经颇具规模，原有的团队能力已经跟不上公司成长速度，你准备怎么办？",
+            detail: [
+                '能走到这里，你基本已经财富自由了，即使做错了选择，你也不会失败破产',
+                '但是，创业者都是一往直前的，继续努力吧，骚年！',
+                '你的公司已经颇具规模，原有的团队能力已经跟不上公司成长速度，你准备怎么办？',
+
+            ],
             answers: [
                 { answer: "能力大于一切，辞旧迎新",event: "互联网后期原团队能力问题1" },
                 { answer: "老员工更忠诚，应培养和提携",event: "互联网后期原团队能力问题2" },
@@ -336,10 +342,10 @@ class StartUp2 {
         { detail: [],name: '互联网后期巨头事件2',from: '互联网后期状态',to: '互联网行业创业失败',properties: { ending: 60,__SHOW_ENDING: 1  } },
         { detail: [],name: '互联网后期巨头事件3',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 5000000,wealth: 0,ability: 0,health: 0,success: 5 } },
         { detail: [],name: '互联网后期被并购1',from: '互联网后期状态',to: '互联网行业创业失败',properties: { ending: 70,__SHOW_ENDING: 1 } },
-        { detail: [],name: '互联网后期找钱事件1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 10000000,wealth: 1000000,ability: 20,health: 0,success: 20 } },
-        { detail: [],name: '互联网后期找钱事件2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 5000000,wealth: 500000,ability: 10,health: 0,success: 10 } },
-        { detail: [],name: '互联网后期找钱事件3',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 8000000,wealth: 800000,ability: 20,health: 0,success: 28 } },
-        { detail: [],name: '互联网后期找钱事件4',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 4000000,wealth: 400000,ability: 10,health: 0,success: 14 } },
+        { detail: ['你成功找到了一大笔融资'],name: '互联网后期找钱事件1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 10000000,wealth: 1000000,ability: 20,health: 0,success: 20 } },
+        { detail: ['你找到了融资，但是融资时估值并不是那么高'],name: '互联网后期找钱事件2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 5000000,wealth: 500000,ability: 10,health: 0,success: 10 } },
+        { detail: ['你成功找到了一大笔融资'],name: '互联网后期找钱事件3',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 8000000,wealth: 800000,ability: 20,health: 0,success: 28 } },
+        { detail: ['你找到了融资，但是融资时估值并不是那么高'],name: '互联网后期找钱事件4',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 4000000,wealth: 400000,ability: 10,health: 0,success: 14 } },
     ];
 
 

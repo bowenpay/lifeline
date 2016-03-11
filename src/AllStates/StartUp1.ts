@@ -8,6 +8,10 @@ class StartUp1 {
         {
             question: "投资人纠缠估值，怎么选呢？",
             detail: [
+                '你的公司成功度过了起步的艰难时期',
+                '然而很多事情，看上去并没有那么轻松',
+                '或许创业中期的挑战会更让你头疼',
+                '接踵而至的投资人、战略、市场的问题，就看你怎么应对了',
                 '在进行下一轮融资的时候，由于公司估值问题于投资人纠缠了很久，该怎么选择？',
             ],
             answers: [
@@ -242,7 +246,7 @@ class StartUp1 {
             ],
             left_times: 1,
             require: function(properties) {
-                if(properties.state_time > 12) { return 1; }
+                if(properties.state_time > 11) { return 1; }
                 else { return 3; }
             },
         },
@@ -273,18 +277,18 @@ class StartUp1 {
         { detail: [],name: '互联网中期应对类似产品事件1',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: -100000,wealth: 0,ability: 3,health: 0,success: 6 } },
         { detail: [],name: '互联网中期应对类似产品事件2',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 100000,wealth: 30000,ability: 5,health: 0,success: 2 } },
         { detail: [],name: '互联网中期应对类似产品事件3',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: -500000,wealth: 0,ability: 0,health: 0,success: 5 } },
-        { detail: [],name: '互联网中期投资人感兴趣事件1',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 2000000,wealth: 0,ability: 5,health: 0,success: 10 } },
-        { detail: [],name: '互联网中期投资人感兴趣事件2',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 1000000,wealth: 50000,ability: 2,health: 0,success: 5 } },
-        { detail: [],name: '互联网中期投资人感兴趣事件3',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 1500000,wealth: 0,ability: 0,health: 0,success: 15 } },
+        { detail: ["你获得了一笔可观的资金，虽然并没有太多资源帮助，但是你在圈内的名声大噪"],name: '互联网中期投资人感兴趣事件1',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 2000000,wealth: 0,ability: 5,health: 0,success: 10 } },
+        { detail: ["你成功拉到了投资，并获得了一批很好的市场资源，或许这对你的业务有所帮助"],name: '互联网中期投资人感兴趣事件2',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 1000000,wealth: 50000,ability: 2,health: 0,success: 5 } },
+        { detail: ["你成功获得了投资以及很多第一手的市场资源，更加自由的未来在等着你"],name: '互联网中期投资人感兴趣事件3',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 1500000,wealth: 0,ability: 0,health: 0,success: 15 } },
         { detail: [],name: '互联网中期产品运营不错事件1',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: -300000,wealth: 0,ability: 0,health: 0,success: 10 } },
         { detail: [],name: '互联网中期产品运营不错事件2',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 0,wealth: 0,ability: 5,health: 0,success: 6 } },
         { detail: [],name: '互联网中期产品运营不错事件3',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 300000,wealth: 0,ability: 2,health: 0,success: 2 } },
         { detail: [],name: '互联网中期竞争文案打压事件1',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: -300000,wealth: 0,ability: 2,health: 0,success: 2 } },
         { detail: [],name: '互联网中期竞争文案打压事件2',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 300000,wealth: 0,ability: 0,health: 0,success: 4 } },
         { detail: [],name: '互联网中期竞争文案打压事件3',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: -150000,wealth: 0,ability: 4,health: 0,success: 6 } },
-        { detail: [],name: '互联网中期跟投资人打交道事件1',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: -100000,wealth: 0,ability: 0,health: 0,success: 10 } },
-        { detail: [],name: '互联网中期跟投资人打交道事件2',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 0,wealth: 0,ability: 5,health: 0,success: 5 } },
-        { detail: [],name: '互联网中期跟投资人打交道事件3',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 100000,wealth: 0,ability: 10,health: 0,success: 5 } },
+        { detail: ["你努力的在各种活动中刷脸，虽然并没得到任何实质性的投资，但还是获得了点名气"],name: '互联网中期跟投资人打交道事件1',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: -100000,wealth: 0,ability: 0,health: 0,success: 10 } },
+        { detail: ["对你的公司感兴趣的投资人很多，然而精打细算的投资人并没有确定要投钱给你"],name: '互联网中期跟投资人打交道事件2',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 0,wealth: 0,ability: 5,health: 0,success: 5 } },
+        { detail: ["你决心用产品的盈利模式来说话，可惜目前没有太多投资人对你感兴趣"],name: '互联网中期跟投资人打交道事件3',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 100000,wealth: 0,ability: 10,health: 0,success: 5 } },
         { detail: ["市场扩大，这位投资人很满意，你获得了一笔投资"],name: '互联网中期投资要求补贴事件1',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 500000,wealth: 0,ability: 0,health: 0,success: 5 } },
         { detail: [],name: '互联网中期投资要求补贴事件2',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 200000,wealth: 0,ability: 0,health: 0,success: 3 } },
         { detail: ["市场是扩大了，然而这位投资人并不满意，你还是没拿到投资"],name: '互联网中期投资要求补贴事件3',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: -200000,wealth: 0,ability: 0,health: 0,success: 10 } },
@@ -297,10 +301,10 @@ class StartUp1 {
         { detail: [],name: '互联网中期做公司PR事件1',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: -500000,wealth: 0,ability: 0,health: 0,success: 20 } },
         { detail: [],name: '互联网中期做公司PR事件2',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: -300000,wealth: 0,ability: 0,health: 0,success: 10 } },
         { detail: [],name: '互联网中期做公司PR事件3',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 200000,wealth: 0,ability: 0,health: 0,success: 0 } },
-        { detail: [],name: '互联网中期两年半死不活事件1',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 500000,wealth: 0,ability: 0,health: 0,success: 5 } },
+        { detail: ["你坚信自己能够熬过这段艰难的日子，接下来的决策，你或许该考虑资金的问题了"],name: '互联网中期两年半死不活事件1',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 500000,wealth: 0,ability: 0,health: 0,success: 5 } },
         { detail: [],name: '互联网中期两年半死不活事件2',from: '互联网行业中期状态',to: '互联网行业创业失败',properties: { ending: 15,__SHOW_ENDING: 1 } },
         { detail: [],name: '互联网中期濒临破产事件1',from: '互联网行业中期状态',to: '互联网行业创业失败',properties: { ending: 5,__SHOW_ENDING: 1  } },
-        { detail: ["你不懈努力，终于找到了一笔投资，似乎还能撑一段时间"],name: '互联网中期濒临破产事件2',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 1000000,wealth: -100000,ability: 0,health: -4,success: 10 } },
+        { detail: ["你不懈努力，终于找到了一小笔投资，似乎还能撑一段时间"],name: '互联网中期濒临破产事件2',from: '互联网行业中期状态',to: '互联网行业中期状态',properties: { fund: 1000000,wealth: -100000,ability: 0,health: -4,success: 10 } },
         { detail: ["尽管你很努力，然而投资并没那么好找，你还是失败了"],name: '互联网中期濒临破产事件3',from: '互联网行业中期状态',to: '互联网行业创业失败',properties: { ending: 10,__SHOW_ENDING: 1 } },
         { detail: [],name: '互联网中期六年后进阶事件1',from: '互联网行业中期状态',to: '互联网后期状态',properties: { fund: 0,wealth: 0,ability: 0,health: 0,success: 0 } },
         { detail: [],name: '互联网中期六年后放弃创业1',from: '互联网行业中期状态',to: '互联网行业创业失败',properties: { ending: 20,__SHOW_ENDING: 1 } },
