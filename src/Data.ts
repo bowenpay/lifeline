@@ -1,7 +1,8 @@
 var ALL_STATE = [Choices, StartUp, StartUp1, StartUp2];
+var ALL_ENDINGS = [StartUpEndings]
 
 
-// 数据开始
+//////// 数据开始
 // 通用问题
 var COMMON_QUESTIONS = Common.QUESTIONS;
 // 所有状态
@@ -17,14 +18,16 @@ ALL_STATE.map(function(item) {
 }); 
 
 console.log(STATES);
-console.log(EVENTS);
-
-var ENDINGS = [
-    { condition: { health: 80,wealth: 100,ability: 90,happiness: 90 },result: { title: "人生赢家",desc: "" } },
-    { condition: { health: 50,wealth: 50,ability: 50,happiness: 50 },result: { title: "平凡人生",desc: "" } },
-    { condition: { health: -100,wealth: -100,ability: -100,happiness: -100 },result: { title: "悲惨人生",desc: "" } }
-];
-// 数据结束
+console.log(EVENTS); 
+ALL_STATE.map(function(item) {
+    EVENTS.push.apply(EVENTS,item.EVENTS);
+}); 
+// 所有结局
+var ENDINGS = [];
+ALL_ENDINGS.map(function(item) {
+    ENDINGS.push.apply(ENDINGS, item.ENDINGS);
+}); 
+/////// 数据结束
 
 
 var STATE_CERTAIN = 1; // 必然出现

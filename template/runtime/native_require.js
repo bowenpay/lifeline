@@ -14,6 +14,7 @@ var game_file_list = [
 	"bin-debug/AllStates/StartUp.js",
 	"bin-debug/AllStates/StartUp1.js",
 	"bin-debug/AllStates/StartUp2.js",
+	"bin-debug/AllStates/StartUpEndings.js",
 	"bin-debug/AssetAdapter.js",
 	"bin-debug/Data.js",
 	"bin-debug/LoadingUI.js",

@@ -150,7 +150,8 @@ class Main extends eui.UILayer {
     private game_state = STATE_SPLASH; 
     private myproperties = { 
         health: 0, wealth: 0, ability: 0, happiness: 0,
-        time: 0
+        time: 0, 
+        __SHOW_ENDING: 0
     };
     
     /**
@@ -169,7 +170,7 @@ class Main extends eui.UILayer {
      * 计时器控制器
      */ 
     private timerHandler(evt: eui.UIEvent): void {
-        if(this.myproperties.time >= 40 && this.game_state < STATE_END) {
+        if(this.myproperties.__SHOW_ENDING >= 0) {
             // 游戏时间结束
             this.game_state = STATE_END;
         }
