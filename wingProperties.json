@@ -160,6 +160,11 @@
 				"isFolder":false,
 				"key":"statusBtn_png",
 				"name":"statusBtn_png"
+			},
+			{
+				"isFolder":false,
+				"key":"background_title_png",
+				"name":"background_title_png"
 			}]
 		}
 	},
