@@ -180,6 +180,8 @@ class Main extends eui.UILayer {
         this.timer.addEventListener(egret.TimerEvent.TIMER,this.timerHandler,this);
         //开始计时
         this.timer.start();
+        console.log("http://" + this.host + "/startup/")
+        console.log("http://" + this.host + "/startup/resource/wx_share.jpg");
     }
     
     /**
