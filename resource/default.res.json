@@ -1,12 +1,16 @@
 {
 	"groups":[
 		{
-			"keys":"background_title_png,checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,fail_bg_png,fail_tag_png,fangqi_bg_png,fangqi_tag_png,quit_bg_png,quit_tag_png,sucess_bg_png,sucess_tag_png",
+			"keys":"background_title_png,checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png",
 			"name":"preload"
 		},
 		{
 			"keys":"ask_png,radiobtn_selected_png,radiobtn_unselected_png,radiobtn_disable_unselect_png,radiobtn_select_png,radiobtn_unselect_png,statusBtn_png,end_bg_jpg,start_up_success_png,end_back_png,start_up_sucess_midlle_png,end_qrcode_jpg,end_play_again_png,end_share_png,end_btn_bg_png",
 			"name":"bowen"
+		},
+		{
+			"keys":"fail_bg_png,fail_tag_png,fangqi_bg_png,fangqi_tag_png,quit_bg_png,quit_tag_png,sucess_bg_png,sucess_tag_png",
+			"name":"states"
 		}
 	],
 	"resources":[

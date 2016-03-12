@@ -10,20 +10,20 @@
 					</e:VerticalLayout>
 				</e:layout>
 				<e:Group >
-					<e:Image id="imageBg" top="10" bottom="86" source="start_up_success_png">
+					<e:Image id="imageBg" top="10" bottom="86">
 					</e:Image>
 					<e:Image id="backImage" horizontalCenter="true" source="end_back_png" top="20" height="40" width="40">
 					</e:Image>
 					<e:Label id="backLabel" multiline="false" text="回顾创业历程"  horizontalCenter="true" percentWidth="40" size="30" fontFamily="微软雅黑"
 					         textAlign="center" top="60">
 					</e:Label>
-					<e:Image id="imageTag" source="start_up_sucess_midlle_png" horizontalCenter="0" height="172" width="175" bottom="0" >
+					<e:Image id="imageTag" horizontalCenter="0" height="172" width="175" bottom="0" >
 					</e:Image>
 				</e:Group>
 				<e:Label id="title" size="30" text="人生赢家" bold="true" textAlign="center" textColor="0x419f99" >
 					
 				</e:Label>
-				<e:Label id="desc" text="      你好，这就dfgdegdfgdfgdfdsxgfrddfgdfgdffs     dfsgfrddfgdfgdf			         考虑是否看见的开始放假看电视剧发快递是激发科技贷款是否健家谁开房记 都发给他突然的感慨的反馈过来；的反馈过来的反馈过来；看录看到啥房间看电视" 
+				<e:Label id="desc" text="" 
 				         size="24" textColor="0x000000"  multiline="true" percentWidth="90" fontFamily="黑体-简 中等" textAlign="left" lineSpacing="10" horizontalCenter="true">
 				</e:Label>
 				<e:Image id="qrcodeImg" source="end_qrcode_jpg" percentWidth="80">
