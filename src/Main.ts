@@ -180,8 +180,6 @@ class Main extends eui.UILayer {
         this.timer.addEventListener(egret.TimerEvent.TIMER,this.timerHandler,this);
         //开始计时
         this.timer.start();
-        console.log("http://" + this.host + "/startup/")
-        console.log("http://" + this.host + "/startup/resource/wx_share.jpg");
     }
     
     /**
@@ -250,6 +248,7 @@ class Main extends eui.UILayer {
         },this);
     }
     private getWeiXinConfig() {
+        var self = this;
         //配置参数
         var bodyConfig = new BodyConfig();
         bodyConfig.debug = this.signPackage.debug;// 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
@@ -262,8 +261,8 @@ class Main extends eui.UILayer {
         wx.ready(function() {
             var title = "创业那些年，你能走多远？";
             var desc = "最真实的文字模拟游戏《创业那些年》。只有不到千分之一的人能玩到成功上市，快来试试吧！";
-            var link = "http://"+this.host+"/startup/";
-            var imgUrl = "http://"+this.host+"/startup/resource/wx_share.jpg";
+            var link = "http://"+self.host+"/startup/";
+            var imgUrl = "http://"+self.host+"/startup/resource/wx_share.jpg";
             // 分享到微信好友
             var shareAppMessage = new BodyMenuShareAppMessage();
             shareAppMessage.title = title;
@@ -296,10 +295,11 @@ class Main extends eui.UILayer {
      * 结局页面分享
      */ 
     private weixinShareOnEnding(title) { 
+        var self = this;
         wx.ready(function() {
             var desc = "最真实的文字模拟游戏《创业那些年》。只有不到千分之一的人能玩到成功上市，快来试试吧！";
-            var link = "http://"+this.host+"/startup/";
-            var imgUrl = "http://"+this.host+"/startup/resource/wx_share.jpg";
+            var link = "http://" + self.host+"/startup/";
+            var imgUrl = "http://" + self.host+"/startup/resource/wx_share.jpg";
             // 分享到微信好友
             var shareAppMessage = new BodyMenuShareAppMessage();
             shareAppMessage.title = title;
