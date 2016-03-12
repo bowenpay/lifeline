@@ -27,6 +27,10 @@
 	{
 	    "name": "egretsa",
 	    "path": "./libs-third/egretsa"
+	},
+	{
+	    "name": "weixinapi",
+	    "path": "./libs-third/weixinapi"
 	}
   ]
 }

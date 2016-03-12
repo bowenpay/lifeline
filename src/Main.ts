@@ -5,7 +5,14 @@ var STATE_ANSWER = 3; // 等待回答状态
 var STATE_NOOP = 4; // 没有问题了，什么也不做 
 var STATE_END = 5; // 显示结局
 var STATE_QUIT = 6; // 退出游戏状态
-
+interface SignPackage {
+    timestamp: number;
+    appId: string;
+    signature: string;
+    debug: boolean;
+    nonceStr: string;
+    jsApiList: Array<string>;
+}
 class Main extends eui.UILayer {
     /**
      * 加载进度界面
@@ -217,6 +224,57 @@ class Main extends eui.UILayer {
                 break;
         }
     }
+    /* *
+     * 微信
+     * 
+     * */
+    private url: string = 'http://games.bowenpay.com/api/weixin/sign/?url=http://games.bowenpay.com/startup/';;
+    private signPackage: SignPackage;
+    /**
+    * 获取签名分享
+    */
+    private getSignPackage() {
+        var urlloader = new egret.URLLoader();
+        var req = new egret.URLRequest(this.url);
+        urlloader.load(req);
+        req.method = egret.URLRequestMethod.GET;
+        urlloader.addEventListener(egret.Event.COMPLETE,(e) => {
+            var data = JSON.parse(e.target.data);
+            this.signPackage = <SignPackage>data.config;
+            this.getWeiXinConfig();//下面会定义
+        },this);
+    }
+    private getWeiXinConfig() {
+        //配置参数
+        var bodyConfig = new BodyConfig();
+        bodyConfig.debug = this.signPackage.debug;// 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        bodyConfig.appId = this.signPackage.appId;// 必填，公众号的唯一标识
+        bodyConfig.timestamp = this.signPackage.timestamp;// 必填，生成签名的时间戳
+        bodyConfig.nonceStr = this.signPackage.nonceStr;// 必填，生成签名的随机串
+        bodyConfig.signature = this.signPackage.signature;// 必填，签名，见附录1
+        bodyConfig.jsApiList = this.signPackage.jsApiList;
+        wx.config(bodyConfig);
+        wx.ready(function() { 
+            wx.onMenuShareTimeline(this._getShareConf('wxTimeline'));
+            wx.onMenuShareAppMessage(this._getShareConf('wxAppMessage'));
+            wx.onMenuShareQQ(this._getShareConf('qq'));
+            wx.onMenuShareWeibo(this._getShareConf('tencentWeibo'));
+            });
+    }
+    private _getShareConf(tag){
+            return {
+                title: "最真实的文字模拟游戏《创业那些年》",
+                desc: "只有不到1%的人能创业成功，不信来试试",
+                link: "http://games.bowenpay.com/startup/",
+                imgUrl: "http://games.bowenpay.com/startup/resource/wx_share.jpg",
+                success: function () {
+                    tongji(['_trackEvent', 'wxwebShare', 'share', tag]);
+                },
+                cancel: function () {
+                    tongji(['_trackEvent', 'wxwebShare', 'shareCancel', tag]);
+                }
+            }
+        };
     /**
      * 显示splash
      */ 
@@ -225,6 +283,7 @@ class Main extends eui.UILayer {
         if(this.splash != null) { 
             return;
         }
+        this.getSignPackage();
 
         tongji(['_trackEvent','游戏','闪屏','进入闪屏',1]);
         // 显示splash背景图
