@@ -148,6 +148,7 @@ class Main extends eui.UILayer {
     private previous_choose_box = [];
     private state_btn: StatusBtn = null;
     private endScrollV: number = 0;
+    private host = window.location.host;
     private timeStr =[
         "第1年1季度","第1年2季度","第1年3季度","第1年4季度",
         "第2年1季度","第2年2季度","第2年3季度","第2年4季度",
@@ -257,10 +258,10 @@ class Main extends eui.UILayer {
         bodyConfig.jsApiList = this.signPackage.jsApiList;
         wx.config(bodyConfig);
         wx.ready(function() {
-            var title = "最真实的文字模拟游戏《创业那些年》";
-            var desc = "只有不到1%的人能创业成功，不信来试试";
-            var link = "http://games.bowenpay.com/startup/";
-            var imgUrl = "http://games.bowenpay.com/startup/resource/wx_share.jpg";
+            var title = "创业那些年，你能走多远？";
+            var desc = "最真实的文字模拟游戏《创业那些年》。只有不到千分之一的人能玩到成功上市，快来试试吧！";
+            var link = "http://"+this.host+"/startup/";
+            var imgUrl = "http://"+this.host+"/startup/resource/wx_share.jpg";
             // 分享到微信好友
             var shareAppMessage = new BodyMenuShareAppMessage();
             shareAppMessage.title = title;
@@ -295,8 +296,8 @@ class Main extends eui.UILayer {
     private weixinShareOnEnding(title) { 
         wx.ready(function() {
             var desc = "最真实的文字模拟游戏《创业那些年》。只有不到千分之一的人能玩到成功上市，快来试试吧！";
-            var link = "http://games.bowenpay.com/startup/";
-            var imgUrl = "http://games.bowenpay.com/startup/resource/wx_share.jpg";
+            var link = "http://"+this.host+"/startup/";
+            var imgUrl = "http://"+this.host+"/startup/resource/wx_share.jpg";
             // 分享到微信好友
             var shareAppMessage = new BodyMenuShareAppMessage();
             shareAppMessage.title = title;
