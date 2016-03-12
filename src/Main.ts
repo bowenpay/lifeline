@@ -229,14 +229,15 @@ class Main extends eui.UILayer {
      * 微信
      * 
      * */
-    private url: string = 'http://games.bowenpay.com/api/weixin/sign/?url=http://games.bowenpay.com/startup/';;
     private signPackage: SignPackage;
     /**
     * 获取签名分享
     */
     private getSignPackage() {
+        var signUrl = window.location.href.split("#")[0];
+        var url = encodeURIComponent(signUrl);
         var urlloader = new egret.URLLoader();
-        var req = new egret.URLRequest(this.url);
+        var req = new egret.URLRequest('/api/weixin/sign/?url='+url);
         urlloader.load(req);
         req.method = egret.URLRequestMethod.GET;
         urlloader.addEventListener(egret.Event.COMPLETE,(e) => {
@@ -255,27 +256,39 @@ class Main extends eui.UILayer {
         bodyConfig.signature = this.signPackage.signature;// 必填，签名，见附录1
         bodyConfig.jsApiList = this.signPackage.jsApiList;
         wx.config(bodyConfig);
-        wx.ready(function() { 
-            wx.onMenuShareTimeline(this._getShareConf('wxTimeline'));
-            wx.onMenuShareAppMessage(this._getShareConf('wxAppMessage'));
-            wx.onMenuShareQQ(this._getShareConf('qq'));
-            wx.onMenuShareWeibo(this._getShareConf('tencentWeibo'));
-            });
+        wx.ready(function() {
+            var title = "最真实的文字模拟游戏《创业那些年》";
+            var desc = "只有不到1%的人能创业成功，不信来试试";
+            var link = "http://games.bowenpay.com/startup/";
+            var imgUrl = "http://games.bowenpay.com/startup/resource/wx_share.jpg";
+            // 分享到微信好友
+            var shareAppMessage = new BodyMenuShareAppMessage();
+            shareAppMessage.title = title;
+            shareAppMessage.desc = desc;
+            shareAppMessage.link = link;
+            shareAppMessage.imgUrl = imgUrl;
+            shareAppMessage.trigger = function (res) {}    
+            shareAppMessage.success = function (res) {
+                tongji(['_trackEvent','微信分享','分享给好友', '好友', 1]);
+            };
+            shareAppMessage.fail = function (res) {};
+            shareAppMessage.cancel = function (res) {}; 
+            wx.onMenuShareAppMessage(shareAppMessage);
+            // 分享到朋友圈
+            var shareTimeline = new BodyMenuShareTimeline();
+            shareTimeline.title = title;
+            shareTimeline.link = link;
+            shareTimeline.imgUrl = imgUrl;
+            shareTimeline.trigger = function(res) { }
+            shareTimeline.success = function(res) { 
+                tongji(['_trackEvent','微信分享','分享到朋友圈','朋友圈',1]);
+            };
+            shareTimeline.fail = function(res) { };
+            shareTimeline.cancel = function(res) { };
+            wx.onMenuShareTimeline(shareTimeline);
+            
+        });
     }
-    private _getShareConf(tag){
-            return {
-                title: "最真实的文字模拟游戏《创业那些年》",
-                desc: "只有不到1%的人能创业成功，不信来试试",
-                link: "http://games.bowenpay.com/startup/",
-                imgUrl: "http://games.bowenpay.com/startup/resource/wx_share.jpg",
-                success: function () {
-                    tongji(['_trackEvent', 'wxwebShare', 'share', tag]);
-                },
-                cancel: function () {
-                    tongji(['_trackEvent', 'wxwebShare', 'shareCancel', tag]);
-                }
-            }
-        };
     /**
      * 显示splash
      */ 
@@ -677,9 +690,6 @@ class Main extends eui.UILayer {
      * 游戏结束，显示主人公结局
      */ 
     private showEnding() {
-        if(this.splash != null) {
-            return;
-        }
 
         if(this.endPage == null)
         {
