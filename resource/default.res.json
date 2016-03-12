@@ -1,7 +1,7 @@
 {
 	"groups":[
 		{
-			"keys":"background_title_png,checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png",
+			"keys":"background_title_png,checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,fail_bg_png,fail_tag_png,fangqi_bg_png,fangqi_tag_png,quit_bg_png,quit_tag_png,sucess_bg_png,sucess_tag_png",
 			"name":"preload"
 		},
 		{
@@ -204,6 +204,46 @@
 			"name":"end_btn_bg_png",
 			"type":"image",
 			"url":"assets/end/end_btn_bg.png"
+		},
+		{
+			"name":"fail_bg_png",
+			"type":"image",
+			"url":"assets/states/startup/fail_bg.png"
+		},
+		{
+			"name":"fail_tag_png",
+			"type":"image",
+			"url":"assets/states/startup/fail_tag.png"
+		},
+		{
+			"name":"fangqi_bg_png",
+			"type":"image",
+			"url":"assets/states/startup/fangqi_bg.png"
+		},
+		{
+			"name":"fangqi_tag_png",
+			"type":"image",
+			"url":"assets/states/startup/fangqi_tag.png"
+		},
+		{
+			"name":"quit_bg_png",
+			"type":"image",
+			"url":"assets/states/startup/quit_bg.png"
+		},
+		{
+			"name":"quit_tag_png",
+			"type":"image",
+			"url":"assets/states/startup/quit_tag.png"
+		},
+		{
+			"name":"sucess_bg_png",
+			"type":"image",
+			"url":"assets/states/startup/sucess_bg.png"
+		},
+		{
+			"name":"sucess_tag_png",
+			"type":"image",
+			"url":"assets/states/startup/sucess_tag.png"
 		}
 	]
 }

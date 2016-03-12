@@ -26,7 +26,7 @@
 				<e:Label id="desc" text="      你好，这就dfgdegdfgdfgdfdsxgfrddfgdfgdffs     dfsgfrddfgdfgdf			         考虑是否看见的开始放假看电视剧发快递是激发科技贷款是否健家谁开房记 都发给他突然的感慨的反馈过来；的反馈过来的反馈过来；看录看到啥房间看电视" 
 				         size="24" textColor="0x000000"  multiline="true" percentWidth="90" fontFamily="黑体-简 中等" textAlign="left" lineSpacing="10" horizontalCenter="true">
 				</e:Label>
-				<e:Image source="end_qrcode_jpg" percentWidth="80">
+				<e:Image id="qrcodeImg" source="end_qrcode_jpg" percentWidth="80">
 				</e:Image>
 			</e:Group>
 		</e:viewport>

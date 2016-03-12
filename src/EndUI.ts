@@ -13,6 +13,7 @@ class EndUI extends eui.Component {
     public shareMask:eui.Image;
     public backImage:eui.Image;
     public backLabel:eui.Label;
+    public qrcodeImg:eui.Image;
     
 	constructor() {
     	super();
@@ -20,6 +21,7 @@ class EndUI extends eui.Component {
       this.skinName = "resource/custom_eui_skins/endUISkin.exml";
       var tw = egret.Tween.get(this.backImage,{loop:true});
       tw.to({top:15},1500);
+
 	}
     private uiCompHandler(): void {
         this.shareBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.shareBtnHandler,this);
@@ -27,6 +29,19 @@ class EndUI extends eui.Component {
         this.backImage.addEventListener(egret.TouchEvent.TOUCH_TAP,this.endBackHandler,this);
         this.backLabel.addEventListener(egret.TouchEvent.TOUCH_TAP,this.endBackHandler,this);
         this.playAgainBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.playAgainBtnHandler,this);
+        this.qrcodeImg.addEventListener(egret.TouchEvent.TOUCH_BEGIN,this.qrcodeImgTouchBegin,this);
+        this.qrcodeImg.addEventListener(egret.TouchEvent.TOUCH_END,this.qrcodeImgTouchEnd,this);
+    }
+    private qrcodeImgTouchBegin(evt: egret.TouchEvent): void {
+        console.log("qrcodeImgTouchBegin");
+        document.getElementById("qrcodeMask").setAttribute("src","resource/game/game_mask.png");
+        document.getElementById("qrcodeMask").setAttribute("style","position:absolute;margin-top:0px;z-index:1;");
+    }
+    
+    private qrcodeImgTouchEnd(evt: egret.TouchEvent): void {
+        console.log("qrcodeImgTouchEnd");
+        document.getElementById("qrcodeMask").setAttribute("src","resource/game/game_mask.png");
+        document.getElementById("qrcodeMask").setAttribute("style","position:absolute;margin-top:0px;z-index:-1;");
     }
     
     private shareBtnHandler(evt:egret.TouchEvent):void{

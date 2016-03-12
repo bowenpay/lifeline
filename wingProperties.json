@@ -205,6 +205,46 @@
 				"isFolder":false,
 				"key":"end_btn_bg_png",
 				"name":"end_btn_bg_png"
+			},
+			{
+				"isFolder":false,
+				"key":"fail_bg_png",
+				"name":"fail_bg_png"
+			},
+			{
+				"isFolder":false,
+				"key":"fail_tag_png",
+				"name":"fail_tag_png"
+			},
+			{
+				"isFolder":false,
+				"key":"fangqi_bg_png",
+				"name":"fangqi_bg_png"
+			},
+			{
+				"isFolder":false,
+				"key":"fangqi_tag_png",
+				"name":"fangqi_tag_png"
+			},
+			{
+				"isFolder":false,
+				"key":"quit_bg_png",
+				"name":"quit_bg_png"
+			},
+			{
+				"isFolder":false,
+				"key":"quit_tag_png",
+				"name":"quit_tag_png"
+			},
+			{
+				"isFolder":false,
+				"key":"sucess_bg_png",
+				"name":"sucess_bg_png"
+			},
+			{
+				"isFolder":false,
+				"key":"sucess_tag_png",
+				"name":"sucess_tag_png"
 			}]
 		}
 	},
