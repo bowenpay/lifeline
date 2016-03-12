@@ -757,7 +757,7 @@ class Main extends eui.UILayer {
             // 统计            
             tongji(['_trackEvent','结局','显示结局',endingTitle,1]);
             // 微信分享
-            this.weixinShareOnEnding(endingTitle);
+            this.weixinShareOnEnding(ending.result.weixintitle);
         }
 
     }
