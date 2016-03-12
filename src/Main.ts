@@ -290,6 +290,42 @@ class Main extends eui.UILayer {
         });
     }
     /**
+     * 结局页面分享
+     */ 
+    private weixinShareOnEnding(title) { 
+        wx.ready(function() {
+            var desc = "最真实的文字模拟游戏《创业那些年》。只有不到千分之一的人能玩到成功上市，快来试试吧！";
+            var link = "http://games.bowenpay.com/startup/";
+            var imgUrl = "http://games.bowenpay.com/startup/resource/wx_share.jpg";
+            // 分享到微信好友
+            var shareAppMessage = new BodyMenuShareAppMessage();
+            shareAppMessage.title = title;
+            shareAppMessage.desc = desc;
+            shareAppMessage.link = link;
+            shareAppMessage.imgUrl = imgUrl;
+            shareAppMessage.trigger = function(res) { }
+            shareAppMessage.success = function(res) {
+                tongji(['_trackEvent','微信分享','分享给好友','好友',1]);
+            };
+            shareAppMessage.fail = function(res) { };
+            shareAppMessage.cancel = function(res) { };
+            wx.onMenuShareAppMessage(shareAppMessage);
+            // 分享到朋友圈
+            var shareTimeline = new BodyMenuShareTimeline();
+            shareTimeline.title = title;
+            shareTimeline.link = link;
+            shareTimeline.imgUrl = imgUrl;
+            shareTimeline.trigger = function(res) { }
+            shareTimeline.success = function(res) {
+                tongji(['_trackEvent','微信分享','分享到朋友圈','朋友圈',1]);
+            };
+            shareTimeline.fail = function(res) { };
+            shareTimeline.cancel = function(res) { };
+            wx.onMenuShareTimeline(shareTimeline);
+
+        });
+    }
+    /**
      * 显示splash
      */ 
     
@@ -297,7 +333,6 @@ class Main extends eui.UILayer {
         if(this.splash != null) { 
             return;
         }
-        this.getSignPackage();
 
         tongji(['_trackEvent','游戏','闪屏','进入闪屏',1]);
         // 显示splash背景图
@@ -335,7 +370,8 @@ class Main extends eui.UILayer {
         var enterTw = egret.Tween.get(image);
         enterTw.to({alpha:1, x:0,y:0,scaleX:1.1,scaleY:1.1},2000)
         
-        
+        // 微信分享
+        this.getSignPackage();
     }
     private splashHandler(evt: eui.UIEvent): void {
         tongji(['_trackEvent','游戏','闪屏','点击进入',1]);
@@ -344,8 +380,6 @@ class Main extends eui.UILayer {
         this.game_state = STATE_STATE;
         this.splash = null;
         this.timer.start();
-        
-
         
         // 初始化进入时的状态
         var properties = this.game_data.getStatesInitialState();
@@ -715,9 +749,12 @@ class Main extends eui.UILayer {
             this.addChild(this.endDownImage);
             this.message_scroller.addEventListener(eui.UIEvent.CHANGE_END, this.scrollChangeEnd, this);
             this.endDownImage.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touchEndDownHandler,this);
-            document.title = ending.result.title;
+            var endingTitle = ending.result.title;
+            document.title = endingTitle;
             // 统计            
-            tongji(['_trackEvent','结局','显示结局',ending.result.title,1]);
+            tongji(['_trackEvent','结局','显示结局',endingTitle,1]);
+            // 微信分享
+            this.weixinShareOnEnding(endingTitle);
         }
 
     }
