@@ -285,7 +285,7 @@ class StartUp {
             ],
             left_times: 1,
             require: function(properties) {
-                if(properties.state_time > 7 && properties.fund < 1000000) { return 1; }
+                if(properties.state_time > 9 && properties.fund < 1000000) { return 1; }
                 else { return 3; }
             },
         },
@@ -440,7 +440,7 @@ class StartUp {
         { detail: [],name: '互联网行业初期两年后做的不错事件2',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { ending: 80,__SHOW_ENDING: 1} },
         { detail: [],name: '互联网行业初期两年后做的不错事件3',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { ending: 80,__SHOW_ENDING: 1 } },
         { detail: ['创业者是孤独的——牛云如是说'],name: '互联网行业初期对象吵架事件1',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 0,wealth: 0,ability: 4,health: -2,success: 4 } },
-        { detail: [],name: '互联网行业初期对象吵架事件2',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 0,wealth: 0,ability: 2,health: -4,success: 2 } },
+        { detail: ["人总是以为自己能兼顾很多东西，但其实都是不现实的"],name: '互联网行业初期对象吵架事件2',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 0,wealth: 0,ability: 2,health: -4,success: 2 } },
         { detail: [],name: '互联网行业初期对象吵架事件3',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: 0,wealth: 0,ability: -2,health: 0,success: 0 } },
         { detail: [],name: '互联网行业初期创业失败事件1',from: '互联网行业初期状态',to: '互联网行业创业失败',properties: { ending: 100,__SHOW_ENDING: 1 } },
         { detail: [],name: '互联网行业初期财务问题事件1',from: '互联网行业初期状态',to: '互联网行业初期状态',properties: { fund: -20000,wealth: 0,ability: 0,health: 0,success: 2 } },
