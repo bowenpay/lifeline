@@ -176,7 +176,7 @@ class Main extends eui.UILayer {
      */ 
     private createTimer(): void { 
         //创建一个计时器对象
-        this.timer = new egret.Timer(300, 0);
+        this.timer = new egret.Timer(500, 0);
         //注册事件侦听器
         this.timer.addEventListener(egret.TimerEvent.TIMER,this.timerHandler,this);
         //开始计时
@@ -363,8 +363,8 @@ class Main extends eui.UILayer {
         var hei = document.documentElement.clientHeight;
         var image = new eui.Image();
         image.source = "resource/game/click_enter.png";
-        image.width = 190;
-        image.height = 73;
+        image.width = 0;
+        image.height = 0;
         image.horizontalCenter = 0;
         image.bottom = hei * 0.25;
         image.alpha = 0;
@@ -372,8 +372,7 @@ class Main extends eui.UILayer {
         image.addEventListener(egret.TouchEvent.TOUCH_TAP,this.splashHandler,this);
         this.addChild(image);
         var enterTw = egret.Tween.get(image);
-        enterTw.to({alpha:1, x:0,y:0,scaleX:1.1,scaleY:1.1},2000)
-        
+        enterTw.to({ alpha: 1,width: 190,height: 73 },500)
         // 微信分享
         this.getSignPackage();
     }
