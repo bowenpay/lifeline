@@ -10,17 +10,15 @@
 					</e:VerticalLayout>
 				</e:layout>
 				<e:Group >
-					<e:Image id="imageBg" top="10" bottom="86">
+					<e:Image id="imageBg" top="10" bottom="10">
 					</e:Image>
 					<e:Image id="backImage" horizontalCenter="true" source="end_back_png" top="20" height="40" width="40">
 					</e:Image>
 					<e:Label id="backLabel" multiline="false" text="回顾创业历程"  horizontalCenter="true" percentWidth="40" size="30" fontFamily="微软雅黑"
 					         textAlign="center" top="60">
-					</e:Label>
-					<e:Image id="imageTag" horizontalCenter="0" height="172" width="175" bottom="0" >
-					</e:Image>
+						</e:Label>
 				</e:Group>
-				<e:Label id="title" size="30" text="人生赢家" bold="true" textAlign="center" textColor="0x419f99" >
+				<e:Label id="title" size="34" text="人生赢家" bold="true" textAlign="center" textColor="0xd89411" >
 					
 				</e:Label>
 				<e:Label id="desc" text="" 

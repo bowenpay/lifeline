@@ -735,8 +735,6 @@ class Main extends eui.UILayer {
             this.endPage.percentHeight = 100;
             var ending = this.game_data.getMyEnding(this.myproperties);
             this.endPage.imageBg.source = ending.result.imageBg;
-            this.endPage.imageTag.source = ending.result.imageTag;
-            this.endPage.imageBg.source = ending.result.imageBg;
             this.endPage.title.text = ending.result.title;
             this.endPage.desc.text = ending.result.desc;       
 //            this.addChild(this.endPage); 

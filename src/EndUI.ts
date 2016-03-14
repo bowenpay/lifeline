@@ -5,7 +5,6 @@
  */
 class EndUI extends eui.Component {
     public imageBg: eui.Image;
-    public imageTag: eui.Image;
     public title: eui.Label;
     public desc: eui.Label;
     public playAgainBtn: eui.Button;
