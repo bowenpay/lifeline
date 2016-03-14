@@ -31,6 +31,7 @@ class EndUI extends eui.Component {
         this.playAgainBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.playAgainBtnHandler,this);
         this.qrcodeImg.addEventListener(egret.TouchEvent.TOUCH_BEGIN,this.qrcodeImgTouchBegin,this);
         this.qrcodeImg.addEventListener(egret.TouchEvent.TOUCH_END,this.qrcodeImgTouchEnd,this);
+        this.qrcodeImg.addEventListener(egret.TouchEvent.TOUCH_RELEASE_OUTSIDE,this.qrcodeImgReleaseOut,this);
     }
     private qrcodeImgTouchBegin(evt: egret.TouchEvent): void {
         console.log("qrcodeImgTouchBegin");
@@ -39,6 +40,12 @@ class EndUI extends eui.Component {
     }
     
     private qrcodeImgTouchEnd(evt: egret.TouchEvent): void {
+        console.log("qrcodeImgTouchEnd");
+        document.getElementById("qrcodeMask").setAttribute("src","resource/game/game_mask.png");
+        document.getElementById("qrcodeMask").setAttribute("style","position:absolute;margin-top:0px;z-index:-1;");
+    }
+    
+    private qrcodeImgReleaseOut(evt: egret.TouchEvent): void {
         console.log("qrcodeImgTouchEnd");
         document.getElementById("qrcodeMask").setAttribute("src","resource/game/game_mask.png");
         document.getElementById("qrcodeMask").setAttribute("style","position:absolute;margin-top:0px;z-index:-1;");
