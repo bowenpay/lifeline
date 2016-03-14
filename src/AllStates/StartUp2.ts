@@ -31,7 +31,7 @@ class StartUp2 {
             ],
             left_times: 1,
             require: function(properties) {
-                if(properties.state_time == 14 && properties.success > 350) { return 1; }
+                if(properties.state_time == 13 && properties.success > 350) { return 1; }
                 else { return 3; }
             },
         },
@@ -42,7 +42,7 @@ class StartUp2 {
             [
                 {
                     answer: "经过一系列复杂的准备和申请之后...",event: function(properties) {
-                        if(Math.random() < 0.1 * properties.ablity / 100) {
+                        if(Math.random() < 0.2* properties.ability / 100) {
                             return "互联网后期国内上市1";
                         } else {
                             return "互联网后期国内上市2";
@@ -52,7 +52,7 @@ class StartUp2 {
             ],
             left_times: 1,
             require: function(properties) {
-                if(properties.state_time == 15 && properties.shangshi == 1) { return 1; }
+                if(properties.state_time == 14 && properties.shangshi == 1) { return 1; }
                 else { return 3; }
             },
         },
@@ -67,7 +67,7 @@ class StartUp2 {
             ],
             left_times: 1,
             require: function(properties) {
-                if(properties.state_time == 15 && properties.shangshi == 2) { return 1; }
+                if(properties.state_time == 14 && properties.shangshi == 2) { return 1; }
                 else { return 3; }
             },
         },
@@ -77,7 +77,8 @@ class StartUp2 {
             [
                 {
                     answer: "经过一系列复杂的准备和申请之后...",event: function(properties) {
-                        if(Math.random() < 0.1 * properties.ablity / 100) {
+                       
+                        if(Math.random() < 0.1 * properties.ability / 100) {
                             return "互联网后期国外上市1";
                         } else {
                             return "互联网后期国外上市2";
@@ -87,7 +88,7 @@ class StartUp2 {
             ],
             left_times: 1,
             require: function(properties) {
-                if(properties.state_time == 15 && properties.shangshi == 3) { return 1; }
+                if(properties.state_time == 14 && properties.shangshi == 3) { return 1; }
                 else { return 3; }
             },
         },
@@ -106,7 +107,7 @@ class StartUp2 {
             question: "公司在进行下一轮融资，你更倾向于什么样的投资者？",
             answers: [
                 {
-                    answer: "给钱多但不能提供资源的土豪",
+                    answer: "估值更高但关系不紧密的投资机构",
                     event: function(properties) {
                         if(Math.random() < 0.2 * properties.ability / 100) {
                             return "互联网后期找钱事件1";
@@ -116,7 +117,7 @@ class StartUp2 {
                     }
                 },
                 {
-                    answer: "能给资源但钱给的比较少的机构投资者",event: function(properties) {
+                    answer: "估值稍低但长期合作的投资机构",event: function(properties) {
                         if(Math.random() < 0.2 * properties.ability / 100) {
                             return "互联网后期找钱事件3";
                         } else {
@@ -134,7 +135,7 @@ class StartUp2 {
             },
         },
         {
-            question: "你在市场的占有率已经到了第一，但与第二的差距并不大，是继续烧钱还是先盈利？",
+            question: "你在市场的占有率已经到了第一，但与第二的差距并不大，是继续扩张还是先盈利？",
             answers: [
                 { answer: "先拉开身后的差距，不着急盈利",event: "互联网后期烧钱是否在意1" },
                 { answer: "盈利是一切的根本，要尽快盈利",event: "互联网后期烧钱是否在意2" },
@@ -165,7 +166,7 @@ class StartUp2 {
             question: "你的员工越来越多，怎么管理才好呢？",
             answers: [
                 { answer: "建立多层级的整套管理机制，谁对谁负责一目了然",event: "互联网后期员工越来越多1" },
-                { answer: "建立扁平的管理机制，充分发掘员工潜能",event: "互联网后期员工越来越多2" },
+                { answer: "建立尽量扁平的管理机制，充分发掘员工潜能",event: "互联网后期员工越来越多2" },
             ],
             left_times: 1,
             require: function(properties) { return 2; }
@@ -265,7 +266,7 @@ class StartUp2 {
             ],
             left_times: 1,
             require: function(properties) {
-                if(properties.state_time > 12 && properties.fund < 25000000) { return 1; }
+                if(properties.state_time > 12 && properties.fund < 500000000) { return 1; }
                 else { return 3; }
             },
         },
@@ -296,65 +297,66 @@ class StartUp2 {
     ];
 
     public static EVENTS = [ 
-        //互联网后期状态事件
+        //互联网后期状态事件     
         { detail: ["看来你已经百炼成钢了，成功就在不远处，加油"],name: '互联网后期身心1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 0,wealth: 0,ability: 10,health: 0,success: 15 } },
         { detail: ["坚持就是胜利，成功就在不远处，加油"],name: '互联网后期身心2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 0,wealth: 0,ability: 10,health: 0,success: 10 } },
         { detail: ["你选择了最稳妥的退出方式，虽然没有上市，但你也已经很成功了！"],name: '互联网后期身心3',from: '互联网后期状态',to: '互联网行业创业失败',properties: { ending: 50,__SHOW_ENDING: 1 } },
-        { detail: [],name: '互联网后期政府关系1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -1000000,wealth: 0,ability: 10,health: 0,success: 15 } },
+        { detail: [],name: '互联网后期政府关系1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -20000000,wealth: 0,ability: 10,health: 0,success: 15 } },
         { detail: [],name: '互联网后期政府关系2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 0,wealth: 0,ability: 0,health: 0,success: 5 } },
-        { detail: ["国内上市要经过繁复的申请流程，我们会根据你的综合能力值，公司资产及公司进度综合评定后判定你是否能成功上市"],name: '互联网后期上市选择1',from: '互联网后期状态',to: '互联网后期状态',properties: { shangshi: 1 } },
+        { detail: ["国内上市要经过繁复的申请流程，根据你的综合能力值，公司资产及公司进度综合评定后判定你是否能成功上市"],name: '互联网后期上市选择1',from: '互联网后期状态',to: '互联网后期状态',properties: { shangshi: 1 } },
         { detail: ["在国内借壳上市可谓最容易的方式。"],name: '互联网后期上市选择2',from: '互联网后期状态',to: '互联网后期状态',properties: { shangshi: 2 } },
-        { detail: ["国内上市要经过繁复的申请流程，我们会根据你的综合能力值，公司资产及公司进度综合评定后判定你是否能成功上市"],name: '互联网后期上市选择3',from: '互联网后期状态',to: '互联网后期状态',properties: { shangshi: 3 } },
+        { detail: ["国内上市要经过繁复的申请流程，根据你的综合能力值，公司资产及公司进度综合评定后判定你是否能成功上市"],name: '互联网后期上市选择3',from: '互联网后期状态',to: '互联网后期状态',properties: { shangshi: 3 } },
         { detail: ["看来你立志成为下一个华为，下一个哇哈哈。确实，成功不一定要上市。"],name: '互联网后期上市选择4',from: '互联网后期状态',to: '互联网行业创业失败',properties: { ending: 50,__SHOW_ENDING: 1 } },
         { detail: [],name: '互联网后期不能上市1',from: '互联网后期状态',to: '互联网行业创业失败',properties: { ending: 50,__SHOW_ENDING: 1 } },
         { detail: ["恭喜你，你的公司在A股上市成功"],name: '互联网后期国内上市1',from: '互联网后期状态',to: '互联网行业创业失败',properties: { ending: 40,__SHOW_ENDING: 1 } },
         { detail: ["由于申请上市过程出现了一些问题，上市失败了..."],name: '互联网后期国内上市2',from: '互联网后期状态',to: '互联网行业创业失败',properties: { ending: 50,__SHOW_ENDING: 1 } },
         { detail: ["恭喜你，你在A股找了个公司借壳上市成功"],name: '互联网后期借壳上市1',from: '互联网后期状态',to: '互联网行业创业失败',properties: { ending: 40,__SHOW_ENDING: 1 } },
-        { detail: ["恭喜你，你的公司赴美上市成功，你在纳斯达克敲响了喜悦的钟声"],name: '互联网后期国外上市1',from: '互联网后期状态',to: '互联网行业创业失败',properties: { ending: 30,__SHOW_ENDING: 1  } },
+        { detail: ["恭喜你，你的公司赴美上市成功，你在纳斯达克敲响了喜悦的钟声"],name: '互联网后期国外上市1',from: '互联网后期状态',to: '互联网行业创业失败',properties: { ending: 30,__SHOW_ENDING: 1 } },
         { detail: ["由于申请上市过程出现了一些问题，上市失败了..."],name: '互联网后期国外上市2',from: '互联网后期状态',to: '互联网行业创业失败',properties: { ending: 50,__SHOW_ENDING: 1 } },
-        { detail: [],name: '互联网后期原团队能力问题1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 500000,wealth: 0,ability: 10,health: -5,success: 10 } },
-        { detail: [],name: '互联网后期原团队能力问题2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 1000000,wealth: 0,ability: 5,health: 5,success: 5 } },
-        { detail: [],name: '互联网后期烧钱是否在意1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -1000000,wealth: 0,ability: 5,health: 0,success: 10 } },
-        { detail: [],name: '互联网后期烧钱是否在意2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 1000000,wealth: 0,ability: 5,health: 0,success: 5 } },
-        { detail: [],name: '互联网后期市场占有率下降1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -2000000,wealth: 0,ability: 10,health: 0,success: 10 } },
-        { detail: [],name: '互联网后期市场占有率下降2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -1000000,wealth: 0,ability: 5,health: 0,success: 5 } },
-        { detail: [],name: '互联网后期市场占有率下降3',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -500000,wealth: 0,ability: 10,health: 0,success: 0 } },
-        { detail: [],name: '互联网后期大V的讨伐1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -1000000,wealth: 0,ability: 0,health: 0,success: 5 } },
-        { detail: [],name: '互联网后期大V的讨伐2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -1000000,wealth: 0,ability: 0,health: 0,success: 10 } },
-        { detail: [],name: '互联网后期员工越来越多1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -1000000,wealth: 0,ability: 10,health: 0,success: 6 } },
-        { detail: [],name: '互联网后期员工越来越多2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -1000000,wealth: 0,ability: 10,health: 0,success: 10 } },
+        { detail: [],name: '互联网后期原团队能力问题1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 10000000,wealth: 0,ability: 10,health: -5,success: 10 } },
+        { detail: [],name: '互联网后期原团队能力问题2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 20000000,wealth: 0,ability: 5,health: 5,success: 5 } },
+        { detail: [],name: '互联网后期烧钱是否在意1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -20000000,wealth: 0,ability: 5,health: 0,success: 10 } },
+        { detail: [],name: '互联网后期烧钱是否在意2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 20000000,wealth: 0,ability: 5,health: 0,success: 5 } },
+        { detail: [],name: '互联网后期市场占有率下降1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -40000000,wealth: 0,ability: 10,health: 0,success: 10 } },
+        { detail: [],name: '互联网后期市场占有率下降2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -20000000,wealth: 0,ability: 5,health: 0,success: 5 } },
+        { detail: [],name: '互联网后期市场占有率下降3',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -10000000,wealth: 0,ability: 10,health: 0,success: 0 } },
+        { detail: [],name: '互联网后期大V的讨伐1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -20000000,wealth: 0,ability: 0,health: 0,success: 5 } },
+        { detail: [],name: '互联网后期大V的讨伐2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -20000000,wealth: 0,ability: 0,health: 0,success: 10 } },
+        { detail: [],name: '互联网后期员工越来越多1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -20000000,wealth: 0,ability: 10,health: 0,success: 6 } },
+        { detail: [],name: '互联网后期员工越来越多2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -20000000,wealth: 0,ability: 10,health: 0,success: 10 } },
         { detail: [],name: '互联网后期董事会质疑运营1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 0,wealth: 0,ability: 10,health: 0,success: 5 } },
-        { detail: [],name: '互联网后期董事会质疑运营2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 0,wealth: 0,ability: 5,health: 0,success: 10 } },
-        { detail: [],name: '互联网后期传统行业商家抗议1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -1000000,wealth: 0,ability: 5,health: 0,success: 5 } },
-        { detail: [],name: '互联网后期传统行业商家抗议2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -2000000,wealth: 0,ability: 10,health: 0,success: 10 } },
-        { detail: [],name: '互联网后期传统行业商家抗议3',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -2000000,wealth: 0,ability: 10,health: 0,success: 15 } },
+        { detail: [],name: '互联网后期董事会质疑运营2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -10000000,wealth: 0,ability: 5,health: 0,success: 10 } },
+        { detail: [],name: '互联网后期传统行业商家抗议1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -20000000,wealth: 0,ability: 5,health: 0,success: 5 } },
+        { detail: [],name: '互联网后期传统行业商家抗议2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -40000000,wealth: 0,ability: 10,health: 0,success: 10 } },
+        { detail: [],name: '互联网后期传统行业商家抗议3',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -40000000,wealth: 0,ability: 10,health: 0,success: 15 } },
         { detail: [],name: '互联网后期产品供应链出问题1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 0,wealth: 0,ability: 0,health: 0,success: 5 } },
-        { detail: [],name: '互联网后期产品供应链出问题2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -1000000,wealth: 0,ability: 0,health: 0,success: 15 } },
-        { detail: [],name: '互联网后期市面某产品不错1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -2000000,wealth: 0,ability: 10,health: 0,success: 15 } },
-        { detail: [],name: '互联网后期市面某产品不错2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -1000000,wealth: 0,ability: 10,health: 0,success: 10 } },
+        { detail: [],name: '互联网后期产品供应链出问题2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -20000000,wealth: 0,ability: 0,health: 0,success: 15 } },
+        { detail: [],name: '互联网后期市面某产品不错1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -40000000,wealth: 0,ability: 10,health: 0,success: 15 } },
+        { detail: [],name: '互联网后期市面某产品不错2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -20000000,wealth: 0,ability: 10,health: 0,success: 10 } },
         { detail: [],name: '互联网后期市面某产品不错3',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 0,wealth: 0,ability: 0,health: 0,success: 5 } },
-        { detail: [],name: '互联网后期竞争对手价格战1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -1000000,wealth: 0,ability: 0,health: 0,success: 15 } },
+        { detail: [],name: '互联网后期竞争对手价格战1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: -20000000,wealth: 0,ability: 0,health: 0,success: 15 } },
         { detail: [],name: '互联网后期竞争对手价格战2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 0,wealth: 0,ability: 0,health: 0,success: 5 } },
-        { detail: [],name: '互联网后期战略规划1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 5000000,wealth: 0,ability: 10,health: 0,success: 10 } },
-        { detail: [],name: '互联网后期战略规划2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 5000000,wealth: 0,ability: 10,health: 0,success: 10 } },
-        { detail: [],name: '互联网后期战略规划3',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 8000000,wealth: 0,ability: 10,health: 0,success: 15 } },
-        { detail: [],name: '互联网后期巨头事件1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 2000000,wealth: 0,ability: 0,health: 0,success: 0 } },
-        { detail: [],name: '互联网后期巨头事件2',from: '互联网后期状态',to: '互联网行业创业失败',properties: { ending: 60,__SHOW_ENDING: 1  } },
-        { detail: [],name: '互联网后期巨头事件3',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 5000000,wealth: 0,ability: 0,health: 0,success: 5 } },
+        { detail: [],name: '互联网后期战略规划1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 150000000,wealth: 0,ability: 10,health: 0,success: 10 } },
+        { detail: [],name: '互联网后期战略规划2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 150000000,wealth: 0,ability: 10,health: 0,success: 10 } },
+        { detail: [],name: '互联网后期战略规划3',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 200000000,wealth: 0,ability: 10,health: 0,success: 15 } },
+        { detail: [],name: '互联网后期巨头事件1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 50000000,wealth: 0,ability: 0,health: 0,success: 20 } },
+        { detail: [],name: '互联网后期巨头事件2',from: '互联网后期状态',to: '互联网行业创业失败',properties: { ending: 60,__SHOW_ENDING: 1 } },
+        { detail: [],name: '互联网后期巨头事件3',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 100000000,wealth: 0,ability: 0,health: 0,success: 5 } },
         { detail: [],name: '互联网后期被并购1',from: '互联网后期状态',to: '互联网行业创业失败',properties: { ending: 70,__SHOW_ENDING: 1 } },
-        { detail: ['你成功找到了一大笔融资'],name: '互联网后期找钱事件1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 10000000,wealth: 1000000,ability: 20,health: 0,success: 20 } },
-        { detail: ['你找到了融资，但是融资时估值并不是那么高'],name: '互联网后期找钱事件2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 5000000,wealth: 500000,ability: 10,health: 0,success: 10 } },
-        { detail: ['你成功找到了一大笔融资'],name: '互联网后期找钱事件3',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 8000000,wealth: 800000,ability: 20,health: 0,success: 28 } },
-        { detail: ['你找到了融资，但是融资时估值并不是那么高'],name: '互联网后期找钱事件4',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 4000000,wealth: 400000,ability: 10,health: 0,success: 14 } },
+        { detail: ['你成功找到了一大笔融资'],name: '互联网后期找钱事件1',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 200000000,wealth: 1000000,ability: 20,health: 0,success: 20 } },
+        { detail: ['你找到了融资，但是融资时估值并不是那么高'],name: '互联网后期找钱事件2',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 100000000,wealth: 500000,ability: 10,health: 0,success: 10 } },
+        { detail: ['你成功找到了一大笔融资'],name: '互联网后期找钱事件3',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 160000000,wealth: 800000,ability: 20,health: 0,success: 28 } },
+        { detail: ['你找到了融资，但是融资时估值并不是那么高'],name: '互联网后期找钱事件4',from: '互联网后期状态',to: '互联网后期状态',properties: { fund: 80000000,wealth: 400000,ability: 10,health: 0,success: 14 } },
     ];
 
 
     public static STATES = {
         name: "互联网后期状态",
         displayName: "创业终极阶段",
-        properties: { time: 1,state_time: function(properties) { return 1 },fund: function(properties) { return 500000 },success: function(properties) { return 5 },health: function(properties) { return 1 },wealth: function(properties) { return 50000 },ability: function(properties) { return 6 }, },
+        properties: { time: 1,state_time: function(properties) { return 1 },fund: function(properties) { return 10000000 },success: function(properties) { return 5 },health: function(properties) { return 1 },wealth: function(properties) { return 50000 },ability: function(properties) { return 6 }, },
         questions: StartUp2.QUESTIONS,
         initialState: {
+          
             state_time: function(properties) { return -properties.state_time; }
         }
     }
