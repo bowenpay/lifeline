@@ -742,16 +742,9 @@ class Main extends eui.UILayer {
 //            this.addChild(this.endPage); 
 //            this.endScrollV = this.message_scroller.viewport.scrollV;
 //            this.message_scroller.viewport.scrollV = 0;
-            this.endDownImage = new eui.Image();
-            this.endDownImage.source = "resource/game/end_down.png";
-            this.endDownImage.bottom = 20;
-            this.endDownImage.height = 40;
-            this.endDownImage.width = 40;
-            this.endDownImage.horizontalCenter = 0;
-            this.endDownImage.visible = false;
-            this.addChild(this.endDownImage);
+            this.addEndDownImage();
             this.message_scroller.addEventListener(eui.UIEvent.CHANGE_END, this.scrollChangeEnd, this);
-            this.endDownImage.addEventListener(egret.TouchEvent.TOUCH_TAP, this.touchEndDownHandler,this);
+            
             var endingTitle = ending.result.title;
             document.title = endingTitle;
             // 统计            
@@ -761,14 +754,28 @@ class Main extends eui.UILayer {
         }
 
     }
+    private addEndDownImage()
+    {
+        this.endDownImage = new eui.Image();
+        this.endDownImage.source = "resource/game/end_down.png";
+        this.endDownImage.bottom = 20;
+        this.endDownImage.height = 40;
+        this.endDownImage.width = 40;
+        this.endDownImage.horizontalCenter = 0;
+        this.endDownImage.visible = true;
+        this.addChild(this.endDownImage);
+        
+        var tw = egret.Tween.get(this.endDownImage,{ loop: true });
+        tw.to({ bottom: 10 },1500);
+        
+        this.endDownImage.addEventListener(egret.TouchEvent.TOUCH_TAP,this.touchEndDownHandler,this);
+    }
     
     //message_scroller滑动到底部
     private scrollChangeEnd(evt: eui.UIEvent): void {
         console.log("scrollChangeEnd");
         if((this.message_scroller.viewport.scrollV + this.message_scroller.viewport.height*1/6 >= this.endScrollV) && (this.endPage != null)) {
             this.endDownImage.visible = true;
-            var tw = egret.Tween.get(this.endDownImage,{loop:true});
-            tw.to({bottom:10}, 1500);
         }
     }
     
