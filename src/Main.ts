@@ -167,7 +167,8 @@ class Main extends eui.UILayer {
     private game_state = STATE_SPLASH; 
     private myproperties = { 
         time: 0, 
-        __SHOW_ENDING: 0
+        __SHOW_ENDING: 0,
+        fund: 0
     };
     
     /**
@@ -401,6 +402,7 @@ class Main extends eui.UILayer {
         this.state_btn.skinName = "resource/custom_eui_skins/statusBtnSkin.exml"
         this.state_btn.label = this.game_data.getStatesDisplyName();
         this.state_btn.timeLabelStr = this.timeStr[this.myproperties.time];
+        this.state_btn.fundLabelStr = String(this.myproperties.fund);
 
         this.state_btn.height = 80;
         this.state_btn.left = 0;
@@ -494,6 +496,7 @@ class Main extends eui.UILayer {
      */ 
     private processState() {
         this.state_btn.timeLabelStr = this.timeStr[this.myproperties.time];
+        this.state_btn.fundLabelStr = '资产：'+String(this.myproperties.fund / 10000)+'万';
         var properties = this.game_data.getStatesProperties();
         var mp_clone = JSON.parse(JSON.stringify(this.myproperties));
         for(var key in properties) {

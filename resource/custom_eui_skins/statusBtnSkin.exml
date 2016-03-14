@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <e:Skin class="statusBtnSkin" states="up,down,disabled" xmlns:e="http://ns.egret.com/eui">
 	<e:Image source="statusBtn_png" left="0" right="0" bottom="0" top="0"/>
-	<e:Label id="labelDisplay" size="24" verticalAlign="middle" textAlign="right" percentWidth="90" percentHeight="50" top="5" fontFamily="黑体-简 中等" textColor="0xf4f4f4"/>
-	<e:Label id="timeLabel" size="16" verticalAlign="middle" textAlign="right" percentWidth="90" percentHeight="50"  bottom="10"  fontFamily="黑体-简 中等" textColor="0xf4f4f4"/>
+	<e:Label id="labelDisplay" size="26" verticalAlign="middle" textAlign="left" percentWidth="90" percentHeight="50" top="5" left="70" fontFamily="黑体-简 中等" textColor="0xf4f4f4"/>
+	<e:Label id="timeLabel" size="16" verticalAlign="middle" textAlign="left" percentWidth="90" percentHeight="50"  bottom="10" left="70" fontFamily="黑体-简 中等" textColor="0xf4f4f4"/>
+	<e:Label id="fundLabel" size="26" verticalAlign="middle" textAlign="right" percentWidth="90" percentHeight="50"  top="5" fontFamily="黑体-简 中等" textColor="0xf4f4f4"/>
 </e:Skin>
