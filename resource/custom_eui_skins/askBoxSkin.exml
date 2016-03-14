@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
 <e:Skin class="askBoxSkin" states="up,down,disabled" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
 	<e:Image source="ask_png" height="20" left="0" right="0" bottom="0" top="0" scale9Grid="0,2,25,16"/>
-	<e:Label id="labelDisplay" size="24" verticalAlign="middle" textAlign="center" left="5" right="5" top="10" bottom="10" fontFamily="黑体-简 中等" textColor="0x000000"/>
+	<e:Label id="labelDisplay" size="24" verticalAlign="middle" textAlign="center" left="5" right="5" top="10" bottom="10" lineSpacing="10" fontFamily="黑体-简 中等" textColor="0x000000"/>
 </e:Skin>

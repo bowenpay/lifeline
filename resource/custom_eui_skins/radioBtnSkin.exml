@@ -9,6 +9,7 @@
 		         source.disabledAndSelected="radiobtn_select_png"/>
 		<e:Label id="labelDisplay" top="8" bottom="8" left="8" right="8"
 		         size="24" fontFamily="黑体-简 中等"
+		         lineSpacing="10" 
 		         textColor="0x171717" 
 		         textColor.disabled="0x49595d"
 		         verticalAlign="middle" textAlign="center"/>
