@@ -9,7 +9,7 @@
 			"name":"bowen"
 		},
 		{
-			"keys":"fail_bg_png,fail_tag_png,fangqi_bg_png,fangqi_tag_png,quit_bg_png,quit_tag_png,sucess_bg_png,sucess_tag_png",
+			"keys":"fail_bg_png,fail_tag_png,fangqi_bg_png,fangqi_tag_png,quit_bg_png,quit_tag_png,sucess_bg_png,sucess_tag_png,A_stock_success_png",
 			"name":"states"
 		}
 	],
@@ -248,6 +248,11 @@
 			"name":"sucess_tag_png",
 			"type":"image",
 			"url":"assets/states/startup/sucess_tag.png"
+		},
+		{
+			"name":"A_stock_success_png",
+			"type":"image",
+			"url":"assets/states/startup/A_stock_success.png"
 		}
 	]
 }

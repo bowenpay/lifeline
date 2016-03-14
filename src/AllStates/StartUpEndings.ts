@@ -81,7 +81,7 @@ class StartUpEndings {
                 title: "成功在A股上市",
                 desc: "        根据游戏设计，只有不到1%的玩家能获得这个结局，充分体现了你强大的个人能力和对创业的理解。你具有坚韧的毅力和过人的胆识，另外，运气也站在你这边。祝贺你！欢迎关注我们的公众号，将您在创业路上遇到的问题发送给我们，帮助我们完善问题库，提高游戏的真实度。",
                 weixintitle:"创业那些年，在A股上市",
-                imageTag: "sucess_tag_png",
+                imageTag: "A_stock_success_png",
                 imageBg: "quit_bg_png"
             } 
         },
