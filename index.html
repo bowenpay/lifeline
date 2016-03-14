@@ -68,7 +68,9 @@
 	  s.parentNode.insertBefore(hm, s);
 	})();
 	function tongji(data){
-		_hmt.push(data);
+		if(window.location.href.indexOf('bowenpay.com') > -1 ){
+			_hmt.push(data);
+		}
 	}
 	</script>
 	<!--百度统计代码end-->
