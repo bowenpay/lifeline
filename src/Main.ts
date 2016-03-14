@@ -722,8 +722,6 @@ class Main extends eui.UILayer {
         
         // 滑动滚动条
         this.scrollerToBottom();
-        //this.removeChild(this.question_group);
-        //this.question_group = null;
     }
     /**
      * 游戏结束，显示主人公结局
@@ -741,9 +739,9 @@ class Main extends eui.UILayer {
             this.endPage.imageBg.source = ending.result.imageBg;
             this.endPage.title.text = ending.result.title;
             this.endPage.desc.text = ending.result.desc;       
-            this.addChild(this.endPage); 
-            this.endScrollV = this.message_scroller.viewport.scrollV;
-            this.message_scroller.viewport.scrollV = 0;
+//            this.addChild(this.endPage); 
+//            this.endScrollV = this.message_scroller.viewport.scrollV;
+//            this.message_scroller.viewport.scrollV = 0;
             this.endDownImage = new eui.Image();
             this.endDownImage.source = "resource/game/end_down.png";
             this.endDownImage.bottom = 20;
@@ -781,13 +779,6 @@ class Main extends eui.UILayer {
         this.addChild(this.endPage);
     }
     
-    //回到十年前开始页面
-//    private backToBegin(evt: eui.UIEvent): void {
-//        this.endGrp.visible = false;
-//        this.endScrollV = this.message_scroller.viewport.scrollV;
-//        this.endScrollV -= this.message_scroller.viewport.height*1/6;
-//        this.message_scroller.viewport.scrollV = 0;
-//    }
     /**
      * 退出游戏
      */ 
