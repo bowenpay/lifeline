@@ -14,6 +14,9 @@
 					</e:Image>
 					<e:Image id="backImage" horizontalCenter="true" source="end_back_png" top="20" height="40" width="40">
 					</e:Image>
+					<e:Label id="backImageLabel" horizontalCenter="true" top="0" height="60" percentWidth="80" alpha="0">
+						
+					</e:Label>
 					<e:Label id="backLabel" multiline="false" text="回顾创业历程"  horizontalCenter="true" percentWidth="40" size="30" fontFamily="微软雅黑"
 					         textAlign="center" top="60">
 						</e:Label>

@@ -162,6 +162,7 @@ class Main extends eui.UILayer {
         "第10年1季度","第10年2季度","第10年3季度","第10年4季度"       
     ];
     private endDownImage:eui.Image = null;
+    private endDownLabel:eui.Label = null;
     private endPage:EndUI = null;
     // 游戏状态
     private game_state = STATE_SPLASH; 
@@ -754,19 +755,29 @@ class Main extends eui.UILayer {
     }
     private addEndDownImage()
     {
-        this.endDownImage = new eui.Image();
+        this.endDownImage = new eui.Image();       
         this.endDownImage.source = "resource/game/end_down.png";
         this.endDownImage.bottom = 20;
-        this.endDownImage.height = 40;
+        this.endDownImage.height = 50;
         this.endDownImage.width = 40;
         this.endDownImage.horizontalCenter = 0;
         this.endDownImage.visible = true;
+        
+        this.endDownLabel = new eui.Label("");
+        this.endDownLabel.percentWidth = 70;
+        this.endDownLabel.bottom = 0;
+        this.endDownLabel.height = 60;
+        this.endDownLabel.alpha = 0;
+        this.endDownLabel.horizontalCenter = 0;
         this.addChild(this.endDownImage);
+        this.addChild(this.endDownLabel);
+        
         
         var tw = egret.Tween.get(this.endDownImage,{ loop: true });
         tw.to({ bottom: 10 },1500);
         
         this.endDownImage.addEventListener(egret.TouchEvent.TOUCH_TAP,this.touchEndDownHandler,this);
+        this.endDownLabel.addEventListener(egret.TouchEvent.TOUCH_TAP,this.touchEndDownHandler,this);
     }
     
     //message_scroller滑动到底部
@@ -781,6 +792,7 @@ class Main extends eui.UILayer {
     private touchEndDownHandler(evt: eui.UIEvent): void {
         console.log("scrollChangeEnd");
         this.endDownImage.visible = false;
+        this.endDownLabel.visible = false;
         this.addChild(this.endPage);
     }
     

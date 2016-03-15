@@ -13,6 +13,7 @@ class EndUI extends eui.Component {
     public backImage:eui.Image;
     public backLabel:eui.Label;
     public qrcodeImg:eui.Image;
+    public backImageLabel:eui.Label;
     
 	constructor() {
     	super();
@@ -27,6 +28,7 @@ class EndUI extends eui.Component {
         this.shareMask.addEventListener(egret.TouchEvent.TOUCH_TAP,this.shareMaskHandler,this);
         this.backImage.addEventListener(egret.TouchEvent.TOUCH_TAP,this.endBackHandler,this);
         this.backLabel.addEventListener(egret.TouchEvent.TOUCH_TAP,this.endBackHandler,this);
+        this.backImageLabel.addEventListener(egret.TouchEvent.TOUCH_TAP,this.endBackHandler,this);
         this.playAgainBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.playAgainBtnHandler,this);
         this.qrcodeImg.addEventListener(egret.TouchEvent.TOUCH_BEGIN,this.qrcodeImgTouchBegin,this);
         this.qrcodeImg.addEventListener(egret.TouchEvent.TOUCH_END,this.qrcodeImgTouchEnd,this);
