@@ -785,6 +785,7 @@ class Main extends eui.UILayer {
         console.log("scrollChangeEnd");
         if((this.message_scroller.viewport.scrollV + this.message_scroller.viewport.height*1/6 >= this.endScrollV) && (this.endPage != null)) {
             this.endDownImage.visible = true;
+            this.endDownLabel.visible = true;
         }
     }
     
