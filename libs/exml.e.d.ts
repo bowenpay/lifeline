@@ -1,5 +1,7 @@
 declare class askBoxSkin extends eui.Skin{
 }
+declare class beginUISkin extends eui.Skin{
+}
 declare class endUISkin extends eui.Skin{
 }
 declare class radioBtnSkin extends eui.Skin{

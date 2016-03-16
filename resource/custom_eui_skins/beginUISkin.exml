@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="beginUISkin" width="400" height="300" xmlns:e="http://ns.egret.com/eui">
+<e:Image id="beginBackgroundImg" percentWidth="100" percentHeight="100" source="begin_background_jpg">
+</e:Image>
+<e:Image id="beginBackgroundTitleImg" width="330" height="576" left="160" y="10" alpha="0" source="begin_background_title_png">
+</e:Image>
+<e:Image id="beginEnterImg" width="0" height="0" horizontalCenter="0" alpha="0" bottom="100%" source="begin_enter_png">
+</e:Image>
+</e:Skin>

@@ -10,8 +10,8 @@
 		<e:Label id="labelDisplay" top="8" bottom="8" left="8" right="8"
 		         size="24" fontFamily="黑体-简 中等"
 		         lineSpacing="10" 
-		         textColor="0x171717" 
-		         textColor.disabled="0x49595d"
+		         textColor="0x694c39" 
+		         textColor.disabled="0xb2c4cb"
 		         verticalAlign="middle" textAlign="center"/>
 	</e:Group>
 </e:Skin>

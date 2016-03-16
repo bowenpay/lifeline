@@ -11,6 +11,10 @@
 		{
 			"keys":"fail_bg_png,fail_tag_png,fangqi_bg_png,fangqi_tag_png,quit_bg_png,quit_tag_png,sucess_bg_png,sucess_tag_png,A_stock_success_png",
 			"name":"states"
+		},
+		{
+			"keys":"begin_background_jpg,begin_background_title_png,begin_enter_png",
+			"name":"begin"
 		}
 	],
 	"resources":[
@@ -253,6 +257,21 @@
 			"name":"A_stock_success_png",
 			"type":"image",
 			"url":"assets/states/startup/A_stock_success.png"
+		},
+		{
+			"name":"begin_background_jpg",
+			"type":"image",
+			"url":"assets/begin/begin_background.jpg"
+		},
+		{
+			"name":"begin_background_title_png",
+			"type":"image",
+			"url":"assets/begin/begin_background_title.png"
+		},
+		{
+			"name":"begin_enter_png",
+			"type":"image",
+			"url":"assets/begin/begin_enter.png"
 		}
 	]
 }
