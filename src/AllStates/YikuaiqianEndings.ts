@@ -1,9 +1,9 @@
 /**
  *
- * @author 
+ * 一块钱结局
  *
  */
-class StartUpEndings {
+class YikuaiqianEndings {
     public static ENDINGS = [
         { 
             condition: { ending: 100 },

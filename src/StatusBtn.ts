@@ -11,14 +11,14 @@ class StatusBtn extends eui.Button{
     public timeLabel:eui.Label;
     private _timeLabelStr:string = "";
     public fundLabel: eui.Label;
-    private _fundLabelStr: string = ""; 
+    private _fundLabelValue: number = 0; 
     
     public get timeLabelStr():string{
         return this._timeLabelStr;
     }
     
-    public get fundLabelStr(): string {
-        return this._fundLabelStr;
+    public get fundLabelValue(): number {
+        return this._fundLabelValue;
     }
     
     public set timeLabelStr(value:string){
@@ -28,10 +28,14 @@ class StatusBtn extends eui.Button{
         }
     }
     
-    public set fundLabelStr(value: string) {
-        this._fundLabelStr = value;
+    public set fundLabelValue(value: number) {
+        this._fundLabelValue = value;
         if(this.fundLabel) {
-            this.fundLabel.text = value;
+            if(this._fundLabelValue < 10000) {
+                this.fundLabel.text = '资产：' + String(this._fundLabelValue) + '元';
+            } else {
+                this.fundLabel.text = '资产：' + String(this._fundLabelValue / 10000) + '万';
+            }
         }
     }
     
@@ -41,7 +45,11 @@ class StatusBtn extends eui.Button{
             this.timeLabel.text = this._timeLabelStr;
         }
         if(this.fundLabel) {
-            this.fundLabel.text = this._fundLabelStr;
+            if(this._fundLabelValue < 10000) {
+                this.fundLabel.text = '资产：' + String(this._fundLabelValue) + '元';
+            } else {
+                this.fundLabel.text = '资产：' + String(this._fundLabelValue / 10000) + '万';
+            }
         }
     }
     

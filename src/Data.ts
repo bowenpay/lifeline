@@ -1,5 +1,5 @@
-var ALL_STATE = [Choices, StartUp, StartUp1, StartUp2, StartUpFail];
-var ALL_ENDINGS = [StartUpEndings]
+var ALL_STATE = [Yikuaiqian];
+var ALL_ENDINGS = [YikuaiqianEndings]
 
 
 //////// 数据开始
@@ -37,7 +37,7 @@ class Data {
     }
 	
     // 当前的状态
-    public current = "填写背景状态";
+    public current = "一块钱起步";
 
     
     // 通用问题
