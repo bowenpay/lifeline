@@ -25,8 +25,7 @@ class Main extends eui.UILayer {
          * 游戏统计调用方法 初始化
          */
         // 统计代码
-        tongji(['_trackEvent','game','enter','loading_start',1]);
-        tongji(['_trackEvent', '游戏',  '进入游戏', '开始加载', 1]);
+        tongji(['_trackEvent', '一块钱游戏',  '进入游戏', '开始加载', 1]);
         esa.EgretSA.init({ "gameId": "536E77485757673D","chanId": egret.getOption("egret.runtime.spid") || egret.getOption("channelId"), "debug": false });
         esa.EgretSA.loadingSet(1,"开始加载"); // 记录加载过程
         
@@ -177,7 +176,7 @@ class Main extends eui.UILayer {
      */ 
     private createTimer(): void { 
         //创建一个计时器对象
-        this.timer = new egret.Timer(500, 0);
+        this.timer = new egret.Timer(700, 0);
         //注册事件侦听器
         this.timer.addEventListener(egret.TimerEvent.TIMER,this.timerHandler,this);
         //开始计时
@@ -378,7 +377,7 @@ class Main extends eui.UILayer {
         this.getSignPackage();
     }
     private splashHandler(evt: eui.UIEvent): void {
-        tongji(['_trackEvent','游戏','闪屏','点击进入',1]);
+        tongji(['_trackEvent','一块钱游戏','闪屏','点击进入',1]);
         this.removeChild(evt.target);
         this.createMsgBox();
         this.game_state = STATE_STATE;
@@ -401,7 +400,7 @@ class Main extends eui.UILayer {
         this.state_btn = new StatusBtn();
         this.state_btn.skinName = "resource/custom_eui_skins/statusBtnSkin.exml"
         this.state_btn.label = this.game_data.getStatesDisplyName();
-        this.state_btn.timeLabelStr = this.timeStr[this.myproperties.time];
+        this.state_btn.timeLabelStr = String(this.myproperties.time) + '天';
         this.state_btn.fundLabelValue = this.myproperties.money;
 
         this.state_btn.height = 80;
@@ -495,7 +494,7 @@ class Main extends eui.UILayer {
      * 处理当前状态基本任务
      */ 
     private processState() {
-        this.state_btn.timeLabelStr = this.timeStr[this.myproperties.time];
+        this.state_btn.timeLabelStr = String(this.myproperties.time) + '天';
         this.state_btn.fundLabelValue = this.myproperties.money;
         var properties = this.game_data.getStatesProperties();
         var mp_clone = JSON.parse(JSON.stringify(this.myproperties));
@@ -695,6 +694,7 @@ class Main extends eui.UILayer {
             }
 
         }
+        this.state_btn.fundLabelValue = this.myproperties.money;
         egret.log('属性改变：');
         egret.log(JSON.stringify(this.myproperties));
         
