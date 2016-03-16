@@ -15,15 +15,15 @@ var game_file_list = [
 	"bin-debug/AllStates/Yikuaiqian.js",
 	"bin-debug/AllStates/YikuaiqianEndings.js",
 	"bin-debug/AssetAdapter.js",
-	"bin-debug/BeginUI.js",
 	"bin-debug/Data.js",
 	"bin-debug/EndUI.js",
-	"bin-debug/GameEvents.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
 	"bin-debug/StatusBtn.js",
 	"bin-debug/ThemeAdapter.js",
 	"bin-debug/tongji.js",
+	"bin-debug/BeginUI.js",
+	"bin-debug/GameEvents.js",
 	//----auto game_file_list end----
 ];
 
