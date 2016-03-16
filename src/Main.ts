@@ -163,6 +163,7 @@ class Main extends eui.UILayer {
     ];
     private endDownImage:eui.Image = null;
     private endDownLabel:eui.Label = null;
+    private beginPage:BeginUI = null;
     private endPage:EndUI = null;
     // 游戏状态
     private game_state = STATE_SPLASH; 
@@ -283,7 +284,7 @@ class Main extends eui.UILayer {
             shareTimeline.title = title;
             shareTimeline.link = link;
             shareTimeline.imgUrl = imgUrl;
-            shareTimeline.trigger = function(res) { }
+            shareTimeline.trigger = function(res) {}
             shareTimeline.success = function(res) { 
                 tongji(['_trackEvent','微信分享','分享到朋友圈','朋友圈',1]);
             };
@@ -335,51 +336,26 @@ class Main extends eui.UILayer {
      */ 
     
     private createSplash(): void {
-        if(this.splash != null) { 
+        if(this.beginPage != null)
+        {
             return;
         }
+        
+        this.beginPage = new BeginUI();
+        this.beginPage.percentWidth = 100;
+        this.beginPage.percentHeight = 100;
+        this.addChild(this.beginPage);
+        this.beginPage.addEventListener(GameEvents.EVT_BEGIN,this.splashHandler,this);
 
         tongji(['_trackEvent','游戏','闪屏','进入闪屏',1]);
-        // 显示splash背景图
-        var image = new eui.Image();
-        image.source = "resource/game/background.jpg";
-        image.percentWidth = 100;
-        image.percentHeight = 100;
-        this.addChild(image);
-        
-        // 显示十年动态图
-        var image = new eui.Image();
-        image.source = "resource/game/background_title.png";
-        image.width = 330;
-        image.height = 576;
-        image.left = 160;
-        image.y = 10;
-        this.addChild(image);
-        image.alpha = 0;
-        var tw = egret.Tween.get(image);
-        tw.to({ alpha: 1,y: 80 },1000);
-        
-        // 显示“进入”按钮
-        var wid = document.documentElement.clientWidth;
-        var hei = document.documentElement.clientHeight;
-        var image = new eui.Image();
-        image.source = "resource/game/click_enter.png";
-        image.width = 0;
-        image.height = 0;
-        image.horizontalCenter = 0;
-        image.bottom = hei * 0.25;
-        image.alpha = 0;
 
-        image.addEventListener(egret.TouchEvent.TOUCH_TAP,this.splashHandler,this);
-        this.addChild(image);
-        var enterTw = egret.Tween.get(image);
-        enterTw.to({ alpha: 1,width: 190,height: 73 },500)
         // 微信分享
         this.getSignPackage();
     }
-    private splashHandler(evt: eui.UIEvent): void {
+    private splashHandler(): void {
         tongji(['_trackEvent','游戏','闪屏','点击进入',1]);
-        this.removeChild(evt.target);
+        this.removeChild(this.beginPage);
+        this.beginPage.removeEventListener(GameEvents.EVT_BEGIN,this.splashHandler,this);
         this.createMsgBox();
         this.game_state = STATE_STATE;
         this.splash = null;
