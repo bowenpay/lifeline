@@ -176,7 +176,7 @@ class Main extends eui.UILayer {
      */ 
     private createTimer(): void { 
         //创建一个计时器对象
-        this.timer = new egret.Timer(700, 0);
+        this.timer = new egret.Timer(70, 0);
         //注册事件侦听器
         this.timer.addEventListener(egret.TimerEvent.TIMER,this.timerHandler,this);
         //开始计时
@@ -637,7 +637,7 @@ class Main extends eui.UILayer {
     /**
      * 显示问题的所有内容
      */
-    private display_event_detail() {
+    private display_event_detail() { 
         // 显示消息
         var msg = this.event_detail.shift();
         if(msg == null) {
@@ -731,25 +731,36 @@ class Main extends eui.UILayer {
 
         if(this.endPage == null)
         {
+            // 将结局中函数替换掉
+            var ending = this.game_data.getMyEnding(this.myproperties);
+            var result = ending.result;
+            var mp_clone = JSON.parse(JSON.stringify(this.myproperties));
+            for(var key in result) {
+                var value = result[key];
+                if(typeof value === "function") {
+                    result[key] = value(mp_clone);
+                } 
+
+            }
+            // 展示结局
             this.endPage = new EndUI();
             this.endPage.percentWidth = 100;
             this.endPage.percentHeight = 100;
-            var ending = this.game_data.getMyEnding(this.myproperties);
-            this.endPage.imageBg.source = ending.result.imageBg;
-            this.endPage.title.text = ending.result.title;
-            this.endPage.desc.text = ending.result.desc;       
+            this.endPage.imageBg.source = result.imageBg;
+            this.endPage.title.text = result.title;
+            this.endPage.desc.text = result.desc;       
 //            this.addChild(this.endPage); 
 //            this.endScrollV = this.message_scroller.viewport.scrollV;
 //            this.message_scroller.viewport.scrollV = 0;
             this.addEndDownImage();
             this.message_scroller.addEventListener(eui.UIEvent.CHANGE_END, this.scrollChangeEnd, this);
             
-            var endingTitle = ending.result.title;
+            var endingTitle = result.weixintitle;
             document.title = endingTitle;
             // 统计            
             tongji(['_trackEvent','结局','显示结局',endingTitle,1]);
             // 微信分享
-            this.weixinShareOnEnding(ending.result.weixintitle);
+            this.weixinShareOnEnding(result.weixintitle);
         }
 
     }

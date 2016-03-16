@@ -100,7 +100,7 @@ class Yikuaiqian {
             question: "10万问题",
             detail: [
                 '深冬寒夜里，你默默关掉没暖气屋子内的电热毯',
-                '省吃俭用加上不懈努力，你的资金已经有好几元了',
+                '省吃俭用加上不懈努力，你的资金已经有好几万了',
                 '接下来要怎么选择呢？',
             ],
             answers: [
@@ -168,7 +168,7 @@ class Yikuaiqian {
             ],
             left_times: 1,
             require: function(properties) {
-                if(properties.money <= 2000000 && properties.money > 500000) { return 1; }
+                if(properties.money <= 10000000 && properties.money > 2000000) { return 1; }
                 else { return 3; }
             },
         },
@@ -507,7 +507,7 @@ class Yikuaiqian {
                 '其实，你最希望自己能像《绝命毒师》的老白那样，自己生产毒品，这样你就不用冒生命危险去缅甸进货了',
                 '尽管如此，你的运气和老白一样好，赚到了钱，人还活着',
             ],
-            name: '200万问题1',properties: { money: 8000000,time: 30,__SHOW_ENDING: 1,ending: 50 },
+            name: '200万问题1',properties: { money: 8000000,time: 30 },
             from: '*',to: ''
         },
 
@@ -519,7 +519,7 @@ class Yikuaiqian {
                 '你觉得是时候了，于是迅速关了了公司，卷了钱就开始跑路之旅',
                 '你发现，P2P跑路的几千位同志里面，你只是一个特别小的小角色，网上甚至连骂你的帖子都沉的跟铅块一样，更不用说公安的案底了…',
             ],
-            name: '200万问题2',properties: { money: 8000000,time: 90, __SHOW_ENDING: 1,ending: 50 },
+            name: '200万问题2',properties: { money: 8000000,time: 90},
             from: '*',to: ''
         },
 
@@ -531,7 +531,7 @@ class Yikuaiqian {
                 '“这都是钱呐！”',
                 '你终于明白，情色产业是推动世界经济的重要发展要素，这句话果然没错',
             ],
-            name: '200万问题3',properties: { money: 2000000,time: 30, __SHOW_ENDING: 1,ending: 50},
+            name: '200万问题3',properties: { money: 2000000,time: 30},
             from: '*',to: ''
         },
 
@@ -543,9 +543,50 @@ class Yikuaiqian {
                 '并且，冠以促进中非农业交流和出国体验游玩的名义，你还免费从蓝翔技校挖来两个拖拉机专业的工程师帮助你的客户干活',
                 '非洲老黑对你的带动世界农业发展行为很是满意，高高兴兴的给了你一大笔钱',
             ],
-            name: '200万问题4',properties: { money: 10000000,time: 360, __SHOW_ENDING: 1, ending: 50},
+            name: '200万问题4', properties: { money: 10000000,time: 360},
             from: '*', to: ''
+        },
+
+        {
+            detail: [
+                '在这个全民创业的时代，你深谙其中的游戏规则',
+                '这其实是一场击鼓传花的游戏',
+                '通过你的努力，你的公司成功融到A、B、C、D轮，并在纳斯达克上市',
+                '聪明的你，在股票解禁的第一刻就套现了'
+            ],
+            name: '1000万问题1',properties: { money: 500000000, time: 360,  __SHOW_ENDING: 1,ending: 50 },
+            from: '*',to: ''
+        },
+
+        {
+            detail: [
+                '什么？走私，你听错了吧。我们可是正经的海淘',
+                '通过花钱打通人脉，你成功的将钻石全部出手到了黑市，赚了1个亿',
+            ],
+            name: '1000万问题2',properties: { money: 100000000,time: 90,__SHOW_ENDING: 1,ending: 50 },
+            from: '*',to: ''
+        },
+
+        {
+            detail: [
+                '你要问现在什么最贵？',
+                '当然是教育。现在的父母为了孩子，多少钱都愿意花。',
+                '更何况现在放开了2胎，教育市场会越来越大的'
+            ],
+            name: '1000万问题3', properties: { money: 200000000, time: 360, __SHOW_ENDING: 1,ending: 50 },
+            from: '*',to: ''
+        },
+
+        {
+            detail: [
+                '什么挣钱最快，当然是期货',
+                '加个10几倍杠杆，再花钱没内部消息',
+                '赚钱就是分分钟的事情',
+            ],
+            name: '1000万问题4',properties: { money: 5000000000, time: 7,__SHOW_ENDING: 1,ending: 50 },
+            from: '*',to: ''
         }
+        
     ];
 
     public static STATES = {
