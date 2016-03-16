@@ -20,7 +20,7 @@ class Yikuaiqian {
                 { answer: "找朋友再借1块钱买张彩票",event: "1元问题4" }
             ],
             left_times: 1,
-            require: function(properties) { return 1; }
+            require: function(p) { return 1; }
         },
         {
             question: "10元钱问题",
@@ -35,8 +35,8 @@ class Yikuaiqian {
                 { answer: "在黑市买张100元假币，去小卖部找老花眼爷爷换零钱",event: "10元问题4" }
             ],
             left_times: 1,
-            require: function(properties) {
-                if(properties.money < 10) { return 1; }
+            require: function(p) {
+                if(p.money <= 10) { return 1; }
                 else { return 3; }
             },
         },
@@ -54,8 +54,8 @@ class Yikuaiqian {
                 { answer: "买双丝袜和玩具枪去抢珠宝店",event: "100元问题4" }
             ],
             left_times: 1,
-            require: function(properties) {
-                if(properties.money < 100 && properties.money > 10) { return 1; }
+            require: function(p) {
+                if(p.money <= 100) { return 1; }
                 else { return 3; }
             },
         },
@@ -73,7 +73,7 @@ class Yikuaiqian {
             ],
             left_times: 1,
             require: function(properties) {
-                if(properties.money < 1000 && properties.money > 100) { return 1; }
+                if(properties.money <= 1000) { return 1; }
                 else { return 3; }
             },
         },
@@ -92,7 +92,7 @@ class Yikuaiqian {
             ],
             left_times: 1,
             require: function(properties) {
-                if(properties.money < 10000) { return 1; }
+                if(properties.money <= 10000) { return 1; }
                 else { return 3; }
             },
         },
@@ -100,7 +100,7 @@ class Yikuaiqian {
             question: "10万问题",
             detail: [
                 '深冬寒夜里，你默默关掉没暖气屋子内的电热毯',
-                '省吃俭用加上不懈努力，你的资金已经超过10万元了',
+                '省吃俭用加上不懈努力，你的资金已经有好几元了',
                 '接下来要怎么选择呢？',
             ],
             answers: [
@@ -111,7 +111,7 @@ class Yikuaiqian {
             ],
             left_times: 1,
             require: function(properties) {
-                if(properties.money < 100000 && properties.money > 10000) { return 1; }
+                if(properties.money <= 100000 ) { return 1; }
                 else { return 3; }
             },
         },
@@ -130,7 +130,7 @@ class Yikuaiqian {
             ],
             left_times: 1,
             require: function(properties) {
-                if(properties.money < 500000 && properties.money > 100000) { return 1; }
+                if(properties.money <= 500000 && properties.money > 100000) { return 1; }
                 else { return 3; }
             },
         },
@@ -149,7 +149,7 @@ class Yikuaiqian {
             ],
             left_times: 1,
             require: function(properties) {
-                if(properties.money < 2000000 && properties.money > 500000) { return 1; }
+                if(properties.money <= 2000000 && properties.money > 500000) { return 1; }
                 else { return 3; }
             },
         },
@@ -168,7 +168,7 @@ class Yikuaiqian {
             ],
             left_times: 1,
             require: function(properties) {
-                if(properties.money < 2000000 && properties.money > 500000) { return 1; }
+                if(properties.money <= 2000000 && properties.money > 500000) { return 1; }
                 else { return 3; }
             },
         },
@@ -202,7 +202,7 @@ class Yikuaiqian {
                 '好心的软妹子和装好心的大叔时不时往你碗里丢个几块钱',
                 '一天下来，你高高兴兴收起满满一碗钱，收摊回家',
             ],
-            name: '1元问题3',properties: { money: 80,time: 1 },
+            name: '1元问题3',properties: { money: 10,time: 1 },
             from: '*',to: ''
         },
 
@@ -225,7 +225,7 @@ class Yikuaiqian {
                 '就这样，过了好多天鬼话连篇的日子，',
                 '天天磨嘴皮子，都快让你不会说人话了，你决定清点下积蓄，再干点别的什么事',
             ],
-            name: '10元问题1',properties: { money: 300, time: 1 },
+            name: '10元问题1',properties: { money: function(p) { return -p.money + 300 }, time: 3 },
             from: '*',to: ''
         },
 
@@ -237,7 +237,7 @@ class Yikuaiqian {
                 '“你再不听话以后就只能和这个人一样在街头擦鞋！”',
                 '你的内心深深刺痛，决定清点下积蓄，干些别的事情去',
             ],
-            name: '10元问题2',properties: { money: 500, time: 7 },
+            name: '10元问题2',properties: { money: function(p) { return -p.money + 500 }, time: 7 },
             from: '*',to: ''
         },
 
@@ -248,7 +248,7 @@ class Yikuaiqian {
                 '你紧紧的攥着手中的钞票，你开始越来越佩服旅馆这种地方的抗震性能',
                 '“如果有钱了，我也要给自己盖个旅馆，来地震都塌不了”',
             ],
-            name: '10元问题3',properties: { money: 200, time: 7 },
+            name: '10元问题3',properties: { money: function(p) { return -p.money + 200 }, time: 7 },
             from: '*',to: ''
         },
 
@@ -259,7 +259,7 @@ class Yikuaiqian {
                 '你紧张的把那100元假钞递给眼花的大爷',
                 '幸好，大爷什么异样都没发现，给你换了零钱。你拿了那些零钱，迅速的跑了出去',
             ],
-            name: '10元问题4',properties: { money: 80, time: 1 },
+            name: '10元问题4',properties: { money: function(p) { return -p.money + 80 }, time: 1 },
             from: '*',to: ''
         },
 
@@ -270,7 +270,7 @@ class Yikuaiqian {
                 '憨厚的货车师傅赶紧跑下来看看你的情况，你一口咬定是师傅的错，要求赔偿',
                 '货车师傅只能怪自己没装行车记录仪，认了倒霉，乖乖的给你一沓钞票',
             ],
-            name: '100元问题1',properties: { money: 1000, time: 1 },
+            name: '100元问题1',properties: { money: function(p) { return -p.money + 500 }, time: 1 },
             from: '*',to: ''
         },
 
@@ -282,7 +282,7 @@ class Yikuaiqian {
                 '要知道，一般的膜，几毛钱就能拿到货了…',
                 '干了几天，生意一直不错，你仿佛感到了贴膜BOYS附体在你身上…',
             ],
-            name: '100元问题2',properties: { money: 500, time: 1 },
+            name: '100元问题2',properties: { money: function(p) { return -p.money + 800 }, time: 3 },
             from: '*',to: ''
         },
 
@@ -293,7 +293,7 @@ class Yikuaiqian {
                 '虽然一直提心吊胆被城管蜀黍抓走，以传播低俗文化名义请你到局子里喝茶',
                 '但还好，巷子深，酒也香，你的小生意做的还算安稳',
             ],
-            name: '100元问题3',properties: { money: 2100, time: 7 },
+            name: '100元问题3',properties: { money: function(p) { return -p.money + 500 }, time: 7 },
             from: '*',to: ''
         },
 
@@ -316,7 +316,7 @@ class Yikuaiqian {
                 '你感觉自己在成为女性之友的路上已经走得很远，连大白都要比不上你了',
                 '小本生意虽然不怎么赚钱，你还是坚持为各路女生造福了好几个月',
             ],
-            name: '1000元问题1',properties: { money: 18000, time: 90 },
+            name: '1000元问题1',properties: { money: function(p) { return -p.money + 6000; }, time: 90 },
             from: '*',to: ''
         },
 
@@ -327,7 +327,7 @@ class Yikuaiqian {
                 '“短斤少两是盈利的王道！”一位做了很久的同行不断在炫耀他那挖了个洞的秤砣',
                 '虽然这钱来的也不容易，但是你想到红薯带给客人们的温暖，也便坚持了小半年',
             ],
-            name: '1000元问题2',properties: { money: 36000,time: 180 },
+            name: '1000元问题2',properties: { money: function(p) { return -p.money + 18000; }, time: 180 },
             from: '*',to: ''
         },
 
@@ -339,7 +339,7 @@ class Yikuaiqian {
                 '第二天早上醒来，你发现那个人已经不见了，只剩下桌上留的一叠百元钞票，还有一张纸条',
                 '“昨晚辛苦你了，你表现很好，这些钱留给你补补身体”',
             ],
-            name: '1000元问题3',properties: { money: 2000, time: 1 },
+            name: '1000元问题3',properties: { money: function(p) { return -p.money + 2000; }, time: 1 },
             from: '*',to: ''
         },
 
@@ -350,7 +350,7 @@ class Yikuaiqian {
                 '其实连你自己也很好奇，为啥酒吧的酒都死贵死贵的，还是没有人打12315投诉呢？',
                 '经过几次成功利用男人的情欲心理，你和你的“女大学生”在几天就赚到了很多钱',
             ],
-            name: '1000元问题4',properties: { money: 60000, time: 30 },
+            name: '1000元问题4',properties: { money: function(p) { return -p.money + 9000; }, time: 30 },
             from: '*',to: ''
         },
 
@@ -363,7 +363,7 @@ class Yikuaiqian {
                 '很会做生意的你总是十分主动：“老客户了啊，给您打个8折啊！”',
                 '日租房的生意还算红火，几个月下来，你又开始琢磨更大的生意……',
             ],
-            name: '10000元问题1',properties: { money: 180000, time: 180 },
+            name: '10000元问题1',properties: { money: function(p) { return -p.money + 45000; }, time: 90 },
             from: '*',to: ''
         },
 
@@ -376,7 +376,7 @@ class Yikuaiqian {
                 '“对不起，我是卧底。”',
                 '你全部资产投入的摇头丸都被没收，你也坐进了监牢……',
             ],
-            name: '10000元问题2',properties: { function(p) { return -p.money; }, time: 7, __SHOW_ENDING: 30, ending: 20 },
+            name: '10000元问题2',properties: { money: function(p) { return -p.money; }, time: 7, __SHOW_ENDING: 30, ending: 30 },
             from: '*',to: ''
         },
 
@@ -387,7 +387,7 @@ class Yikuaiqian {
                 '你雇起保镖，开启会员推荐制，确保生意万无一失，小赌场开的风生水起。',
                 '几个月后，你算了算自己收的油水钱，竟也是一笔不少的数目',
             ],
-            name: '10000元问题3',properties: { money: 900000, time: 90 },
+            name: '10000元问题3',properties: { money: function(p) { return -p.money + 90000; }, time: 90 },
             from: '*',to: ''
         },
 
@@ -398,7 +398,7 @@ class Yikuaiqian {
                 '就连“食神再世”的你，也只有区区几千元的月薪',
                 '干了几个月，你决定重新思考人生',
             ],
-            name: '10000元问题4',properties: { money: 6000,time: 180 },
+            name: '10000元问题4',properties: { money: function(p) { return -p.money + 10000; }, time: 180 },
             from: '*',to: ''
         },
 
@@ -409,7 +409,7 @@ class Yikuaiqian {
                 '开小饭店的生活倒也安逸，除了碰上卫生局检查和吃霸王餐的顾客，基本没什么烦心事',
                 '小半年过去，你也累积了不少钱',
             ],
-            name: '10万问题1',properties: { money: 720000,time: 180 },
+            name: '10万问题1',properties: { money: function(p) { return -p.money + 180000; },time: 180 },
             from: '*',to: ''
         },
 
@@ -421,7 +421,7 @@ class Yikuaiqian {
                 '还好扫黄打非行动这段时间没有开展，你的窑子生意做得有模有样。',
                 '好景不长，几个月后，你收到风声最近要查黄。趁着还没被拘留，你赶紧关了店',
             ],
-            name: '10万问题2',properties: { money: 720000, time: 90 },
+            name: '10万问题2',properties: { money: function(p) { return -p.money + 720000; }, time: 90 },
             from: '*',to: ''
         },
 
@@ -433,7 +433,7 @@ class Yikuaiqian {
                 '敬酒罚酒软的硬的手段你玩的风生水起，讨回了好几单大手笔，更是收了不少劳务费',
                 '不过久了之后，你也累了，想起小柯的那句“我不做大哥好多年…”。你决定重新再规划下一步',
             ],
-            name: '10万问题3',properties: { money: 900000, time: 180 },
+            name: '10万问题3',properties: { money: function(p) { return -p.money + 900000; }, time: 180 },
             from: '*',to: ''
         },
 
@@ -445,7 +445,7 @@ class Yikuaiqian {
                 '你甚至怀疑专家说的中国未来将有三千万男光棍那些话',
                 '你仿佛明白了一个道理：相信专家，还不如相信震动棒——虽然两者都会嗡嗡叫，但震动棒更有实质作用。',
             ],
-            name: '10万问题4',properties: { money: 800000, time: 60 },
+            name: '10万问题4',properties: { money: function(p) { return -p.money + 800000; }, time: 60 },
             from: '*',to: ''
         },
 
@@ -471,7 +471,7 @@ class Yikuaiqian {
                 '不做不知道，原来一直被你视为弱势群体的农民工兄弟，月薪竟都是上万的…',
                 '还好工程款都能顺利收回，你还是狠狠的捞了一大笔钱',
             ],
-            name: '50万问题2',properties: { money: 5000000, time: 360 },
+            name: '50万问题2',properties: { money: 1500000, time: 360 },
             from: '*',to: ''
         },
 
@@ -482,7 +482,7 @@ class Yikuaiqian {
                 '只是你始终想不明白，为何这些“MADE IN CHINA”的东西环球旅行了一大圈，还是比国内专柜卖的要便宜一半',
                 '你的走私生意做得红红火火，但考虑海关的风险，你知道这并不是长久之计',
             ],
-            name: '50万问题3',properties: { money: 2000000,time: 180 },
+            name: '50万问题3',properties: { money: 1500000,time: 180 },
             from: '*',to: ''
         },
 
@@ -494,7 +494,7 @@ class Yikuaiqian {
                 '幸好打击传销这种事还没落到你头上，你的生意暂时平安无事',
                 '拥有着一群死忠“合伙人”，你的传销之路越走越宽，当然，最重要的是，你真的捞了不少钱',
             ],
-            name: '50万问题4',properties: { money: 5000000, time: 180 },
+            name: '50万问题4',properties: { money: 1000000, time: 90 },
             from: '*',to: ''
         },
 
@@ -507,7 +507,7 @@ class Yikuaiqian {
                 '其实，你最希望自己能像《绝命毒师》的老白那样，自己生产毒品，这样你就不用冒生命危险去缅甸进货了',
                 '尽管如此，你的运气和老白一样好，赚到了钱，人还活着',
             ],
-            name: '200万问题1',properties: { money: 8000000, time: 30 },
+            name: '200万问题1',properties: { money: 8000000,time: 30,__SHOW_ENDING: 1,ending: 50 },
             from: '*',to: ''
         },
 
@@ -519,7 +519,7 @@ class Yikuaiqian {
                 '你觉得是时候了，于是迅速关了了公司，卷了钱就开始跑路之旅',
                 '你发现，P2P跑路的几千位同志里面，你只是一个特别小的小角色，网上甚至连骂你的帖子都沉的跟铅块一样，更不用说公安的案底了…',
             ],
-            name: '200万问题2',properties: { money: 10000000,time: 90 },
+            name: '200万问题2',properties: { money: 8000000,time: 90, __SHOW_ENDING: 1,ending: 50 },
             from: '*',to: ''
         },
 
@@ -531,7 +531,7 @@ class Yikuaiqian {
                 '“这都是钱呐！”',
                 '你终于明白，情色产业是推动世界经济的重要发展要素，这句话果然没错',
             ],
-            name: '200万问题3',properties: { money: 5000000, time: 30 },
+            name: '200万问题3',properties: { money: 2000000,time: 30, __SHOW_ENDING: 1,ending: 50},
             from: '*',to: ''
         },
 
@@ -543,7 +543,7 @@ class Yikuaiqian {
                 '并且，冠以促进中非农业交流和出国体验游玩的名义，你还免费从蓝翔技校挖来两个拖拉机专业的工程师帮助你的客户干活',
                 '非洲老黑对你的带动世界农业发展行为很是满意，高高兴兴的给了你一大笔钱',
             ],
-            name: '200万问题4',properties: { money: 10000000, time: 360 },
+            name: '200万问题4',properties: { money: 10000000,time: 360, __SHOW_ENDING: 1, ending: 50},
             from: '*', to: ''
         }
     ];
