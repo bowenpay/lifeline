@@ -5,7 +5,7 @@
 			"name":"preload"
 		},
 		{
-			"keys":"ask_png,radiobtn_selected_png,radiobtn_unselected_png,radiobtn_disable_unselect_png,radiobtn_select_png,radiobtn_unselect_png,statusBtn_png,end_bg_jpg,start_up_success_png,end_back_png,start_up_sucess_midlle_png,end_qrcode_jpg,end_play_again_png,end_share_png,end_btn_bg_png",
+			"keys":"ask_png,radiobtn_selected_png,radiobtn_unselected_png,radiobtn_disable_unselect_png,radiobtn_select_png,radiobtn_unselect_png,statusBtn_png,end_bg_jpg,start_up_success_png,end_back_png,start_up_sucess_midlle_png,end_qrcode_jpg,end_play_again_png,end_share_png,end_btn_bg_png,underline_btn_bg_png",
 			"name":"bowen"
 		},
 		{
@@ -172,6 +172,11 @@
 			"name":"statusBtn_png",
 			"type":"image",
 			"url":"assets/Button/statusBtn.png"
+		},
+		{
+			"name":"underline_btn_bg_png",
+			"type":"image",
+			"url":"assets/Button/underline.png"
 		},
 		{
 			"name":"end_bg_jpg",

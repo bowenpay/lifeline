@@ -167,7 +167,7 @@ class Main extends eui.UILayer {
     // 游戏状态
     private game_state = STATE_SPLASH; 
     private myproperties = { 
-        time: 0, 
+        time: 1, 
         __SHOW_ENDING: 0,
         money: 0
     };
@@ -376,12 +376,10 @@ class Main extends eui.UILayer {
         }
         // 
         this.state_btn = new StatusBtn();
-        this.state_btn.skinName = "resource/custom_eui_skins/statusBtnSkin.exml"
-        this.state_btn.label = this.game_data.getStatesDisplyName();
-        this.state_btn.timeLabelStr = String(this.myproperties.time) + '天';
+        this.state_btn.timeLabelStr = "第"+ String(this.myproperties.time) + '天';
         this.state_btn.fundLabelValue = this.myproperties.money;
 
-        this.state_btn.height = 80;
+        this.state_btn.height = 160;
         this.state_btn.left = 0;
         this.state_btn.top = 0;
         this.state_btn.percentWidth = 100;
@@ -472,7 +470,7 @@ class Main extends eui.UILayer {
      * 处理当前状态基本任务
      */ 
     private processState() {
-        this.state_btn.timeLabelStr = String(this.myproperties.time) + '天';
+        this.state_btn.timeLabelStr = "第" + String(this.myproperties.time) + '天';
         this.state_btn.fundLabelValue = this.myproperties.money;
         var properties = this.game_data.getStatesProperties();
         var mp_clone = JSON.parse(JSON.stringify(this.myproperties));
@@ -665,12 +663,21 @@ class Main extends eui.UILayer {
         var mp_clone = JSON.parse(JSON.stringify(this.myproperties));
         for(var key in properties) {
             var value = properties[key];
+            var delta = 0;
             if(typeof value === "function") {
-                this.myproperties[key] = (mp_clone[key] || 0) + value(mp_clone);
+                delta = value(mp_clone);
             } else {
-                this.myproperties[key] = (mp_clone[key] || 0) + value;
+                delta = value;
             }
-
+            this.myproperties[key] = (mp_clone[key] || 0) + delta;
+            
+            // 改变的动态效果
+            if(key == 'time') {
+                this.state_btn.showTimeLabelStrPlus(delta);
+            } else if(key == 'money') {
+                this.state_btn.showFundLabelStrPlus(delta); 
+            }
+            
         }
         this.state_btn.fundLabelValue = this.myproperties.money;
         egret.log('属性改变：');
@@ -682,7 +689,6 @@ class Main extends eui.UILayer {
 
             tongji(['_trackEvent','状态','改变到',event.to,1]);
             this.game_data.current = event.to;
-            this.state_btn.label = this.game_data.getStatesDisplyName();
 
             var properties = this.game_data.getStatesInitialState();
             var mp_clone = JSON.parse(JSON.stringify(this.myproperties));
