@@ -21,7 +21,7 @@ class EndUI extends eui.Component {
     	this.addEventListener(eui.UIEvent.COMPLETE,this.uiCompHandler,this);
       this.skinName = "resource/custom_eui_skins/endUISkin.exml";
       var tw = egret.Tween.get(this.backImage,{loop:true});
-      tw.to({top:15},1500);
+      tw.to({top:35},1500);
 //      this.playAgainBtn.label = "再玩一次";
 //      this.shareBtn.label = "分享好友";
 

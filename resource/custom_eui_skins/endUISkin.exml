@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <e:Skin class="endUISkin" xmlns:e="http://ns.egret.com/eui">
-	<e:Image height="100%" width="100%" x="0" y="0" source="end_bg_jpg"/>
+	<e:Image height="100%" width="100%" x="0" y="0" source="resource/assets/end/end_background.jpg"/>
 	<e:Scroller left="0" right="0" height="90%" scrollPolicyH="ScrollPolicy.off" >
 		<e:viewport>
 			<e:Group >
@@ -9,21 +9,26 @@
 					</e:VerticalLayout>
 				</e:layout>
 				<e:Group >
-					<e:Image id="imageBg" top="69" bottom="10">
+					<e:Image id="imageBg" top="74" bottom="10" horizontalCenter="0">
 					</e:Image>
-					<e:Image id="backImage" horizontalCenter="0" source="end_back_png" top="5" height="21" width="30">
+					
+					<e:Image id="backImageTitle" horizontalCenter="0" top="10" width="125" height="24" source="end_back_title_png">
 					</e:Image>
 					<e:Label id="backImageLabel" horizontalCenter="0" top="0" height="60" percentWidth="80" alpha="0">					
 					</e:Label>
-					<e:Image id="backImageTitle" horizontalCenter="0" top="45" width="125" height="24" source="end_back_title_png">
+					<e:Image id="backImage" horizontalCenter="0" source="end_back_png" top="45" height="21" width="30">
 					</e:Image>
+
 				</e:Group>
 				<e:Image id="titleImg" >
 				</e:Image>
 				<e:Label id="desc" text="" 
-				         size="24" textColor="0x000000"  multiline="true" percentWidth="90" fontFamily="黑体-简 中等" textAlign="left" lineSpacing="10" horizontalCenter="true">
+				         size="24" textColor="0x000000"  multiline="true" percentWidth="80" fontFamily="黑体-简 中等" textAlign="left" lineSpacing="10" horizontalCenter="true">
 				</e:Label>
-				<e:Image id="qrcodeImg" source="end_qrcode_jpg" percentWidth="80">
+				<e:Label height="50" percentWidth="100" alpha="0">
+					
+				</e:Label>
+				<e:Image id="qrcodeImg" source="end_qrcode_jpg" horizontalCenter="0" height="172" width="542" >
 				</e:Image>
 			</e:Group>
 		</e:viewport>
