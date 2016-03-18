@@ -6,24 +6,20 @@
 			<e:Group >
 				<e:layout>
 					<e:VerticalLayout horizontalAlign="center" gap="20">
-						
 					</e:VerticalLayout>
 				</e:layout>
 				<e:Group >
-					<e:Image id="imageBg" top="10" bottom="10">
+					<e:Image id="imageBg" top="69" bottom="10" source="resource/assets/states/yikuaiqian/qiong.jpg">
 					</e:Image>
-					<e:Image id="backImage" horizontalCenter="true" source="end_back_png" top="20" height="40" width="40">
+					<e:Image id="backImage" horizontalCenter="0" source="end_back_png" top="5" height="21" width="30">
 					</e:Image>
-					<e:Label id="backImageLabel" horizontalCenter="true" top="0" height="60" percentWidth="80" alpha="0">
-						
+					<e:Label id="backImageLabel" horizontalCenter="0" top="0" height="60" percentWidth="80" alpha="0">					
 					</e:Label>
-					<e:Label id="backLabel" multiline="false" text="回顾创业历程"  horizontalCenter="true" percentWidth="40" size="30" fontFamily="微软雅黑"
-					         textAlign="center" top="60">
-						</e:Label>
+					<e:Image id="backImageTitle" horizontalCenter="0" top="45" width="125" height="24" source="end_back_title_png">
+					</e:Image>
 				</e:Group>
-				<e:Label id="title" size="34" text="人生赢家" bold="true" textAlign="center" textColor="0xd89411" >
-					
-				</e:Label>
+				<e:Image id="titleImg" source="resource/assets/states/yikuaiqian/qiongTitle.png">
+				</e:Image>
 				<e:Label id="desc" text="" 
 				         size="24" textColor="0x000000"  multiline="true" percentWidth="90" fontFamily="黑体-简 中等" textAlign="left" lineSpacing="10" horizontalCenter="true">
 				</e:Label>
@@ -32,31 +28,27 @@
 			</e:Group>
 		</e:viewport>
 	</e:Scroller>	
-	<e:Group bottom="0" >
-		<e:Image  source="end_btn_bg_png" height="100%">
-			
-		</e:Image>
-		<e:Group verticalCenter="true">
+	<e:Group bottom="0" percentWidth="100">
 		<e:layout>
-			<e:HorizontalLayout paddingLeft="20" paddingRight="20">
-				
-			</e:HorizontalLayout>
+			<e:TileLayout requestedColumnCount="2" paddingLeft="20" paddingRight="20" horizontalAlign="center" columnAlign="justifyUsingWidth" >
+			</e:TileLayout>
 		</e:layout>
-		<e:Button id="playAgainBtn">
+		<e:Button id="playAgainBtn" width="100%" label="再玩一次" horizontalCenter="0"> 
 			<e:skinName>
 				<e:Skin states="up,down,disabled" xmlns:w="http://ns.egret.com/wing">
-					<e:Image width="90%" height="90%" width.down="100%" height.down="100%" horizontalCenter="0" verticalCenter="0" source="end_play_again_png" source.down="end_play_again_png"/>
+					<e:Image width="90%" height="90%" width.down="100%" height.down="100%" verticalCenter="0" source="end_play_again_png" source.down="end_play_again_png"/>
+					<e:Label id="labelDisplay" size="36" verticalCenter="0" horizontalCenter="-10"  fontFamily="黑体-简 中等" textColor="0x000000"/>
 				</e:Skin>
 			</e:skinName>
 		</e:Button>
-		<e:Button id="shareBtn">
+		<e:Button id="shareBtn" width="100%" label="分享好友">
 			<e:skinName>
 				<e:Skin states="up,down,disabled" xmlns:w="http://ns.egret.com/wing">
-					<e:Image width="90%" height="90%" width.down="100%" height.down="100%" horizontalCenter="0" verticalCenter="0" source="end_share_png" source.down="end_share_png"/>
+					<e:Image width="90%" height="90%" width.down="100%" height.down="100%" verticalCenter="0" source="end_share_png" source.down="end_share_png"/>
+					<e:Label id="labelDisplay" size="36" verticalCenter="0"  horizontalCenter="-10"  fontFamily="黑体-简 中等" textColor="0x000000"/>
 				</e:Skin>
 			</e:skinName>
 		</e:Button>
-		</e:Group>
 	</e:Group> 
 	<e:Image id="shareMask" height="100%" width="100%" x="0" y="0"/>
 </e:Skin>

@@ -450,6 +450,12 @@ class Main extends eui.UILayer {
         btn.percentWidth = 80;
         btn.height = 100;
         this.msgBox.addChild(btn);
+//        var askBtn = new BwRoundBtn();
+//        askBtn.displayLabel.text = content;
+//        askBtn.percentWidth = 80;
+//        askBtn.height = 200;
+//        askBtn.displayLabel.width = document.documentElement.clientWidth*0.8;
+//        this.msgBox.addChild(askBtn);
         this.scrollerToBottom();
     }
     
@@ -725,7 +731,7 @@ class Main extends eui.UILayer {
             this.endPage.percentWidth = 100;
             this.endPage.percentHeight = 100;
             this.endPage.imageBg.source = result.imageBg;
-            this.endPage.title.text = result.title;
+            this.endPage.titleImg = result.title;
             this.endPage.desc.text = result.desc;       
 //            this.addChild(this.endPage); 
 //            this.endScrollV = this.message_scroller.viewport.scrollV;

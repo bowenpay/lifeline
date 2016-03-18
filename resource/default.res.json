@@ -15,6 +15,10 @@
 		{
 			"keys":"begin_background_jpg,begin_background_title_png,begin_enter_png,begin_main_png,begin_background1_jpg",
 			"name":"begin"
+		},
+		{
+			"keys":"end_back_title_png,end_back_png",
+			"name":"end"
 		}
 	],
 	"resources":[
@@ -282,6 +286,11 @@
 			"name":"begin_background1_jpg",
 			"type":"image",
 			"url":"assets/begin/begin_background1.jpg"
+		},
+		{
+			"name":"end_back_title_png",
+			"type":"image",
+			"url":"assets/end/end_back_title.png"
 		}
 	]
 }

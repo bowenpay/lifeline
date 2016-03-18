@@ -272,6 +272,11 @@
 					"isFolder":false,
 					"key":"begin_background1_jpg",
 					"name":"begin_background1_jpg"
+				},
+				{
+					"isFolder":false,
+					"key":"end_back_title_png",
+					"name":"end_back_title_png"
 				}
 			]
 		}
