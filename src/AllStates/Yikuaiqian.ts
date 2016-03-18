@@ -606,7 +606,7 @@ class Yikuaiqian {
                 '不仅如此，你还成了万人迷，时不时都有追求者高调的在校门口举着牌子：',
                 '“校长，开房找我，放过小学生。”'
             ],
-            name: '1000万问题3',p: { money: function(p) { return -p.money + 50000000 },time: 720 },
+            name: '1000万问题3',properties: { money: function(p) { return -p.money + 50000000 },time: 720 },
             from: '*',to: ''
         },
 
