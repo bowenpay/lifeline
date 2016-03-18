@@ -737,7 +737,8 @@ class Main extends eui.UILayer {
             this.endPage.percentWidth = 100;
             this.endPage.percentHeight = 100;
             this.endPage.imageBg.source = result.imageBg;
-            this.endPage.titleImg = result.title;
+            this.endPage.titleImg.source = result.title;
+            console.log(this.endPage.titleImg.source);
             this.endPage.desc.text = result.desc;       
 //            this.addChild(this.endPage); 
 //            this.endScrollV = this.message_scroller.viewport.scrollV;
