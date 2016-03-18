@@ -752,21 +752,19 @@ class Main extends eui.UILayer {
     {
         this.endDownImage = new eui.Image();       
         this.endDownImage.source = "resource/game/end_down.png";
-        this.endDownImage.bottom = 20;
-        this.endDownImage.height = 50;
-        this.endDownImage.width = 40;
+        this.endDownImage.bottom = 40;
         this.endDownImage.horizontalCenter = 0;
         this.endDownImage.visible = true;
         
-        this.endDownLabel = new eui.Label("");
-        this.endDownLabel.percentWidth = 70;
-        this.endDownLabel.bottom = 0;
-        this.endDownLabel.height = 60;
-        this.endDownLabel.alpha = 0;
+        this.endDownLabel = new eui.Label("  ");
+        this.endDownLabel.width = 200;
+        this.endDownLabel.bottom = 60;
+        this.endDownLabel.height = 50;
+        this.endDownLabel.alpha = 1;
         this.endDownLabel.horizontalCenter = 0;
+        this.endDownLabel.textAlign = "center";
         this.addChild(this.endDownImage);
         this.addChild(this.endDownLabel);
-        
         
         var tw = egret.Tween.get(this.endDownImage,{ loop: true });
         tw.to({ bottom: 10 },1500);
