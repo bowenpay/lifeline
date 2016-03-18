@@ -161,7 +161,7 @@ class Main extends eui.UILayer {
         "第10年1季度","第10年2季度","第10年3季度","第10年4季度"       
     ];
     private endDownImage:eui.Image = null;
-    private endDownLabel:eui.Label = null;
+    private endDownRead: eui.Image = null;
     private beginPage:BeginUI = null;
     private endPage:EndUI = null;
     // 游戏状态
@@ -261,8 +261,8 @@ class Main extends eui.UILayer {
         bodyConfig.jsApiList = this.signPackage.jsApiList;
         wx.config(bodyConfig);
         wx.ready(function() {
-            var title = "1块钱的故事";
-            var desc = "从1块钱起步，在有限的时间内，试试自己能挣到多少钱";
+            var title = "从1块钱到1个亿，来试试你能不能做到";
+            var desc = "1块钱白手起家游戏，看你最快能挣多少钱？（未成年人慎点）";
             var link = "http://"+self.host+"/yikuaiqian/";
             var imgUrl = "http://"+self.host+"/yikuaiqian/resource/wx_share.jpg";
             // 分享到微信好友
@@ -299,7 +299,7 @@ class Main extends eui.UILayer {
     private weixinShareOnEnding(title) { 
         var self = this;
         wx.ready(function() {
-            var desc = "从1块钱起步，在有限的时间内，试试自己能挣到多少钱";
+            var desc = "1块钱白手起家游戏，看你最快能挣多少钱？（未成年人慎点）";
             var link = "http://" + self.host+"/yikuaiqian/";
             var imgUrl = "http://" + self.host+"/yikuaiqian/resource/wx_share.jpg";
             // 分享到微信好友
@@ -762,21 +762,18 @@ class Main extends eui.UILayer {
         this.endDownImage.horizontalCenter = 0;
         this.endDownImage.visible = true;
         
-        this.endDownLabel = new eui.Label("  ");
-        this.endDownLabel.width = 200;
-        this.endDownLabel.bottom = 60;
-        this.endDownLabel.height = 50;
-        this.endDownLabel.alpha = 1;
-        this.endDownLabel.horizontalCenter = 0;
-        this.endDownLabel.textAlign = "center";
+        this.endDownRead = new eui.Image();;
+        this.endDownRead.source = "resource/game/end_read.png";
+        this.endDownRead.bottom = 60;
+        this.endDownRead.horizontalCenter = 0;
+        this.addChild(this.endDownRead);
         this.addChild(this.endDownImage);
-        this.addChild(this.endDownLabel);
         
         var tw = egret.Tween.get(this.endDownImage,{ loop: true });
         tw.to({ bottom: 10 },1500);
         
         this.endDownImage.addEventListener(egret.TouchEvent.TOUCH_TAP,this.touchEndDownHandler,this);
-        this.endDownLabel.addEventListener(egret.TouchEvent.TOUCH_TAP,this.touchEndDownHandler,this);
+        this.endDownRead.addEventListener(egret.TouchEvent.TOUCH_TAP,this.touchEndDownHandler,this);
     }
     
     //message_scroller滑动到底部
@@ -784,7 +781,7 @@ class Main extends eui.UILayer {
         console.log("scrollChangeEnd");
         if((this.message_scroller.viewport.scrollV + this.message_scroller.viewport.height*1/6 >= this.endScrollV) && (this.endPage != null)) {
             this.endDownImage.visible = true;
-            this.endDownLabel.visible = true;
+            this.endDownRead.visible = true;
         }
     }
     
@@ -792,7 +789,7 @@ class Main extends eui.UILayer {
     private touchEndDownHandler(evt: eui.UIEvent): void {
         console.log("scrollChangeEnd");
         this.endDownImage.visible = false;
-        this.endDownLabel.visible = false;
+        this.endDownRead.visible = false;
         this.addChild(this.endPage);
     }
     
