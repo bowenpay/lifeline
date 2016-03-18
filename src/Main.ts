@@ -177,7 +177,7 @@ class Main extends eui.UILayer {
      */ 
     private createTimer(): void { 
         //创建一个计时器对象
-        this.timer = new egret.Timer(70, 0);
+        this.timer = new egret.Timer(1000, 0);
         //注册事件侦听器
         this.timer.addEventListener(egret.TimerEvent.TIMER,this.timerHandler,this);
         //开始计时
