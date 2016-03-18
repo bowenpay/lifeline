@@ -162,6 +162,7 @@ class Main extends eui.UILayer {
     ];
     private endDownImage:eui.Image = null;
     private endDownRead: eui.Image = null;
+    private endDownLabel:eui.Label = null;
     private beginPage:BeginUI = null;
     private endPage:EndUI = null;
     // 游戏状态
@@ -759,22 +760,30 @@ class Main extends eui.UILayer {
     {
         this.endDownImage = new eui.Image();       
         this.endDownImage.source = "resource/game/end_down.png";
-        this.endDownImage.bottom = 40;
+        this.endDownImage.bottom = 60;
         this.endDownImage.horizontalCenter = 0;
         this.endDownImage.visible = true;
         
         this.endDownRead = new eui.Image();;
         this.endDownRead.source = "resource/game/end_read.png";
-        this.endDownRead.bottom = 60;
+        this.endDownRead.bottom = 20;
         this.endDownRead.horizontalCenter = 0;
+        
+        this.endDownLabel = new eui.Label();
+        this.endDownLabel.bottom = 0;
+        this.endDownLabel.height=100;
+        this.endDownLabel.percentWidth = 100;
+        this.endDownLabel.alpha = 0;
         this.addChild(this.endDownRead);
         this.addChild(this.endDownImage);
+        this.addChild(this.endDownLabel);
         
         var tw = egret.Tween.get(this.endDownImage,{ loop: true });
-        tw.to({ bottom: 10 },1500);
+        tw.to({ bottom: 50 },1500);
         
         this.endDownImage.addEventListener(egret.TouchEvent.TOUCH_TAP,this.touchEndDownHandler,this);
         this.endDownRead.addEventListener(egret.TouchEvent.TOUCH_TAP,this.touchEndDownHandler,this);
+        this.endDownLabel.addEventListener(egret.TouchEvent.TOUCH_TAP,this.touchEndDownHandler,this);
     }
     
     //message_scroller滑动到底部
@@ -783,6 +792,7 @@ class Main extends eui.UILayer {
         if((this.message_scroller.viewport.scrollV + this.message_scroller.viewport.height*1/6 >= this.endScrollV) && (this.endPage != null)) {
             this.endDownImage.visible = true;
             this.endDownRead.visible = true;
+            this.endDownLabel.visible = true;
         }
     }
     
@@ -791,6 +801,7 @@ class Main extends eui.UILayer {
         console.log("scrollChangeEnd");
         this.endDownImage.visible = false;
         this.endDownRead.visible = false;
+        this.endDownLabel.visible = false;
         this.addChild(this.endPage);
     }
     
