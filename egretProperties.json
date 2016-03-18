@@ -1,36 +1,36 @@
 {
-  "native": {
-    "path_ignore": []
-  },
-  "publish": {
-    "web": 0,
-    "native": 1,
-    "path": "bin-release"
-  },
-  "egret_version": "3.0.0",
-  "modules": [
-    {
-      "name": "egret"
-    },
-    {
-      "name": "eui"
-    },
-    {
-      "name": "res"
-    },
-	{
-      "name": "tween"
-    },
-    {
-      "name": "game"
-    },
-	{
-	    "name": "egretsa",
-	    "path": "./libs-third/egretsa"
+	"native": {
+		"path_ignore": []
 	},
-	{
-	    "name": "weixinapi",
-	    "path": "./libs-third/weixinapi"
-	}
-  ]
+	"publish": {
+		"web": 0,
+		"native": 1,
+		"path": "bin-release"
+	},
+	"egret_version": "3.0.0",
+	"modules": [
+		{
+			"name": "egret"
+		},
+		{
+			"name": "eui"
+		},
+		{
+			"name": "res"
+		},
+		{
+			"name": "tween"
+		},
+		{
+			"name": "game"
+		},
+		{
+			"name": "egretsa",
+			"path": "./libs-third/egretsa"
+		},
+		{
+			"name": "weixinapi",
+			"path": "./libs-third/weixinapi"
+		}
+	]
 }

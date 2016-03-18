@@ -33,7 +33,7 @@ class YikuaiqianEndings {
                     return res;
                 },
                 weixintitle: function(p) {
-                    var res = "从1元钱到5亿，成为战争之王，我用了" + p.time + "天，你呢？";
+                    var res = "从1元钱到30亿，成为战争之王，我用了" + p.time + "天，你呢？";
                     return res;
                 },
                
@@ -67,7 +67,7 @@ class YikuaiqianEndings {
                     return res;
                 },
                 weixintitle: function(p) {
-                    var res = "从1元钱到5亿，变身赚钱机器，我用了" + p.time + "天，你呢？";
+                    var res = "从1元钱到1亿，变身赚钱机器，我用了" + p.time + "天，你呢？";
                     return res;
                 },
                

@@ -72,6 +72,7 @@ class EndUI extends eui.Component {
     
     private playAgainBtnHandler(evt: egret.TouchEvent): void {
         console.log("playAgainBtnHandler");
+        tongji(['_trackEvent','再玩一次','再玩一次','再玩一次',1]);
         window.location.reload();
     }
 }

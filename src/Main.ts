@@ -404,7 +404,7 @@ class Main extends eui.UILayer {
 
         var vLayout: eui.VerticalLayout = new eui.VerticalLayout();
         vLayout.gap = 20;
-        vLayout.paddingTop = 80;
+        vLayout.paddingTop = this.stage.$stageHeight / 2 - 20;
         vLayout.paddingLeft = 5;
         vLayout.paddingBottom = 150;
         vLayout.horizontalAlign = egret.HorizontalAlign.CENTER;
@@ -419,8 +419,6 @@ class Main extends eui.UILayer {
         //设置viewport
         myScroller.viewport = group;
         this.addChild(myScroller);
-        
-
     }
     
     /**
@@ -429,7 +427,7 @@ class Main extends eui.UILayer {
     private scrollerToBottom() {
         var sc = this.message_scroller;
         while(true) {
-            if((sc.viewport.scrollV + sc.height*5/6) >= sc.viewport.contentHeight) {
+            if((sc.viewport.scrollV + sc.height * 5 / 6) >= sc.viewport.contentHeight) {
                 // console.log("滚动到底部了");
                 break;
             } else {
@@ -622,17 +620,18 @@ class Main extends eui.UILayer {
     private display_event_detail() { 
         // 显示消息
         var msg = this.event_detail.shift();
-        if(msg == null) {
+        if(msg) {
+            this.answer(msg);
+        }
+        // 消息显示结束
+        if(this.event_detail.length <= 0) {
             // 事件已经显示完了，如果有图片，去掉图片
-            if(this.event_image) { 
+            if(this.event_image) {
                 this.removeChild(this.event_image);
                 this.event_image = null;
             }
+            // 改变状态
             this.game_state = STATE_STATE;
-        } else {
-            if(msg) {
-                this.answer(msg);
-            }
         }
         
     }
@@ -685,6 +684,7 @@ class Main extends eui.UILayer {
             }
             
         }
+        this.state_btn.timeLabelStr = "第" + String(this.myproperties.time) + '天';
         this.state_btn.fundLabelValue = this.myproperties.money;
         egret.log('属性改变：');
         egret.log(JSON.stringify(this.myproperties));
