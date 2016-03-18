@@ -9,7 +9,7 @@
 					</e:VerticalLayout>
 				</e:layout>
 				<e:Group >
-					<e:Image id="imageBg" top="69" bottom="10" source="resource/assets/states/yikuaiqian/qiong.jpg">
+					<e:Image id="imageBg" top="69" bottom="10">
 					</e:Image>
 					<e:Image id="backImage" horizontalCenter="0" source="end_back_png" top="5" height="21" width="30">
 					</e:Image>
@@ -18,7 +18,7 @@
 					<e:Image id="backImageTitle" horizontalCenter="0" top="45" width="125" height="24" source="end_back_title_png">
 					</e:Image>
 				</e:Group>
-				<e:Image id="titleImg" source="resource/assets/states/yikuaiqian/qiongTitle.png">
+				<e:Image id="titleImg" >
 				</e:Image>
 				<e:Label id="desc" text="" 
 				         size="24" textColor="0x000000"  multiline="true" percentWidth="90" fontFamily="黑体-简 中等" textAlign="left" lineSpacing="10" horizontalCenter="true">
