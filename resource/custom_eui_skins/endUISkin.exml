@@ -28,7 +28,7 @@
 			</e:Group>
 		</e:viewport>
 	</e:Scroller>	
-	<e:Group bottom="0" percentWidth="100">
+	<e:Group bottom="0" percentWidth="100" horizontalCenter="0">
 		<e:layout>
 			<e:TileLayout requestedColumnCount="2" paddingLeft="20" paddingRight="20" horizontalAlign="center" columnAlign="justifyUsingWidth" >
 			</e:TileLayout>
@@ -36,16 +36,16 @@
 		<e:Button id="playAgainBtn" width="100%" label="再玩一次" horizontalCenter="0"> 
 			<e:skinName>
 				<e:Skin states="up,down,disabled" xmlns:w="http://ns.egret.com/wing">
-					<e:Image width="90%" height="90%" width.down="100%" height.down="100%" verticalCenter="0" source="end_play_again_png" source.down="end_play_again_png"/>
-					<e:Label id="labelDisplay" size="36" verticalCenter="0" horizontalCenter="-10"  fontFamily="黑体-简 中等" textColor="0x000000"/>
+					<e:Image width="90%" height="90%" width.down="95%" height.down="95%" verticalCenter="0" horizontalCenter="0" source="end_play_again_png" source.down="end_play_again_png"/>
+					<e:Label id="labelDisplay" size="36" verticalCenter="0" horizontalCenter="0"  fontFamily="黑体-简 中等" textColor="0x000000"/>
 				</e:Skin>
 			</e:skinName>
 		</e:Button>
 		<e:Button id="shareBtn" width="100%" label="分享好友">
 			<e:skinName>
 				<e:Skin states="up,down,disabled" xmlns:w="http://ns.egret.com/wing">
-					<e:Image width="90%" height="90%" width.down="100%" height.down="100%" verticalCenter="0" source="end_share_png" source.down="end_share_png"/>
-					<e:Label id="labelDisplay" size="36" verticalCenter="0"  horizontalCenter="-10"  fontFamily="黑体-简 中等" textColor="0x000000"/>
+					<e:Image width="90%" height="90%" width.down="95%" height.down="95%" verticalCenter="0" horizontalCenter="0" source="end_share_png" source.down="end_share_png"/>
+					<e:Label id="labelDisplay" size="36" verticalCenter="0"  horizontalCenter="0"  fontFamily="黑体-简 中等" textColor="0x000000"/>
 				</e:Skin>
 			</e:skinName>
 		</e:Button>
