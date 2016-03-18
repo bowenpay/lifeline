@@ -64,7 +64,7 @@ class StatusBtn extends eui.Button{
         if(value >= 0) {
             prefix = '+ ';
         } else {
-            sufix = '- ';
+            prefix = '- ';
         }
         var absValue = Math.abs(value);
         if(absValue > 100000000) {
@@ -94,6 +94,8 @@ class StatusBtn extends eui.Button{
         if(text) {
             if(!(text.indexOf('万') > -1 || text.indexOf('亿') > -1)) {
                 this.fundLabelPlus.text = text + '元';
+            } else { 
+                this.fundLabelPlus.text = text;
             }
             var label: egret.Tween = egret.Tween.get(this.fundLabelPlus);
             label.to({ alpha: 1, top: 0,size: 40 },400).to({ alpah: 0,top: 40,size: 20 },1);
