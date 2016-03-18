@@ -1,7 +1,7 @@
 {
 	"groups":[
 		{
-			"keys":"background_title_png,checkbox_select_disabled_png,checkbox_select_down_png,checkbox_select_up_png,checkbox_unselect_png,selected_png,border_png,header_png,radiobutton_select_disabled_png,radiobutton_select_down_png,radiobutton_select_up_png,radiobutton_unselect_png,roundthumb_png,thumb_png,track_png,tracklight_png,handle_png,off_png,on_png,button_down_png,button_up_png,thumb_pb_png,track_pb_png,track_sb_png,ask_png,radiobtn_selected_png,radiobtn_unselected_png,radiobtn_disable_unselect_png,radiobtn_select_png,radiobtn_unselect_png,statusBtn_png,begin_main_png",
+			"keys":"ask_png,radiobtn_disable_unselect_png,radiobtn_select_png,radiobtn_unselect_png,statusBtn_png,begin_main_png",
 			"name":"preload"
 		},
 		{
@@ -13,7 +13,7 @@
 			"name":"states"
 		},
 		{
-			"keys":"begin_background_jpg,begin_background_title_png,begin_enter_png,begin_main_png,begin_background1_jpg",
+			"keys":"begin_background_title_png,begin_enter_png,begin_main_png,begin_background1_jpg",
 			"name":"begin"
 		},
 		{
@@ -22,11 +22,6 @@
 		}
 	],
 	"resources":[
-		{
-			"name":"background_title_png",
-			"type":"image",
-			"url":"game/background_title.png"
-		},
 		{
 			"name":"checkbox_select_disabled_png",
 			"type":"image",

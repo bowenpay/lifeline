@@ -58,13 +58,15 @@
 
 	<!--百度统计代码start-->
 	<script>
-	var _hmt = _hmt || [];
-	(function() {
-	  var hm = document.createElement("script");
-	  hm.src = "//hm.baidu.com/hm.js?20b39ce24bd15445f47552dfe90c86fc";
-	  var s = document.getElementsByTagName("script")[0]; 
-	  s.parentNode.insertBefore(hm, s);
-	})();
+	if(window.location.href.indexOf('bowenpay.com') > -1 ){
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "//hm.baidu.com/hm.js?20b39ce24bd15445f47552dfe90c86fc";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	}
 	function tongji(data){
 		if(window.location.href.indexOf('bowenpay.com') > -1 ){
 			_hmt.push(data);
