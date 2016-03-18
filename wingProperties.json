@@ -277,6 +277,11 @@
 					"isFolder":false,
 					"key":"end_back_title_png",
 					"name":"end_back_title_png"
+				},
+				{
+					"isFolder":false,
+					"key":"underline_btn_bg_png",
+					"name":"underline_btn_bg_png"
 				}
 			]
 		}

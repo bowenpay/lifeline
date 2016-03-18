@@ -167,7 +167,7 @@ class Main extends eui.UILayer {
     // 游戏状态
     private game_state = STATE_SPLASH; 
     private myproperties = { 
-        time: 0, 
+        time: 1, 
         __SHOW_ENDING: 0,
         money: 0
     };
@@ -261,10 +261,10 @@ class Main extends eui.UILayer {
         bodyConfig.jsApiList = this.signPackage.jsApiList;
         wx.config(bodyConfig);
         wx.ready(function() {
-            var title = "创业那些年，你能走多远？";
-            var desc = "最真实的文字模拟游戏《创业那些年》。只有不到千分之一的人能玩到成功上市，快来试试吧！";
-            var link = "http://"+self.host+"/startup/";
-            var imgUrl = "http://"+self.host+"/startup/resource/wx_share.jpg";
+            var title = "1块钱的故事";
+            var desc = "从1块钱起步，在有限的时间内，试试自己能挣到多少钱";
+            var link = "http://"+self.host+"/yikuaiqian/";
+            var imgUrl = "http://"+self.host+"/yikuaiqian/resource/wx_share.jpg";
             // 分享到微信好友
             var shareAppMessage = new BodyMenuShareAppMessage();
             shareAppMessage.title = title;
@@ -299,9 +299,9 @@ class Main extends eui.UILayer {
     private weixinShareOnEnding(title) { 
         var self = this;
         wx.ready(function() {
-            var desc = "最真实的文字模拟游戏《创业那些年》。只有不到千分之一的人能玩到成功上市，快来试试吧！";
-            var link = "http://" + self.host+"/startup/";
-            var imgUrl = "http://" + self.host+"/startup/resource/wx_share.jpg";
+            var desc = "从1块钱起步，在有限的时间内，试试自己能挣到多少钱";
+            var link = "http://" + self.host+"/yikuaiqian/";
+            var imgUrl = "http://" + self.host+"/yikuaiqian/resource/wx_share.jpg";
             // 分享到微信好友
             var shareAppMessage = new BodyMenuShareAppMessage();
             shareAppMessage.title = title;
@@ -376,12 +376,10 @@ class Main extends eui.UILayer {
         }
         // 
         this.state_btn = new StatusBtn();
-        this.state_btn.skinName = "resource/custom_eui_skins/statusBtnSkin.exml"
-        this.state_btn.label = this.game_data.getStatesDisplyName();
-        this.state_btn.timeLabelStr = String(this.myproperties.time) + '天';
+        this.state_btn.timeLabelStr = "第"+ String(this.myproperties.time) + '天';
         this.state_btn.fundLabelValue = this.myproperties.money;
 
-        this.state_btn.height = 80;
+        this.state_btn.height = 160;
         this.state_btn.left = 0;
         this.state_btn.top = 0;
         this.state_btn.percentWidth = 100;
@@ -478,7 +476,7 @@ class Main extends eui.UILayer {
      * 处理当前状态基本任务
      */ 
     private processState() {
-        this.state_btn.timeLabelStr = String(this.myproperties.time) + '天';
+        this.state_btn.timeLabelStr = "第" + String(this.myproperties.time) + '天';
         this.state_btn.fundLabelValue = this.myproperties.money;
         var properties = this.game_data.getStatesProperties();
         var mp_clone = JSON.parse(JSON.stringify(this.myproperties));
@@ -671,12 +669,21 @@ class Main extends eui.UILayer {
         var mp_clone = JSON.parse(JSON.stringify(this.myproperties));
         for(var key in properties) {
             var value = properties[key];
+            var delta = 0;
             if(typeof value === "function") {
-                this.myproperties[key] = (mp_clone[key] || 0) + value(mp_clone);
+                delta = value(mp_clone);
             } else {
-                this.myproperties[key] = (mp_clone[key] || 0) + value;
+                delta = value;
             }
-
+            this.myproperties[key] = (mp_clone[key] || 0) + delta;
+            
+            // 改变的动态效果
+            if(key == 'time') {
+                this.state_btn.showTimeLabelStrPlus(delta);
+            } else if(key == 'money') {
+                this.state_btn.showFundLabelStrPlus(delta); 
+            }
+            
         }
         this.state_btn.fundLabelValue = this.myproperties.money;
         egret.log('属性改变：');
@@ -688,7 +695,6 @@ class Main extends eui.UILayer {
 
             tongji(['_trackEvent','状态','改变到',event.to,1]);
             this.game_data.current = event.to;
-            this.state_btn.label = this.game_data.getStatesDisplyName();
 
             var properties = this.game_data.getStatesInitialState();
             var mp_clone = JSON.parse(JSON.stringify(this.myproperties));

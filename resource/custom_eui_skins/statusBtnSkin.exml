@@ -1,7 +1,29 @@
 <?xml version='1.0' encoding='utf-8'?>
 <e:Skin class="statusBtnSkin" states="up,down,disabled" xmlns:e="http://ns.egret.com/eui">
 	<e:Image source="statusBtn_png" left="0" right="0" bottom="0" top="0"/>
-	<e:Label id="labelDisplay" size="26" verticalAlign="middle" textAlign="left" percentWidth="90" percentHeight="50" top="5" left="70" fontFamily="黑体-简 中等" textColor="0xf4f4f4"/>
-	<e:Label id="timeLabel" size="16" verticalAlign="middle" textAlign="left" percentWidth="90" percentHeight="50"  bottom="10" left="70" fontFamily="黑体-简 中等" textColor="0xf4f4f4"/>
-	<e:Label id="fundLabel" size="26" verticalAlign="middle" textAlign="right" percentWidth="90" percentHeight="50"  top="5" fontFamily="黑体-简 中等" textColor="0xf4f4f4"/>
+
+	<e:Button id="timeLabel" top="20" left="70" height="45">
+		<e:skinName>
+			<e:Skin xmlns:w="http://ns.egret.com/wing">
+				<e:Label id="labelDisplay" top="0" fontFamily="黑体-简 中等" textColor="0x73533e"/>
+
+				<e:Image width="100%" height="11" bottom="0" source="underline_btn_bg_png" />
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	
+	<e:Button id="fundLabel" top="20" right="70" height="45">
+		<e:skinName>
+			<e:Skin xmlns:w="http://ns.egret.com/wing">
+				<e:Label id="labelDisplay" top="0" fontFamily="黑体-简 中等" textColor="0x73533e"/>
+				
+				<e:Image width="100%" height="11" bottom="0" source="underline_btn_bg_png" />
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	
+	
+	<e:Label id="fundLabelPlus" alpha="0" size="32" verticalAlign="middle" textAlign="right" percentWidth="90" percentHeight="50"  top="30" fontFamily="黑体-简 中等" textColor="0x73533e"/>	
+	<e:Label id="timeLabelPlus" alpha="0" size="26" verticalAlign="middle" textAlign="left"  percentWidth="90" percentHeight="50"   top="30" left="70" fontFamily="黑体-简 中等" textColor="0x73533e"/>
+
 </e:Skin>
