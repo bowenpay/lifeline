@@ -291,6 +291,20 @@ class Main extends eui.UILayer {
             shareTimeline.fail = function(res) { };
             shareTimeline.cancel = function(res) { };
             wx.onMenuShareTimeline(shareTimeline);
+            // 分享到qq
+            var shareqq = new BodyMenuShareQQ();
+            shareqq.title = title;
+            shareqq.desc = desc;
+            shareqq.link = link;
+            shareqq.imgUrl = imgUrl;
+            shareqq.complete = function(res) { };
+            shareqq.trigger = function(res) { };
+            shareqq.success = function(res) {
+                tongji(['_trackEvent','微信分享','分享到QQ','qq',1]);
+            };
+            shareqq.cancel = function(res) { };
+            shareqq.fail = function(res) { };
+            wx.onMenuShareQQ(shareqq);
             
         });
     }
@@ -328,6 +342,20 @@ class Main extends eui.UILayer {
             shareTimeline.fail = function(res) { };
             shareTimeline.cancel = function(res) { };
             wx.onMenuShareTimeline(shareTimeline);
+            // 分享到qq
+            var shareqq = new BodyMenuShareQQ();
+            shareqq.title = title;
+            shareqq.desc = desc;
+            shareqq.link = link;
+            shareqq.imgUrl = imgUrl;
+            shareqq.complete = function(res) {};
+            shareqq.trigger = function(res) {};
+            shareqq.success = function(res) {
+                tongji(['_trackEvent','微信分享','分享到QQ','qq',1]);
+            };
+            shareqq.cancel = function(res) {};
+            shareqq.fail = function(res) {};
+            wx.onMenuShareQQ(shareqq);
 
         });
     }
